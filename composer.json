@@ -1,0 +1,23 @@
+{
+    "name": "doatkolom/wp-guide",
+    "autoload": {
+        "psr-4": {
+            "WpGuide\\App\\": "app/",
+            "WpGuide\\Bootstrap\\": "bootstrap/"
+        },
+        "files": [
+            "./app/helpers/helper.php"
+        ]
+    },
+    "require": {
+        "doatkolom/wp-commander": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../wp-commander"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
