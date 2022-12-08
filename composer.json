@@ -10,12 +10,17 @@
         ]
     },
     "require": {
-        "doatkolom/wp-commander": "*"
+        "doatkolom/wp-commander": "*",
+        "doatkolom/ui": "*"
     },
     "repositories": [
         {
             "type": "path",
             "url": "./../wp-commander"
+        },
+        {
+            "type": "path",
+            "url": "./../ui"
         }
     ],
     "minimum-stability": "dev",

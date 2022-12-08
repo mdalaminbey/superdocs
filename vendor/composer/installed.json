@@ -1,13 +1,43 @@
 {
     "packages": [
         {
+            "name": "doatkolom/ui",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../ui",
+                "reference": "34c3190913731f09c59519ee1a5c39d7d21e79da"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "DoatKolom\\Ui\\": "src/"
+                },
+                "files": [
+                    "src/Helpers/Helper.php"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "MD AL AMIN",
+                    "email": "mdalaminbey@gmail.com"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            },
+            "install-path": "../doatkolom/ui"
+        },
+        {
             "name": "doatkolom/wp-commander",
             "version": "dev-master",
             "version_normalized": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./../wp-commander",
-                "reference": "a23a4d75dc8963b800a01a401580e774fede73d0"
+                "reference": "a3d5dad94dfa96bbbe3e1a3e67a136119589ff0e"
             },
             "type": "library",
             "installation-source": "dist",

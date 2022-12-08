@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInite0570cb1645a4435c17a4198a9363605
 {
     public static $files = array (
+        '437783d9527d26076c208ba4b7291c10' => __DIR__ . '/..' . '/doatkolom/ui/src/Helpers/Helper.php',
         '1cc9ea721a0565d807e0d13296ede723' => __DIR__ . '/..' . '/doatkolom/wp-commander/src/Helpers/Helper.php',
         '28d75bc2b7a89a867a84f51420e5e49f' => __DIR__ . '/../..' . '/app/helpers/helper.php',
     );
@@ -17,6 +18,10 @@ class ComposerStaticInite0570cb1645a4435c17a4198a9363605
             'WpGuide\\Bootstrap\\' => 18,
             'WpGuide\\App\\' => 12,
             'WpCommander\\' => 12,
+        ),
+        'D' => 
+        array (
+            'DoatKolom\\Ui\\' => 13,
         ),
     );
 
@@ -32,6 +37,10 @@ class ComposerStaticInite0570cb1645a4435c17a4198a9363605
         'WpCommander\\' => 
         array (
             0 => __DIR__ . '/..' . '/doatkolom/wp-commander/src',
+        ),
+        'DoatKolom\\Ui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doatkolom/ui/src',
         ),
     );
 

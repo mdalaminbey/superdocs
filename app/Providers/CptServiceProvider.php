@@ -13,8 +13,16 @@ class CptServiceProvider extends ServiceProvider
 
     public function init()
     {
-        register_post_type( 'wpguidedocs', $this->docs_cpt_args() );
-        register_post_type( 'wpguidetemplate', $this->layout_cpt_args() );
+        register_post_type( wp_guide_docs_post_type(), $this->docs_cpt_args() );
+        register_post_type( wp_guide_template_post_type(), $this->layout_cpt_args() );
+        register_taxonomy( wp_guide_sidebar_taxonomy(), [wp_guide_docs_post_type()], [
+            'label'             => __( 'Categories', 'wp-guide' ),
+            'hierarchical'      => false,
+            'public'            => false,
+            'show_admin_column' => false,
+            'show_in_menu'      => false,
+            'show_in_nav_menus' => false
+        ] );
     }
 
     public function docs_cpt_args()
@@ -22,8 +30,8 @@ class CptServiceProvider extends ServiceProvider
         $label         = esc_html__( 'All Docs', 'wp-guide' );
         $singular_name = esc_html__( 'Doc', 'wp-guide' );
 
-        if ( is_admin() ) {;
-            if ( wp_commander_is_admin_page( 'edit', ['post_type' => 'wpguidedocs', 'product' => 'true'] ) ) {
+        if ( is_admin() ) {
+            if ( wp_commander_is_admin_page( 'edit', ['post_type' => wp_guide_docs_post_type(), 'product' => 'true'] ) ) {
                 $label         = esc_html__( 'Products', 'wp-guide' );
                 $singular_name = esc_html__( 'Product', 'wp-guide' );
             } elseif (
@@ -65,12 +73,11 @@ class CptServiceProvider extends ServiceProvider
         ];
         return [
             'label'               => $label,
-            'taxonomies'          => [],
             'labels'              => $labels,
             'rewrite'             => ['slug' => 'docs'],
-            'supports'            => ['title', 'editor', 'author'],
-            'taxonomies'          => [],
-            'public'              => false,
+            'supports'            => ['title', 'editor', 'Category', 'elementor'],
+            'taxonomies'          => [wp_guide_sidebar_taxonomy()],
+            'public'              => true,
             'show_ui'             => true,
             'show_in_menu'        => false,
             'menu_position'       => 5,
@@ -89,9 +96,9 @@ class CptServiceProvider extends ServiceProvider
         return [
             'label'               => esc_html__( 'Templates', 'textdomain' ),
             'description'         => esc_html__( '', 'textdomain' ),
-            'supports'            => [],
+            'supports'            => ['title', 'editor', 'Category', 'elementor'],
             'taxonomies'          => [],
-            'public'              => false,
+            'public'              => true,
             'show_ui'             => true,
             'show_in_menu'        => false,
             'menu_position'       => 5,

@@ -2,119 +2,109 @@
 
 namespace WpGuide\App\AdminPages;
 
+use WpGuide\Bootstrap\Application;
+use WpGuide\Bootstrap\View;
 use WP_Query;
 
 class Doc
 {
-	public function boot()
-	{
-		add_action( 'restrict_manage_posts', [ $this, 'filter' ] );
-		add_filter( 'views_edit-wpguidedocs', [$this, 'post_counter'] );
-		add_filter( 'pre_get_posts', [$this, 'pre_get_posts'] );
-		add_filter( 'manage_edit-wpguidedocs_columns', [$this, 'custom_column'] );
-		add_action( 'manage_wpguidedocs_posts_custom_column', [$this, 'custom_column_value'], 10, 2 );
-		add_action( 'quick_edit_custom_box', [$this, 'quick_edit_box'], 10, 3 );
-		add_action( 'admin_footer', [$this, 'admin_footer'] );
-	}
+    public function boot()
+    {
+        $docs_post_type = wp_guide_docs_post_type();
 
-	public function filter()
-	{
-		global $wpdb;
-		$products   = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'wpguidedocs' AND post_status = 'publish' AND post_mime_type = 'product'" );
-		$product_id = isset($_GET['filter-by-product']) ? intval($_GET['filter-by-product']) : 0;
-		?>
-		<div class="alignleft actions">
-			<select name="filter-by-product" id="filter-by-product">
-				<option value="0">All Products</option>
-				<?php foreach ( $products as $product ) {?>
-				<option <?php selected($product->ID, $product_id, true)?> value="<?php echo $product->ID ?>"><?php echo $product->post_title ?></option>
-				<?php }?>
-			</select>
-		</div>
-		<?php
-	}
+        add_action( 'restrict_manage_posts', [$this, 'filter'] );
+        add_filter( "views_edit-{$docs_post_type}", [$this, 'post_counter'] );
+        add_filter( 'pre_get_posts', [$this, 'pre_get_posts'] );
+        add_filter( "manage_edit-{$docs_post_type}_columns", [$this, 'custom_column'] );
+        add_action( "manage_{$docs_post_type}_posts_custom_column", [$this, 'custom_column_value'], 10, 2 );
+        add_action( 'quick_edit_custom_box', [$this, 'quick_edit_box'], 10, 3 );
+        add_action( 'admin_footer', [$this, 'admin_footer'] );
+        add_action( 'admin_enqueue_scripts', [$this, 'wp_enqueue_scripts'] );
+    }
 
-	public function pre_get_posts( WP_Query $query )
-	{	
-		if(!empty($_GET['filter-by-product'])) {
-			$query->set('post_parent', intval($_GET['filter-by-product']));
-		}
+    public function wp_enqueue_scripts()
+    {
+        wp_enqueue_script( 'wp-guide-docs', Application::$instance->get_root_url() . '/resources/js/docs.js', [], time() );
+    }
 
-		$query->set( 'meta_query', [[
-			'key'     => 'wp_guide_product',
-			'compare' => 'NOT EXISTS'
-		]] );
-		return $query;
-	}
+    public function filter()
+    {
+        global $wpdb;
+        $products            = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", wp_guide_docs_post_type() ) );
+        $selected_product_id = isset( $_GET['filter-by-product'] ) ? intval( $_GET['filter-by-product'] ) : 0;
+        View::render( 'admin/pages/docs/cpt-filter', compact( 'selected_product_id', 'products' ) );
+    }
 
-	public function custom_column( array $columns ): array
-	{
-		$array = [
-			'cb'      => $columns['cb'],
-			'title'   => $columns['title'],
-			'product' => esc_html__( 'Product', 'wp-guide' )
-		];
-		return array_merge( $array, $columns );
-	}
+    public function pre_get_posts( WP_Query $query )
+    {
+        if ( !empty( $_GET['filter-by-product'] ) ) {
+            $query->set( 'post_parent', intval( $_GET['filter-by-product'] ) );
+        }
 
-	public function custom_column_value( $columns, $post_id )
-	{
-		$parent_post = get_post( get_post( $post_id )->post_parent );
-		if ( $parent_post->ID != $post_id ) {
-			echo $parent_post->post_title;
-		}
-	}
+        $query->set( 'meta_query', [[
+            'key'     => 'wp_guide_product',
+            'compare' => 'NOT EXISTS'
+        ]] );
+        return $query;
+    }
 
-	public function quick_edit_box( string $column_name )
-	{
-		if ( 'product' === $column_name ) {
-			global $wpdb;
-			$products = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'wpguidedocs' AND post_status = 'publish' AND post_mime_type = 'product'" );
-		?>
-		<div class="wp-guide-product inline-edit-group wp-clearfix">
-			<label class="inline-edit-status alignleft">
-				<span class="title"><?php esc_html_e( 'Product', 'wp-guide' )?></span>
-				<select name="post_parent">
-					<option value="0"><?php esc_html_e( "Main Page (no product)", "wp-guide" )?></option>
-					<?php foreach ( $products as $product ) {?>
-						<option value="<?php echo $product->ID ?>"><?php echo $product->post_title ?></option>
-					<?php }?>
-				</select>
-			</label>
-		</div>
-	<?php }
-	}
+    public function custom_column( array $columns ): array
+    {
+        $array = [
+            'cb'       => $columns['cb'],
+            'title'    => $columns['title'],
+            'product'  => esc_html__( 'Product', 'wp-guide' ),
+            'template' => esc_html__( 'Template', 'wp-guide' )
+        ];
+        return array_merge( $array, $columns );
+    }
 
-	public function post_counter( array $views )
-	{
-		$counts      = wp_guide_docs_count( 'wpguidedocs', 'wp-guide-doc', 'doc' );
-		$all         = $counts->publish + $counts->future + $counts->draft + $counts->pending + $counts->private + $counts->trash;
-		$counts->all = $all;
-		foreach ( $views as $key => $view ) {
-			$view_part   = explode( '<span class="count">', $view );
-			$final_view  = $view_part[0] . '<span class="count">(' . $counts->$key . ')</span></a>';
-			$views[$key] = $final_view;
-		}
-		return $views;
-	}
+    public function custom_column_value( $column, $post_id )
+    {
+        switch ( $column ) {
+            case 'product':
+                $parent_post = get_post( get_post( $post_id )->post_parent );
+                if ( $parent_post->ID != $post_id ) {
+                    echo $parent_post->post_title;
+                }
+                break;
 
-	public function admin_footer()
-	{ ?>
-	<script>
-		(function($) {
-			$('.type-wpguidedocs .row-title').each((index, element) => {
-				element.innerHTML = element.innerHTML.replaceAll('— ', '');
-				$(element).closest('strong').html($(element).closest('strong a').prop("outerHTML"))
-			})
-			$('.type-wpguidedocs').each((index, element) => {
-				element.innerHTML = element.innerHTML.replaceAll('— ', '');
-				$(element).closest('strong').html($(element).closest('strong a').prop("outerHTML"))
-			});
+            case 'template':
+                $template_id   = get_post_meta( $post_id, 'wp-guide-template', true );
+                $template_post = get_post( $template_id );
+                echo "<div class='wp-guide-product' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
+                if ( $post_id != $template_post->ID ) {
+                    echo $template_post->post_title;
+                }
+                echo "</div>";
+        }
+    }
 
-			$('.inline-edit-wrapper .inline-edit-col-right .inline-edit-col').append($('.inline-edit-wrapper .wp-guide-product').html())
-			$('.inline-edit-wrapper .wp-guide-product').remove()
-		})(jQuery)
-	</script>
-	<?php
-	}
+    public function quick_edit_box( string $column_name )
+    {
+        if ( 'product' === $column_name ) {
+            global $wpdb;
+            $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", wp_guide_docs_post_type() ) );
+            $templates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish'", wp_guide_template_post_type() ) );
+            View::render( 'admin/pages/docs/quick-view', compact( 'products', 'templates' ) );
+        }
+    }
+
+    public function post_counter( array $views )
+    {
+        $counts      = wp_guide_docs_count( Application::$config['post_types']['docs'], 'wp-guide-doc', 'doc' );
+        $all         = $counts->publish + $counts->future + $counts->draft + $counts->pending + $counts->private + $counts->trash;
+        $counts->all = $all;
+        foreach ( $views as $key => $view ) {
+            $view_part   = explode( '<span class="count">', $view );
+            $final_view  = $view_part[0] . '<span class="count">(' . $counts->$key . ')</span></a>';
+            $views[$key] = $final_view;
+        }
+        return $views;
+    }
+
+    public function admin_footer()
+    {
+        View::render( 'admin/pages/docs/footer' );
+    }
 }

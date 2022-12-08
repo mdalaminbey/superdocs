@@ -4,15 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37461468d49b59644fae7ed5539c236e",
+    "content-hash": "2325cbb71ae08fc32530a00885e02589",
     "packages": [
+        {
+            "name": "doatkolom/ui",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../ui",
+                "reference": "34c3190913731f09c59519ee1a5c39d7d21e79da"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DoatKolom\\Ui\\": "src/"
+                },
+                "files": [
+                    "src/Helpers/Helper.php"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "MD AL AMIN",
+                    "email": "mdalaminbey@gmail.com"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "doatkolom/wp-commander",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./../wp-commander",
-                "reference": "a23a4d75dc8963b800a01a401580e774fede73d0"
+                "reference": "a3d5dad94dfa96bbbe3e1a3e67a136119589ff0e"
             },
             "type": "library",
             "autoload": {
