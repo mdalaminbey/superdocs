@@ -4,7 +4,7 @@
     let $sortcategory = $( "#category" );
 
     var sortEventHandler = function(event, ui){
-    console.log($sortcategory.children());
+    // console.log($sortcategory.children());
 };
 
     $sortcategory.sortable({
@@ -34,7 +34,7 @@
                     <span x-show="!isSelected(index)" aria-hidden="true" class="ml-4 float-right">&plus;</span>
                 </span>
 						</div>
-						<div x-show="isSelected(index)" x-collapse>
+						<div x-show="isSelected(index)">
 							<div class="px-6 pb-4 grid gap-3 grid-cols-1 connectedSortable" x-html="item.content"></div>
 						</div>
 					</div>
@@ -43,6 +43,9 @@
 		</div>
 	</div>
 <?php
+
+use DoatKolom\Ui\Components\Tab;
+
 ob_start();
 ?>
 <div class="bg-white shadow p-3">Item 1</div>
@@ -103,3 +106,27 @@ $c = ob_get_clean();
 			}))
 		// });
 	</script>
+
+<?php
+
+// Tab::render( [
+// 	'position' => 'left',
+// 	'classes'  => [
+// 		'body'      => 'test',
+// 		'tablist'   => '',
+// 		'tabpanels' => 'bg-white'
+// 	]
+// ], [
+// 	[
+// 		'title' => "Hello",
+// 		'content' => function() {
+// 			echo "Hello";
+// 		}
+// 	],
+// 	[
+// 		'title' => "HI",
+// 		'content' => function() {
+// 			echo "HI";
+// 		}
+// 	]
+// 	], 'no' );

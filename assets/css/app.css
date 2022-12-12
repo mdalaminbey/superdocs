@@ -1,9 +1,6 @@
 .wp-guide .float-right {
     float: right
 }
-.wp-guide .float-left {
-    float: left
-}
 .wp-guide .mx-auto {
     margin-left: auto;
     margin-right: auto
@@ -14,12 +11,6 @@
 .wp-guide .ml-4 {
     margin-left: 1rem
 }
-.wp-guide .box-content {
-    box-sizing: content-box
-}
-.wp-guide .inline-block {
-    display: inline-block
-}
 .wp-guide .\!inline-block {
     display: inline-block !important
 }
@@ -29,8 +20,23 @@
 .wp-guide .grid {
     display: grid
 }
+.wp-guide .contents {
+    display: contents
+}
 .wp-guide .hidden {
     display: none
+}
+.wp-guide .h-8 {
+    height: 2rem
+}
+.wp-guide .h-10 {
+    height: 2.5rem
+}
+.wp-guide .h-16 {
+    height: 4rem
+}
+.wp-guide .h-14 {
+    height: 3.5rem
 }
 .wp-guide .min-h-\[38rem\] {
     min-height: 38rem
@@ -43,18 +49,6 @@
 }
 .wp-guide .w-full {
     width: 100%
-}
-.wp-guide .w-1\/12 {
-    width: 8.333333%
-}
-.wp-guide .w-11\/12 {
-    width: 91.666667%
-}
-.wp-guide .w-8 {
-    width: 2rem
-}
-.wp-guide .w-\[calc\(100\%-32px\)\] {
-    width: calc(100% - 32px)
 }
 .wp-guide .max-w-3xl {
     max-width: 48rem
@@ -76,9 +70,6 @@
 }
 .wp-guide .justify-between {
     justify-content: space-between
-}
-.wp-guide .gap-6 {
-    gap: 1.5rem
 }
 .wp-guide .gap-3 {
     gap: 0.75rem
@@ -109,27 +100,12 @@
 .wp-guide .p-10 {
     padding: 2.5rem
 }
-.wp-guide .p-7 {
-    padding: 1.75rem
-}
 .wp-guide .p-3 {
     padding: 0.75rem
 }
 .wp-guide .px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem
-}
-.wp-guide .py-16 {
-    padding-top: 4rem;
-    padding-bottom: 4rem
-}
-.wp-guide .px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
-}
-.wp-guide .py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem
 }
 .wp-guide .py-3 {
     padding-top: 0.75rem;
@@ -139,18 +115,22 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem
 }
-.wp-guide .pr-6 {
+.wp-guide .py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+.wp-guide .px-6 {
+    padding-left: 1.5rem;
     padding-right: 1.5rem
 }
-.wp-guide .pb-4 {
-    padding-bottom: 1rem
+.wp-guide .pr-6 {
+    padding-right: 1.5rem
 }
 .wp-guide .pl-3 {
     padding-left: 0.75rem
 }
-.wp-guide .text-base {
-    font-size: 1rem;
-    line-height: 1.5rem
+.wp-guide .pb-4 {
+    padding-bottom: 1rem
 }
 .wp-guide .text-xl {
     font-size: 1.25rem;
