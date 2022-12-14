@@ -64,7 +64,7 @@ class MenuServiceProvider extends ServiceProvider
     {
         global $wpdb;
         $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", wp_guide_docs_post_type() ) );
-        View::render( 'admin/pages/sidebar-category/index', ['products' => $products] );
+        View::render( 'admin/pages/category/index', ['products' => $products] );
         WpLayout::instance(Application::$instance)->enqueue_script();
     }
 }
