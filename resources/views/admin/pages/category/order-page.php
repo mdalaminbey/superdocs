@@ -65,7 +65,7 @@ foreach($categoriesSortList as $categorySort) {
 			},
 			'content' => function() use($categorySort, $category, $productId) {
 				$docs = [];
-				if(isset($categorySort['docs'])) {
+				if(!empty($categorySort['docs'])) {
 					$docs = get_posts([
 						'post_type' => wp_guide_docs_post_type(),
 						'orderby'   => 'post__in',
@@ -82,7 +82,7 @@ foreach($categoriesSortList as $categorySort) {
 			'content' => function() use($productId, $categorySort) {
 				$docsIds  = [];
 				$sortedDocs = [];
-				if(isset($categorySort['docs'])) {
+				if(!empty($categorySort['docs'])) {
 					$docsIds = $categorySort['docs'];
 					$sortedDocs = get_posts([
 						'post_type' => wp_guide_docs_post_type(),

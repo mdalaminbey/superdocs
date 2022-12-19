@@ -53,18 +53,38 @@ class CategoryController
             }
         }
 
-        $categoriesSortList = get_post_meta( $wpRestRequest->get_param( 'productId' ), 'categories', true );
-        $categoriesSortList = unserialize( $categoriesSortList );
-        $key                = array_search( $wpRestRequest->get_param( 'categoryPostId' ), array_column( $categoriesSortList, 'categoryPostId' ) );
-        if ( is_int( $key ) ) {
-            unset( $categoriesSortList[$key] );
-            $categoriesSortList = array_values( $categoriesSortList );
-            update_post_meta( $wpRestRequest->get_param( 'productId' ), 'categories', serialize( $categoriesSortList ) );
-        }
+        self::removeCategoryFormCategories( $wpRestRequest->get_param( 'productId' ), $wpRestRequest->get_param( 'categoryPostId' ) );
 
         wp_send_json( [
             'message' => esc_html__( 'Category deleted successfully!', 'wp-guide' )
         ] );
+    }
+
+    public static function removeCategoryFormCategories( $productId, $categoryPostId )
+    {
+        $categoriesSortList = get_post_meta( $productId, 'categories', true );
+        $categoriesSortList = unserialize( $categoriesSortList );
+        $key                = array_search( $categoryPostId, array_column( $categoriesSortList, 'categoryPostId' ) );
+        if ( is_int( $key ) ) {
+            unset( $categoriesSortList[$key] );
+            $categoriesSortList = array_values( $categoriesSortList );
+            update_post_meta( $productId, 'categories', serialize( $categoriesSortList ) );
+        }
+    }
+
+    public static function removeProductFormCategories( $docsId, $categoryPostId, $productId )
+    {
+        $categoriesSortList = get_post_meta( $productId, 'categories', true );
+        $categoriesSortList = unserialize( $categoriesSortList );
+        $categoryKey        = array_search( $categoryPostId, array_column( $categoriesSortList, 'categoryPostId' ) );
+        if ( is_int( $categoryKey ) && !empty( $categoriesSortList[$categoryKey]['docs'] ) ) {
+            $docKey = array_search( $docsId, $categoriesSortList[$categoryKey]['docs'] );
+            if ( is_int( $docKey ) ) {
+                unset( $categoriesSortList[$categoryKey]['docs'][$docKey] );
+                $categoriesSortList[$categoryKey]['docs'] = array_values( $categoriesSortList[$categoryKey]['docs'] );
+                update_post_meta( $productId, 'categories', serialize( $categoriesSortList ) );
+            }
+        }
     }
 
     public function order( WP_REST_Request $wpRestRequest )

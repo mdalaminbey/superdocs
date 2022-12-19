@@ -8,6 +8,7 @@ use WpCommander\Contracts\ServiceProvider;
 use WpGuide\App\AdminPages\Doc;
 use WpGuide\App\AdminPages\Product;
 use WpGuide\App\AdminPages\Sidebar;
+use WpGuide\App\Https\Controllers\CategoryController;
 use WpGuide\Bootstrap\Application;
 use WpGuide\Bootstrap\View;
 
@@ -37,7 +38,7 @@ class MenuServiceProvider extends ServiceProvider
     public function save_post( int $post_ID, WP_Post $post)
     {
         global $wpdb;
-        if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) ) {
+        if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=wp-guide-sidebar-category' ) ) ) {
             $type = 'product';
             add_post_meta( $post_ID, 'wp_guide_product', true );
         } else {
@@ -47,6 +48,14 @@ class MenuServiceProvider extends ServiceProvider
         $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_mime_type = %s WHERE ID=%d", $type, $post_ID ) );
         
         if( !empty($_POST['productId']) ) {
+            $oldProductId = get_post_meta( $post_ID, 'productId', true);
+            if($oldProductId != $_POST['productId']) {
+                $categoryPostId = get_post_meta($post_ID, 'categoryId', true);
+                if($categoryPostId) {
+                    CategoryController::removeProductFormCategories($post_ID, $categoryPostId, $oldProductId,);
+                    delete_post_meta($post_ID, 'categoryId');
+                }
+            }
             update_post_meta( $post_ID, 'productId', sanitize_text_field( wp_unslash( $_POST['productId'] ) ) );
 
             $parent_post = get_post($post->post_parent);
