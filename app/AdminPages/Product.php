@@ -45,11 +45,11 @@ class Product
             case 'template':
                 $template_id   = get_post_meta( $post_id, 'wp-guide-template', true );
                 $template_post = get_post( $template_id );
-                echo "<div class='wp-guide-product' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                 if ( $post_id != $template_post->ID ) {
+                    echo "<div class='wp-guide-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                     echo $template_post->post_title;
+                    echo "</div>";
                 }
-                echo "</div>";
                 break;
         }
     }

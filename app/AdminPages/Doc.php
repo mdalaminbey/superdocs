@@ -63,20 +63,22 @@ class Doc
     {
         switch ( $column ) {
             case 'product':
-                $parent_post = get_post( get_post( $post_id )->post_parent );
-                if ( $parent_post->ID != $post_id ) {
-                    echo $parent_post->post_title;
+                $product = get_post( get_post_meta($post_id, 'productId', true) );
+                if ( $product->ID != $post_id ) {
+                    echo "<div class='wp-guide-product' data-product='" . wp_json_encode( ['id' => $product->ID, 'title' => $product->post_title] ) . "'>";
+                    echo $product->post_title;
+                    echo "</div>";
                 }
                 break;
 
             case 'template':
                 $template_id   = get_post_meta( $post_id, 'wp-guide-template', true );
                 $template_post = get_post( $template_id );
-                echo "<div class='wp-guide-product' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                 if ( $post_id != $template_post->ID ) {
+                    echo "<div class='wp-guide-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                     echo $template_post->post_title;
+                    echo "</div>";
                 }
-                echo "</div>";
         }
     }
 

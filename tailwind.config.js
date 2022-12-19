@@ -8,6 +8,8 @@ module.exports = {
         'primary-hover': '#4338ca',
         'success': '#10b981',
         'success-hover': '#059669',
+        'danger': '#ff5724',
+        'danger-hover': '#f03000'
       },
       fontFamily: {
         'primary': ['Poppins']

@@ -2,8 +2,8 @@
 <?php
 
 use DoatKolom\Ui\Components\Accordion;
-use DoatKolom\Ui\Components\Modal;
 use DoatKolom\Ui\Utils\Common;
+use WpGuide\Bootstrap\View;
 
 $headers = [
 	'headers' => [
@@ -11,111 +11,122 @@ $headers = [
 	]
 ];
 
-$categoryDataKey = Common::generateRandomString( 10 );
+$categoryActionKey     = 'wp_guide_category_action_' . $productId;
+$categoryDataKey       = Common::generateRandomString( 10 );
+$categoriesSortList    = get_post_meta($productId, 'categories', true);
 
-$moveIcon = '<svg class="cursor-move" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
-<path fill="none" d="M0 0h24v24H0V0z"/>
-<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-</svg>';
+if($categoriesSortList) {
+	$categoriesSortList = unserialize($categoriesSortList);
+} else {
+	$categoriesSortList = [['categoryPostId' => 0]];
+}
 
-$items = [
-	[
-		'title' => 'item 1',
-		'head' => function() {
-			?>
-				<button type="button" x-data="modalButton" x-on:click="show" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-amber-400">
-					Edit
-				</button>
-			<?php
-		},
-		'content' => function() use($moveIcon) {
-			?>
-				<div class="bg-slate-50 font-primary capitalize shadow p-2">
-					<div class="float-left">
-						<?php echo $moveIcon; ?>
-					</div>
-					<div class="float-left pl-2">
-						Item 1
-					</div>
-					<div class="float-right">
-						<span x-on:click="show()" x-data="modalButton">
-							<button type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
-								Edit
-							</button>
-						</span>
-					</div>
+$items = [];
+
+function wp_guide_category_content($productId, $categoryId, $docs = []) {
+	?>
+	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php echo 'wp_guide_product_content_'. $productId ?>" data-category="<?php echo $categoryId?>">
+		<?php foreach ($docs as $key => $doc): ?>
+			<div class="bg-slate-50 font-primary capitalize shadow p-2" data-doc="<?php echo $doc->ID?>">
+				<div class="float-left">
+					<?php echo Common::moveIcon() ?>
 				</div>
-				<div class="bg-slate-50 font-primary capitalize shadow p-2">
-					<div class="float-left">
-						<?php echo $moveIcon; ?>
-					</div>
-					<div class="float-left pl-2">
-						Item 2
-					</div>
-					<div class="float-right">
-						<span x-on:click="show()" x-data="modalButton">
-							<button type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
-								Edit
-							</button>
-						</span>
-					</div>
+				<div class="float-left pl-2"><?php echo $doc->post_title?></div>
+				<div class="float-right">
+					<a href="<?php wp_commander_render( get_permalink($doc) )?>" target="_blank" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-success">
+						<?php esc_html_e('View', 'wp-guide')?>
+					</a>
+					<a href="<?php wp_commander_render( get_edit_post_link($doc) )?>" type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
+						<?php esc_html_e('Edit', 'wp-guide')?>
+					</a>
 				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
+	<?php
+}
+
+foreach($categoriesSortList as $categorySort) {
+	if($categorySort['categoryPostId'] != 0) {
+		$category = get_post($categorySort['categoryPostId']);
+		array_push($items, [
+			'title' => $category->post_title,
+			'head' => function() use( $category, $categoryActionKey ) {
+				?>
+					<div x-data="<?php echo $categoryActionKey?>">
+						<button type="button" x-on:click="showCategoryEditAlert($data)" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400" data-categorypostid="<?php echo $category->ID?>">
+							<?php esc_html_e('Edit', 'wp-guide')?>
+						</button>
+						<button type="button" x-on:click="showCategoryDeleteAlert($data)" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-danger hover:bg-danger-hover" data-categorypostid="<?php echo $category->ID?>">
+							<?php esc_html_e('Delete', 'wp-guide')?>
+						</button>
+					</div>
 				<?php
-		},
-		'icon' => $moveIcon
-	],
-	[
-		'title' => 'item 2',
-		'head' => function() {
-			?>
-				<button type="button" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-amber-400">
-					Edit
-				</button>
-			<?php
-		},
-		'content' => function() use($moveIcon) {
-			?>
-				<div class="bg-slate-50 font-primary capitalize shadow p-2">
-					<div class="float-left">
-						<?php echo $moveIcon; ?>
-					</div>
-					<div class="float-left pl-2">
-						Item 1
-					</div>
-					<div class="float-right">
-						<span x-on:click="show()" x-data="modalButton">
-							<button type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
-								Edit
-							</button>
-						</span>
-					</div>
-				</div>
-				<div class="bg-slate-50 font-primary capitalize shadow p-2">
-					<div class="float-left">
-						<?php echo $moveIcon; ?>
-					</div>
-					<div class="float-left pl-2">
-						Item 2
-					</div>
-					<div class="float-right">
-						<span x-on:click="show()" x-data="modalButton">
-							<button type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
-								Edit
-							</button>
-						</span>
-					</div>
-				</div>
-				<?php
-		},
-		'icon' => $moveIcon
-	],
-];
+			},
+			'content' => function() use($categorySort, $category, $productId) {
+				$docs = [];
+				if(isset($categorySort['docs'])) {
+					$docs = get_posts([
+						'post_type' => wp_guide_docs_post_type(),
+						'orderby'   => 'post__in',
+						'post__in'  => $categorySort['docs']
+					]);
+				}
+				wp_guide_category_content($productId, $category->ID, $docs);
+			},
+			'icon' => Common::moveIcon()
+		]);
+	} else {
+		array_push($items, [
+			'title' => esc_html__('Uncategorized', 'wp-guide'),
+			'content' => function() use($productId, $categorySort) {
+				$docsIds  = [];
+				$sortedDocs = [];
+				if(isset($categorySort['docs'])) {
+					$docsIds = $categorySort['docs'];
+					$sortedDocs = get_posts([
+						'post_type' => wp_guide_docs_post_type(),
+						'orderby'   => 'post__in',
+						'post__in'  => $docsIds
+					]);
+				}
+
+				$newDocs = get_posts([
+					'post_type' => wp_guide_docs_post_type(),
+					'exclude' => $docsIds, 
+					'meta_query' => [
+						[
+							'key'     => 'wp_guide_product',
+							'compare' => 'NOT EXISTS'
+						],
+						[
+							'key'     => 'wp_guide_category',
+							'compare' => 'NOT EXISTS'
+						],
+						[
+							'key'     => 'categoryId',
+							'compare'   => 'NOT EXISTS'
+						],
+						[
+							'key'     => 'productId',
+							'value'   => $productId
+						]
+					]
+				]);
+				wp_guide_category_content($productId, '0', array_merge($sortedDocs, $newDocs));
+			},
+			'icon' => Common::moveIcon()
+		]);
+	}
+}
 
 ?>
+
+<script>
+  <?php View::render( 'admin/pages/category/sortjs', ['productId' => $productId] );?>
+</script>
 <!-- px-5 py-3 -->
 <div class="rounded-xl p-7">
-	
-	<!-- <div class="flex justify-center"> -->
 
 	<?php
 
@@ -128,8 +139,8 @@ $items = [
 			'body'      => '',
 			'tablist'   => '',
 			'tabpanels' => 'bg-white',
-			'accordionHead' => 'bg-slate-100',
-			'accordionContent' => 'px-6 py-4'
+			'inner'     => 'wp_guide_product_' . $productId,
+			'accordionHead' => 'bg-slate-100'
 		]
 	], $items );
 
@@ -150,23 +161,38 @@ $items = [
  	<?php $accordion->end(); ?>
 </div>
 <script>
+	/**
+	 * Create category
+	 */
 	Alpine.data('<?php echo $categoryDataKey?>', () => ({
 		createCategory($data) {
-			var modal = Alpine.store('datokolomUiModal');
-			modal.setContentByApi('<?php wp_commander_render(get_rest_url( null, 'wp-guide/category/create' ))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
+			var modal = Alpine.store('DoatKolomUiModal');
+			modal.setContentByApi('<?php wp_commander_render(wp_commander_url_add_params(get_rest_url( null, 'wp-guide/category/create' ), ['productId' => $productId]))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
 			modal.pushModalData('getCategories', $data);
 			modal.changeModalStatus();
-		},
-		test() {
-			console.log("Hello")
-		},
+		}
 	}));
 
-	Alpine.data('modalButton', () => ({
-		show() {
-			var modal = Alpine.store('datokolomUiModal');
-			modal.setContentByApi('<?php wp_commander_render( get_rest_url( null, 'wp-guide/modal-content?id=10' ) );?>', <?php wp_commander_render( json_encode($headers) ); ?>);
-			modal.changeModalStatus()
+	/**
+	 * Category Edit And Delete 
+	 */
+	Alpine.data('<?php echo $categoryActionKey?>', () => ({
+		showCategoryDeleteAlert($data) {
+			this.openCategoryActionModal($data, '/delete')
+		},
+		showCategoryEditAlert($data) {
+			this.openCategoryActionModal($data, '/edit')
+		},
+		openCategoryActionModal($data, api) {
+			var modal          = Alpine.store('DoatKolomUiModal');
+			var categoryPostId = this.$el.dataset.categorypostid;
+			var url            = new URL('<?php wp_commander_render( get_rest_url( null, 'wp-guide/category' ) )?>' + api);
+			url.searchParams.set('productId', '<?php echo $productId?>');
+			url.searchParams.set('categoryPostId', categoryPostId);
+			modal.setContentByApi(url.toString(), <?php wp_commander_render( json_encode($headers) ); ?>);
+			modal.pushModalData('getCategories', $data);
+			modal.changeModalStatus();
 		}
-	}))
+	}));
+
 </script>

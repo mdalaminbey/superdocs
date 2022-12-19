@@ -3,6 +3,7 @@
 namespace WpGuide\App\Providers\Admin;
 
 use DoatKolom\Ui\WpLayout;
+use WP_Post;
 use WpCommander\Contracts\ServiceProvider;
 use WpGuide\App\AdminPages\Doc;
 use WpGuide\App\AdminPages\Product;
@@ -33,7 +34,7 @@ class MenuServiceProvider extends ServiceProvider
         }
     }
 
-    public function save_post( int $post_ID )
+    public function save_post( int $post_ID, WP_Post $post)
     {
         global $wpdb;
         if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) ) {
@@ -44,6 +45,16 @@ class MenuServiceProvider extends ServiceProvider
         }
 
         $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_mime_type = %s WHERE ID=%d", $type, $post_ID ) );
+        
+        if( !empty($_POST['productId']) ) {
+            update_post_meta( $post_ID, 'productId', sanitize_text_field( wp_unslash( $_POST['productId'] ) ) );
+
+            $parent_post = get_post($post->post_parent);
+
+            if($parent_post && $parent_post->post_mime_type !== 'category') {
+                $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_parent = %s WHERE ID=%d", $_POST['productId'], $post_ID ) );
+            }
+        }
 
         if ( !empty( $_POST['wp-guide-template'] ) ) {
             update_post_meta( $post_ID, 'wp-guide-template', sanitize_text_field( wp_unslash( $_POST['wp-guide-template'] ) ) );
