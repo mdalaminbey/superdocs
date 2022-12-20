@@ -58,11 +58,11 @@ class MenuServiceProvider extends ServiceProvider
             }
             update_post_meta( $post_ID, 'productId', sanitize_text_field( wp_unslash( $_POST['productId'] ) ) );
 
-            $parent_post = get_post($post->post_parent);
+            // $parent_post = get_post($post->post_parent);
 
-            if($parent_post && $parent_post->post_mime_type !== 'category') {
+            // if($parent_post && $parent_post->post_mime_type !== 'category') {
                 $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_parent = %s WHERE ID=%d", $_POST['productId'], $post_ID ) );
-            }
+            // }
         }
 
         if ( !empty( $_POST['wp-guide-template'] ) ) {

@@ -41,10 +41,16 @@ class Doc
             $query->set( 'post_parent', intval( $_GET['filter-by-product'] ) );
         }
 
-        $query->set( 'meta_query', [[
+        $query->set( 'meta_query', [
+            [
             'key'     => 'wp_guide_product',
             'compare' => 'NOT EXISTS'
-        ]] );
+            ],
+            [
+            'key'     => 'wp_guide_category',
+            'compare' => 'NOT EXISTS'
+            ]
+        ] );
         return $query;
     }
 
