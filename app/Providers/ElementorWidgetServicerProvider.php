@@ -6,6 +6,7 @@ use WpCommander\Contracts\ServiceProvider;
 use WpGuide\App\Widgets\Breadcrumb;
 use WpGuide\App\Widgets\DocCategories;
 use WpGuide\App\Widgets\DocContent;
+use WpGuide\App\Widgets\DocPrint;
 use WpGuide\App\Widgets\TableOfContent;
 
 class ElementorWidgetServicerProvider extends ServiceProvider
@@ -40,7 +41,8 @@ class ElementorWidgetServicerProvider extends ServiceProvider
             DocContent::class,
             DocCategories::class,
             TableOfContent::class,
-            Breadcrumb::class
+            Breadcrumb::class,
+            DocPrint::class
         ];
     }
 }
