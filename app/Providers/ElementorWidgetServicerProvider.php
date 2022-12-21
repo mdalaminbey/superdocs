@@ -3,6 +3,7 @@
 namespace WpGuide\App\Providers;
 
 use WpCommander\Contracts\ServiceProvider;
+use WpGuide\App\Widgets\Breadcrumb;
 use WpGuide\App\Widgets\DocCategories;
 use WpGuide\App\Widgets\DocContent;
 use WpGuide\App\Widgets\TableOfContent;
@@ -38,7 +39,8 @@ class ElementorWidgetServicerProvider extends ServiceProvider
         return [
             DocContent::class,
             DocCategories::class,
-            TableOfContent::class
+            TableOfContent::class,
+            Breadcrumb::class
         ];
     }
 }

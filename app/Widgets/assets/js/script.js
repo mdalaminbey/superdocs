@@ -4,8 +4,6 @@ jQuery(function ($) {
 		var $docs = $submenu.find('.documents');
 		var $un_collapse = $submenu.find('.un_collapse');
 		var $collapse = $submenu.find('.collapse');
-		$docs.slideToggle(250);
-
 		if ($docs.is(":hidden")) {
 			$un_collapse.show();
 			$collapse.hide();
@@ -13,6 +11,7 @@ jQuery(function ($) {
 			$un_collapse.hide();
 			$collapse.show();
 		}
+		$docs.slideToggle(250);
 	});
 
 	$(window).on('elementor/frontend/init', function () {

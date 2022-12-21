@@ -2,6 +2,8 @@
 
 namespace WpGuide\App\Widgets;
 
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 
 class TableOfContent extends Widget_Base
@@ -31,13 +33,261 @@ class TableOfContent extends Widget_Base
         return ['wp-guide', 'doc', 'content', 'knowledge base'];
     }
 
+    protected function register_controls()
+    {
+        $this->start_controls_section(
+            'section_content',
+            [
+                'label' => esc_html__( 'Content', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+            'table_of_content_heading_title',
+            [
+                'label'       => esc_html__( 'Heading Title', 'wp-guide' ),
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default'     => 'Table of Content'
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_heading_style',
+            [
+                'label' => esc_html__( 'Heading Title', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'table_of_content_heading_title_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#4f46e5',
+                'selectors' => [
+                    '{{WRAPPER}} .wp-guide-table-of-content h4' => 'background-color: {{VALUE}} !important;'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'table_of_content_heading_title_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .wp-guide-table-of-content h4' => 'color: {{VALUE}} !important;'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'table_of_content_heading_title_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '8',
+                    'right'    => '20',
+                    'bottom'   => '8',
+                    'left'     => '20',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .wp-guide-table-of-content h4' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'table_of_content_heading_title_margin',
+            [
+                'label'      => esc_html__( 'Margin (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '0',
+                    'right'    => '0',
+                    'bottom'   => '0',
+                    'left'     => '0',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .wp-guide-table-of-content h4' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'table_of_content_heading_title_typography',
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'selector'       => '{{WRAPPER}} .wp-guide-table-of-content h4',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '14',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'uppercase'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ]
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_content_list_style',
+            [
+                'label' => esc_html__( 'Content List', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'table_of_content_list_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#E5E5E6',
+                'selectors' => [
+                    '{{WRAPPER}} .wp-guide-table-of-content .content-list' => 'background-color: {{VALUE}} !important;'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'table_of_content_list_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#2C2B2D',
+                'selectors' => [
+                    '{{WRAPPER}} .wp-guide-table-of-content li' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .wp-guide-table-of-content a'  => 'color: {{VALUE}} !important;'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'table_of_content_list_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '15',
+                    'right'    => '15',
+                    'bottom'   => '15',
+                    'left'     => '42',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .wp-guide-table-of-content .content-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'table_of_content_list_typography',
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'selector'       => '{{WRAPPER}} .wp-guide-table-of-content li',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '16',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'capitalize'
+                    ],
+                    'font_weight'    => [
+                        'default' => '500'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '24',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_decoration' => [
+                        'default' => 'underline'
+                    ]
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
     protected function render()
     {
-		?>
-		<div class="wp-guide-table-of-content">
-			<h4>Table of Content</h4>
-			<ol></ol>
-		</div>
-		<?php
+        $settings  = $this->get_settings_for_display();
+        $elementor = \Elementor\Plugin::$instance;
+        ?>
+        <div class="wp-guide-table-of-content">
+            <h4><?php wp_commander_render( $settings['table_of_content_heading_title'] )?></h4>
+            <div class="content-list">
+        <?php if ( $elementor->editor->is_edit_mode() || is_preview() ) {?>
+                <ol style="margin: 0;">
+                    <li><a href="">Demo Content</a></li>
+                    <li><a href="">Demo Content</a></li>
+                    <li><a href="">Demo Content</a></li>
+                </ol>
+                <?php } else {?>
+                <ol style="margin: 0;"></ol>
+                <?php }?>
+            </div>
+        </div>
+        <?php
     }
 }
