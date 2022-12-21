@@ -23,6 +23,7 @@ class CptServiceProvider extends ServiceProvider
             'show_in_menu'      => false,
             'show_in_nav_menus' => false
         ] );
+        // flush_rewrite_rules();
     }
 
     public function docs_cpt_args()
@@ -83,7 +84,7 @@ class CptServiceProvider extends ServiceProvider
             'menu_position'       => 5,
             'show_in_nav_menus'   => true,
             'can_export'          => true,
-            'has_archive'         => true,
+            'has_archive'         => false,
             'hierarchical'        => true,
             'exclude_from_search' => false,
             'show_in_rest'        => true,
