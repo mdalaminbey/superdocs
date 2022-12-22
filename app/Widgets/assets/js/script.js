@@ -1,30 +1,79 @@
-jQuery(function ($) {
-	$('.submenu-link').on('click', function () {
-		var $submenu = $(this).closest('.submenu');
-		var $docs = $submenu.find('.documents');
-		var $un_collapse = $submenu.find('.un_collapse');
-		var $collapse = $submenu.find('.collapse');
-		if ($docs.is(":hidden")) {
-			$un_collapse.show();
-			$collapse.hide();
-		} else {
-			$un_collapse.hide();
-			$collapse.show();
-		}
-		$docs.slideToggle(250);
-	});
 
-	$(window).on('elementor/frontend/init', function () {
-		let tableOfContent = $('.wp-guide-table-of-content ol');
-		tableOfContent.html('');
-		$('.elementor-heading-title').each(function () {
-			let tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
-			let tag = $(this);
-			if (tags.includes(tag.prop("tagName"))) {
-				tableOfContent.append('<li>' + tag.html() + '</li>');
+(function ($, elementor) {
+	var elementor = window.elementorFrontend;
+	var WpGuideUtils = {
+		debounce(func, delay) {
+			let debounceTimer
+			return function () {
+				const context = this
+				const args = arguments
+				clearTimeout(debounceTimer)
+				debounceTimer = setTimeout(() => func.apply(context, args), delay)
 			}
-		})
-		elementorFrontend.hooks.addAction('frontend/element_ready/wp-guide-doc-print.default', function ($scope) {
+		}
+	}
+
+	var WpGuide = {
+		init: function () {
+			var widgets = {
+				'wp-guide-doc-search.default': WpGuide.docSearch,
+				'wp-guide-doc-print.default': WpGuide.docPrint,
+				'wp-guide-doc-categories.default': WpGuide.categories,
+			}
+			$.each(widgets, function (widget, callback) {
+				elementor.hooks.addAction('frontend/element_ready/' + widget, callback);
+			});
+		},
+		categories($scope) {
+			$scope.find('.submenu-link').on('click', function () {
+				var $submenu = $(this).closest('.submenu');
+				var $docs = $submenu.find('.documents');
+				var $un_collapse = $submenu.find('.un_collapse');
+				var $collapse = $submenu.find('.collapse');
+				if ($docs.is(":hidden")) {
+					$un_collapse.show();
+					$collapse.hide();
+				} else {
+					$un_collapse.hide();
+					$collapse.show();
+				}
+				$docs.slideToggle(250);
+			});
+		},
+		docSearch($scope) {
+			let resultArea = $scope.find('.search-results');
+			let search = function (s) {
+				$scope.find('.loader-body').show();
+				$.ajax({
+					url: wpCommanderLocale.rest + 'wp-guide/search',
+					data: { s: s },
+					complete(data) {
+						$('body').addClass('wp-guide-search-open');
+						$scope.find('.loader-body').hide();
+						resultArea.html(data.responseText)
+					}
+				})
+			}
+
+			let searchInput = $scope.find('input[name="s"]');
+			searchInput.keyup(WpGuideUtils.debounce(function () {
+				search(this.value)
+			}, 500));
+
+			$scope.find('.normal-search-form').submit(function (event) {
+				event.preventDefault();
+				search(searchInput.val())
+			});
+
+			$(document).on('click', '.wp-guide-search-open', function (e) {
+				if ($(e.target).parents('.wp-guide-doc-search').length > 0) {
+					return;
+				}
+				resultArea.html('');
+				$('body').removeClass('wp-guide-search-open');
+			});
+		},
+		docPrint: function ($scope) {
 			$scope.find('.wp-guide-print').on('click', function () {
 				let data = JSON.parse($scope.attr('data-settings'));
 				if ('full_window' === data.doc_print_content_area) {
@@ -55,9 +104,21 @@ jQuery(function ($) {
 
 					myWindow.print();
 					myWindow.close();
-
 				}
 			})
-		});
+		}
+	}
+
+	$(window).on('elementor/frontend/init', WpGuide.init);
+	$(window).on('elementor/frontend/init', function () {
+		let tableOfContent = $('.wp-guide-table-of-content ol');
+		tableOfContent.html('');
+		$('.elementor-heading-title').each(function () {
+			let tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+			let tag = $(this);
+			if (tags.includes(tag.prop("tagName"))) {
+				tableOfContent.append('<li>' + tag.html() + '</li>');
+			}
+		})
 	});
-});
+}(jQuery, window.elementorFrontend));

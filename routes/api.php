@@ -1,6 +1,7 @@
 <?php
 
 use WpGuide\App\Https\Controllers\CategoryController;
+use WpGuide\App\Https\Controllers\SearchController;
 use WpGuide\Bootstrap\Route;
 
 Route::group( 'category', function () {
@@ -13,3 +14,5 @@ Route::group( 'category', function () {
     Route::get( 'edit', [CategoryController::class, 'edit_page'] );
     Route::post( 'update', [CategoryController::class, 'update'] );
 } );
+
+Route::get('search', [SearchController::class, 'get'], true);

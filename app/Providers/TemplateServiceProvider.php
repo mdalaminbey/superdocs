@@ -10,6 +10,23 @@ class TemplateServiceProvider extends ServiceProvider
     public function boot()
     {
         add_filter( 'template_include', [$this, 'filter_template_include'], 99999 );
+        add_action('wp_head', [ $this, 'action_wp_head' ] );
+    }
+
+    /**
+     * Prints scripts or data in the head tag on the front end.
+     *
+     */
+    public function action_wp_head() : void {
+        $args = [
+            'rest' => get_rest_url(),
+        ];
+        ?>
+    <script>
+        var wpCommanderLocale = <?php wp_commander_render(json_encode($args))?>
+    </script>
+
+<?php
     }
 
     /**

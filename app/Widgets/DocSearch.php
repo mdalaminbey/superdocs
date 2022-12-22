@@ -1,0 +1,753 @@
+<?php
+
+namespace WpGuide\App\Widgets;
+
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
+use Elementor\Widget_Base;
+
+class DocSearch extends Widget_Base
+{
+    public function get_name()
+    {
+        return 'wp-guide-doc-search';
+    }
+
+    public function get_title()
+    {
+        return esc_html__( 'Doc Search', 'wp-guide' );
+    }
+
+    public function get_icon()
+    {
+        return 'eicon-code';
+    }
+
+    public function get_categories()
+    {
+        return ['basic'];
+    }
+
+    public function get_keywords()
+    {
+        return ['wp-guide', 'doc', 'content', 'knowledge base', 'search'];
+    }
+
+    protected function register_controls()
+    {
+        $this->start_controls_section(
+            'section_content',
+            [
+                'label' => esc_html__( 'Content', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_all_product',
+            [
+                'label'       => esc_html__( 'All products title', 'wp-guide' ),
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default'     => 'All Products'
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_button_text',
+            [
+                'label'       => esc_html__( 'Button title', 'wp-guide' ),
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default'     => 'Search'
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_products_style',
+            [
+                'label' => esc_html__( 'Products', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_product_height',
+            [
+                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 200,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 50
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .product' => 'height: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_product_width',
+            [
+                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    '%' => [
+                        'min'  => 5,
+                        'max'  => 50,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => 20
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .product' => 'width: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_product_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#f1f5f9',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .product select' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_product_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#000000',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .product select' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_product_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '0',
+                    'right'    => '0',
+                    'bottom'   => '0',
+                    'left'     => '25',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .product select' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'doc_search_product_border',
+                'selector'       => '{{WRAPPER}} .search-inputs .product select',
+                'size_units'     => ['px'],
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid'
+                    ],
+                    'width'  => [
+                        'default' => [
+                            'top'      => '2',
+                            'right'    => '0',
+                            'bottom'   => '2',
+                            'left'     => '2',
+                            'isLinked' => false
+                        ]
+                    ],
+                    'color'  => [
+                        'default' => '#D4D4D4'
+                    ]
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'doc_search_product_typography',
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'selector'       => '{{WRAPPER}} .search-inputs select',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '14',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'uppercase'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ]
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_search_style',
+            [
+                'label' => esc_html__( 'Search', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_height',
+            [
+                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 200,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 50
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .search-input-body input' => 'height: {{SIZE}}{{UNIT}}'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_width',
+            [
+                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    '%' => [
+                        'min'  => 5,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => 80
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .search-input-body' => 'width: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#f1f5f9',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .search-input-body input' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#4F46E5',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .search-input-body input' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '5',
+                    'right'    => '55',
+                    'bottom'   => '5',
+                    'left'     => '15',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .search-input-body input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'doc_search_color_border',
+                'selector'       => '{{WRAPPER}} .search-inputs .search-input-body input',
+                'size_units'     => ['px'],
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid'
+                    ],
+                    'width'  => [
+                        'default' => [
+                            'top'      => '2',
+                            'right'    => '0',
+                            'bottom'   => '2',
+                            'left'     => '0',
+                            'isLinked' => false
+                        ]
+                    ],
+                    'color'  => [
+                        'default' => '#D4D4D4'
+                    ]
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'doc_search_search_typography',
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'selector'       => '{{WRAPPER}} .search-inputs input',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '14',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'uppercase'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ]
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_preloader_style',
+            [
+                'label' => esc_html__( 'Preloader', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_preloader_thickness',
+            [
+                'label'      => esc_html__( 'Thickness', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 50,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 5
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_preloader_width',
+            [
+                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 30
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .wp-guide-doc-search .loader' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_preloader_background_color',
+            [
+                'label'   => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'    => Controls_Manager::COLOR,
+                'alpha'   => false,
+                'default' => '#AAB6C3'
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_preloader_color',
+            [
+                'label'   => esc_html__( 'Color', 'wp-guide' ),
+                'type'    => Controls_Manager::COLOR,
+                'alpha'   => false,
+                'default' => '#4B42DD'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_preloader_margin',
+            [
+                'label'      => esc_html__( 'Margin', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '10',
+                    'right'    => '15',
+                    'bottom'   => '0',
+                    'left'     => '0',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .wp-guide-doc-search .loader-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_button_style',
+            [
+                'label' => esc_html__( 'Button', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_button_height',
+            [
+                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 200,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 50
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .submit-button' => 'height: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_button_width',
+            [
+                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    '%' => [
+                        'min'  => 5,
+                        'max'  => 50,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => 20
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .submit-button' => 'width: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_button_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .submit-button button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_button_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#DEDEE0',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .submit-button button' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_button_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#000000',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .submit-button button' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'doc_search_button_border',
+                'selector'       => '{{WRAPPER}} .search-inputs .submit-button button',
+                'size_units'     => ['px'],
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid'
+                    ],
+                    'width'  => [
+                        'default' => [
+                            'top'      => '2',
+                            'right'    => '0',
+                            'bottom'   => '2',
+                            'left'     => '0',
+                            'isLinked' => false
+                        ]
+                    ],
+                    'color'  => [
+                        'default' => '#D4D4D4'
+                    ]
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'doc_search_button_typography',
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'selector'       => '{{WRAPPER}} .search-inputs button',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '14',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'uppercase'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ]
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function render()
+    {
+		$settings = $this->get_settings_for_display();
+		$preloaderThickness = $settings['doc_search_preloader_thickness']['size'].$settings['doc_search_preloader_thickness']['unit'];
+		$products = get_posts([
+			'post_type' => wp_guide_docs_post_type(),
+			'meta_query' => [
+				[
+					'key'     => 'wp_guide_product',
+					'compare' => 'EXISTS'
+				]
+			]
+		]);
+		?>
+			<style>
+				.search-inputs {
+					display: inline-flex;
+					width: 100%;
+				}
+
+				.search-inputs .product select {
+					width: 100%;
+					height: 100%;
+				}
+
+				.search-inputs button {
+					border-radius: 0;
+				}
+
+				.search-input {
+					width: 100%;
+					height: 100%;
+					position: relative;
+				}
+
+				.search-input input {
+					border-radius: 0;
+				}
+
+				.loader-body {
+					position: absolute;
+					top: 0;
+					right: 0;
+					display: none;
+				}
+
+				.wp-guide-doc-search .search-results {
+					width: 100%;
+					position: relative;
+				}
+
+				.loader {
+					border: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_background_color'])?>;
+					border-radius: 50%;
+					border-top: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_color'])?>;
+					-webkit-animation: spin 1s linear infinite; /* Safari */
+					animation: spin 1s linear infinite;
+				}
+
+				/* Safari */
+				@-webkit-keyframes spin {
+					0% { -webkit-transform: rotate(0deg); }
+					100% { -webkit-transform: rotate(360deg); }
+				}
+
+				@keyframes spin {
+					0% { transform: rotate(0deg); }
+					100% { transform: rotate(360deg); }
+				}
+			</style>
+			<div class="wp-guide-doc-search">
+				<form action="" class="normal-search-form">
+					<div class="search-inputs">
+						<div class="product">
+							<select name="product" id="product">
+								<option value="0"><?php wp_commander_render($settings['doc_search_all_product']) ?></option>
+								<?php foreach($products as $product):?>
+									<option value="<?php wp_commander_render($product->ID);?>"><?php wp_commander_render($product->post_title);?></option>
+								<?php endforeach;?>
+							</select>
+						</div>
+						<div class="search-input-body">
+							<div class="search-input" style="width:100%;">
+								<input style="width: 100%;" type="text" name="s" id="doc_search" autocomplete="off">
+								<div class="loader-body">
+									<div class="loader"></div>
+								</div>
+							</div>
+							<div class="search-results"></div>
+						</div>
+						<div class="submit-button">
+							<button type="submit" style="width: 100%;height:100%;cursor:pointer;">
+								<?php wp_commander_render($settings['doc_search_button_text'])?>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		<?php
+    }
+}
