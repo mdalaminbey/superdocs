@@ -2,35 +2,40 @@
 
 namespace WpGuide\App\Https\Controllers;
 
-use WP_REST_Request;
 use WpGuide\Bootstrap\View;
+use WP_REST_Request;
 
 class SearchController
 {
     public function get( WP_REST_Request $wpRestRequest )
     {
-		$docs = get_posts([
-			'post_type' => wp_guide_docs_post_type(),
-			// 'exclude' => $docsIds, 
-			'meta_query' => [
-				[
-					'key'     => 'wp_guide_product',
-					'compare' => 'NOT EXISTS'
-				],
-				[
-					'key'     => 'wp_guide_category',
-					'compare' => 'NOT EXISTS'
-				],
-				// [
-				// 	'key'     => 'categoryId',
-				// 	'compare'   => 'NOT EXISTS'
-				// ],
-				// [
-				// 	'key'     => 'productId',
-				// 	'value'   => $productId
-				// ]
-			]
-		]);
-		return View::send('frontend/search', compact('docs'));
+        $metaQuery = [
+            [
+                'key'     => 'wp_guide_product',
+                'compare' => 'NOT EXISTS'
+            ],
+            [
+                'key'     => 'wp_guide_category',
+                'compare' => 'NOT EXISTS'
+            ]
+        ];
+
+        $productId = $wpRestRequest->get_param( 'product' );
+
+        if ( !'0' == $productId ) {
+            $metaQuery[] = [
+                'key'   => 'productId',
+                'value' => $productId
+            ];
+        }
+
+        $docs = get_posts( [
+            'post_type'      => wp_guide_docs_post_type(),
+            'posts_per_page' => 100,
+            's'              => sanitize_text_field( $wpRestRequest->get_param( 's' ) ),
+            'meta_query'     => $metaQuery
+        ] );
+
+        return View::send( 'frontend/search', compact( 'docs' ) );
     }
 }

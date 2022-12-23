@@ -41,28 +41,29 @@
 			});
 		},
 		docSearch($scope) {
-			let resultArea = $scope.find('.search-results');
+			let resultArea = $scope.find('.result-body');
 			let search = function (s) {
+				let formData = $scope.find('form').serialize();
 				$scope.find('.loader-body').show();
 				$.ajax({
 					url: wpCommanderLocale.rest + 'wp-guide/search',
-					data: { s: s },
+					data: formData,
 					complete(data) {
 						$('body').addClass('wp-guide-search-open');
 						$scope.find('.loader-body').hide();
 						resultArea.html(data.responseText)
+						var el = document.querySelector('.result-body');
+						SimpleScrollbar.initEl(el);
 					}
 				})
 			}
 
 			let searchInput = $scope.find('input[name="s"]');
-			searchInput.keyup(WpGuideUtils.debounce(function () {
-				search(this.value)
-			}, 500));
+			searchInput.keyup(WpGuideUtils.debounce(search, 500));
 
 			$scope.find('.normal-search-form').submit(function (event) {
 				event.preventDefault();
-				search(searchInput.val())
+				search()
 			});
 
 			$(document).on('click', '.wp-guide-search-open', function (e) {

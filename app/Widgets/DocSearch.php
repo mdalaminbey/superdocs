@@ -648,6 +648,163 @@ class DocSearch extends Widget_Base
         );
 
         $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'section_result_style',
+            [
+                'label' => esc_html__( 'Result', 'wp-guide' ),
+                'tab'   => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_gap_between_docs',
+            [
+                'label'      => esc_html__( 'Gap between docs (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 10
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results ul' => 'gap: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+        $this->add_control(
+            'doc_search_box_max_height',
+            [
+                'label'      => esc_html__( 'Max height (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 1000,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 600
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .result-body' => 'height: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_result_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#f1f5f9',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_result_color',
+            [
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#000000',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results li a' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_result_doc_background_color',
+            [
+                'label'     => esc_html__( 'Background Color Doc Item (px)', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#f1f5f9',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results li' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_result_doc_padding',
+            [
+                'label'      => esc_html__( 'Padding Doc Item (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '10',
+                    'right'    => '10',
+                    'bottom'   => '10',
+                    'left'     => '10',
+                    'unit'     => 'px',
+                    'isLinked' => true
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'doc_search_result_padding',
+            [
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '10',
+                    'right'    => '10',
+                    'bottom'   => '10',
+                    'left'     => '10',
+                    'unit'     => 'px',
+                    'isLinked' => true
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'before'
+            ]
+        );
+
+
+        $this->add_responsive_control(
+            'doc_search_result_margin',
+            [
+                'label'      => esc_html__( 'Margin (px)', 'wp-guide' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '0',
+                    'right'    => '0',
+                    'bottom'   => '0',
+                    'left'     => '0',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .search-inputs .result-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -708,6 +865,15 @@ class DocSearch extends Widget_Base
 					-webkit-animation: spin 1s linear infinite; /* Safari */
 					animation: spin 1s linear infinite;
 				}
+                .result-body {
+                    position: absolute;
+                    z-index: 9999;
+		width: 100%;
+                }
+                .wp-guide-search-results ul {
+		display: flex;
+		flex-direction: column;
+	}
 
 				/* Safari */
 				@-webkit-keyframes spin {
@@ -738,7 +904,9 @@ class DocSearch extends Widget_Base
 									<div class="loader"></div>
 								</div>
 							</div>
-							<div class="search-results"></div>
+							<div class="search-results">
+                                <div class="result-body"></div>
+                            </div>
 						</div>
 						<div class="submit-button">
 							<button type="submit" style="width: 100%;height:100%;cursor:pointer;">
