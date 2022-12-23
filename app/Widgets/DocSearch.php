@@ -64,6 +64,16 @@ class DocSearch extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'doc_search_not_found_text',
+            [
+                'label'       => esc_html__( 'Not found text', 'wp-guide' ),
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default'     => 'No Documentation found'
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -695,10 +705,10 @@ class DocSearch extends Widget_Base
                 ],
                 'default'    => [
                     'unit' => 'px',
-                    'size' => 600
+                    'size' => 240
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .search-inputs .result-body' => 'height: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .search-inputs .result-body' => 'max-height: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -732,12 +742,25 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_result_doc_background_color',
             [
-                'label'     => esc_html__( 'Background Color Doc Item (px)', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color Doc Item', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
                     '{{WRAPPER}} .search-inputs .wp-guide-search-results li' => 'background-color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'doc_search_result_not_found_color',
+            [
+                'label'     => esc_html__( 'Not Found Text Color', 'wp-guide' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#000000',
+                'selectors' => [
+                    '{{WRAPPER}} .search-inputs .wp-guide-search-results .empty-result' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -804,6 +827,32 @@ class DocSearch extends Widget_Base
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'           => 'doc_search_result_body_border',
+                'selector'       => '{{WRAPPER}} .search-inputs .result-body',
+                'size_units'     => ['px'],
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid'
+                    ],
+                    'width'  => [
+                        'default' => [
+                            'top'      => '0',
+                            'right'    => '2',
+                            'bottom'   => '2',
+                            'left'     => '2',
+                            'isLinked' => false
+                        ]
+                    ],
+                    'color'  => [
+                        'default' => '#D4D4D4'
+                    ]
+                ]
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -858,6 +907,11 @@ class DocSearch extends Widget_Base
 					position: relative;
 				}
 
+                .wp-guide-doc-search .search-results a {
+                    display: inline-flex;
+                    width: 100%;
+                }
+
 				.loader {
 					border: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_background_color'])?>;
 					border-radius: 50%;
@@ -888,6 +942,7 @@ class DocSearch extends Widget_Base
 			</style>
 			<div class="wp-guide-doc-search">
 				<form action="" class="normal-search-form">
+                    <input type="hidden" name="not_found_text" value="<?php wp_commander_render($settings['doc_search_not_found_text'])?>">
 					<div class="search-inputs">
 						<div class="product">
 							<select name="product" id="product">
@@ -905,7 +960,7 @@ class DocSearch extends Widget_Base
 								</div>
 							</div>
 							<div class="search-results">
-                                <div class="result-body"></div>
+                                <div class="result-body" style="display: none;overflow:scroll"></div>
                             </div>
 						</div>
 						<div class="submit-button">

@@ -15,4 +15,4 @@ Route::group( 'category', function () {
     Route::post( 'update', [CategoryController::class, 'update'] );
 } );
 
-Route::get('search', [SearchController::class, 'get'], true);
+Route::post('search', [SearchController::class, 'get'], true);

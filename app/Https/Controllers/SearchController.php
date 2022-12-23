@@ -36,6 +36,9 @@ class SearchController
             'meta_query'     => $metaQuery
         ] );
 
-        return View::send( 'frontend/search', compact( 'docs' ) );
+        return View::send( 'frontend/search', [
+            'docs'           => $docs,
+            'not_found_text' => $wpRestRequest->get_param( 'not_found_text' )
+        ] );
     }
 }

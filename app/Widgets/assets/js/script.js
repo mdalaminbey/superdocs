@@ -47,13 +47,15 @@
 				$scope.find('.loader-body').show();
 				$.ajax({
 					url: wpCommanderLocale.rest + 'wp-guide/search',
+					method: 'POST',
 					data: formData,
 					complete(data) {
 						$('body').addClass('wp-guide-search-open');
 						$scope.find('.loader-body').hide();
-						resultArea.html(data.responseText)
-						var el = document.querySelector('.result-body');
-						SimpleScrollbar.initEl(el);
+						resultArea.html(data.responseText);
+						if (resultArea.is(":hidden")) {
+							resultArea.slideToggle(250);
+						}
 					}
 				})
 			}
@@ -70,7 +72,7 @@
 				if ($(e.target).parents('.wp-guide-doc-search').length > 0) {
 					return;
 				}
-				resultArea.html('');
+				resultArea.slideToggle(250);
 				$('body').removeClass('wp-guide-search-open');
 			});
 		},
