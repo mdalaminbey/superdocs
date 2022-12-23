@@ -2,6 +2,7 @@
 
 use WpGuide\App\Https\Controllers\CategoryController;
 use WpGuide\App\Https\Controllers\SearchController;
+use WpGuide\App\Https\Controllers\TemplateController;
 use WpGuide\Bootstrap\Route;
 
 Route::group( 'category', function () {
@@ -15,4 +16,8 @@ Route::group( 'category', function () {
     Route::post( 'update', [CategoryController::class, 'update'] );
 } );
 
-Route::post('search', [SearchController::class, 'get'], true);
+Route::group( 'template', function () {
+    Route::get( 'create', [TemplateController::class, 'create_page'] );
+} );
+
+Route::post( 'search', [SearchController::class, 'get'], true );

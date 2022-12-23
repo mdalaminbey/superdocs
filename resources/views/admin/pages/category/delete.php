@@ -43,13 +43,13 @@ $categoryParentClass = 'wp_guide_product_' . $productId;
             complete: function() {
                 let ChildNo = DoatKolomUiUtils.getChildNo(categoryContent.closest('.accordionItem'), categoryContent.closest('.<?php echo $categoryParentClass ?>'));
                 delete modal.getCategories.accordions[ChildNo - 1];
-                modal.changeModalStatus()
+                modal.changeStatus()
             }
         })
     },
     cancelCategory() {
         var modal = Alpine.store('DoatKolomUiModal');
-        modal.changeModalStatus()
+        modal.changeStatus()
     }
   }))
 </script>

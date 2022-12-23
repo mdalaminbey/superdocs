@@ -10,23 +10,34 @@ class TemplateServiceProvider extends ServiceProvider
     public function boot()
     {
         add_filter( 'template_include', [$this, 'filter_template_include'], 99999 );
-        add_action('wp_head', [ $this, 'action_wp_head' ] );
+        add_action( 'wp_head', [$this, 'action_wp_head'] );
+        add_action('admin_footer-edit.php', [ $this, 'action_admin_footer' ] );
+    }
+
+    /**
+     * Prints scripts or data after the default footer scripts.
+     *
+     */
+    public function action_admin_footer() : void
+    {
+        View::send( 'admin/pages/template/index');
     }
 
     /**
      * Prints scripts or data in the head tag on the front end.
      *
      */
-    public function action_wp_head() : void {
+    public function action_wp_head(): void
+    {
         $args = [
             'rest' => get_rest_url(),
         ];
         ?>
-    <script>
-        var wpCommanderLocale = <?php wp_commander_render(json_encode($args))?>
-    </script>
+        <script>
+            var wpCommanderLocale = <?php wp_commander_render(json_encode($args))?>
+        </script>
 
-<?php
+        <?php
     }
 
     /**

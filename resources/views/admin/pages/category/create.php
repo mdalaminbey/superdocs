@@ -43,7 +43,7 @@ $dataKey = Common::generateRandomString(10);
 					modal.getCategories.accordions.push(data);
 				},
 				complete: function() {
-					modal.changeModalStatus();
+					modal.changeStatus();
 					formSubmitButton.disabled = false;
 					formSubmitButton.classList.add('cursor-pointer');
 					jqueryForm[0].reset();

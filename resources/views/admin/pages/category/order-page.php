@@ -168,8 +168,8 @@ foreach($categoriesSortList as $categorySort) {
 		createCategory($data) {
 			var modal = Alpine.store('DoatKolomUiModal');
 			modal.setContentByApi('<?php wp_commander_render(wp_commander_url_add_params(get_rest_url( null, 'wp-guide/category/create' ), ['productId' => $productId]))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
-			modal.pushModalData('getCategories', $data);
-			modal.changeModalStatus();
+			modal.pushData('getCategories', $data);
+			modal.changeStatus();
 		}
 	}));
 
@@ -190,8 +190,8 @@ foreach($categoriesSortList as $categorySort) {
 			url.searchParams.set('productId', '<?php echo $productId?>');
 			url.searchParams.set('categoryPostId', categoryPostId);
 			modal.setContentByApi(url.toString(), <?php wp_commander_render( json_encode($headers) ); ?>);
-			modal.pushModalData('getCategories', $data);
-			modal.changeModalStatus();
+			modal.pushData('getCategories', $data);
+			modal.changeStatus();
 		}
 	}));
 

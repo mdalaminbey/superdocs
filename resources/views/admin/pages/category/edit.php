@@ -46,7 +46,7 @@ $categoryParentClass = 'wp_guide_product_' . $productId;
 					modal.getCategories.accordions[ChildNo - 1].title = data.data.categoryName
 				},
 				complete: function() {
-					modal.changeModalStatus()
+					modal.changeStatus()
 				}
 			})
 		}
