@@ -15,7 +15,7 @@ class TableOfContent extends Widget_Base
 
     public function get_title()
     {
-        return esc_html__( 'Table of Content', 'elementor-addon' );
+        return esc_html__( 'Table of Content', 'wp-guide' );
     }
 
     public function get_icon()

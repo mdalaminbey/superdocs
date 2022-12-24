@@ -11,7 +11,7 @@ class DocContent extends Widget_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'Doc Content', 'elementor-addon' );
+		return esc_html__( 'Doc Content', 'wp-guide' );
 	}
 
 	public function get_icon() {

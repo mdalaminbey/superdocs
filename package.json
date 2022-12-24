@@ -19,13 +19,14 @@
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-checktextdomain": "^1.0.1",
-    "grunt-wp-i18n": "^1.0.3"
+    "grunt-wp-i18n": "^1.0.3",
+    "load-grunt-tasks": "^5.1.0"
   },
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
     "prod": "mix --production",
-    "build": "npm run minify && grunt build"
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",

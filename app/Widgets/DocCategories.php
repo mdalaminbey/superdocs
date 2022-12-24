@@ -17,7 +17,7 @@ class DocCategories extends Widget_Base
 
     public function get_title()
     {
-        return esc_html__( 'Doc Categories', 'elementor-addon' );
+        return esc_html__( 'Doc Categories', 'wp-guide' );
     }
 
     public function get_icon()
@@ -40,7 +40,7 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_icon',
             [
-                'label' => esc_html__( 'Category Icon', 'textdomain' ),
+                'label' => esc_html__( 'Category Icon', 'wp-guide' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -48,7 +48,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_icon',
             [
-                'label'   => __( 'Icon', 'text-domain' ),
+                'label'   => __( 'Icon', 'wp-guide' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder',
@@ -60,7 +60,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'text-domain' ),
+                'label'   => __( 'Action Icon', 'wp-guide' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-down',
@@ -74,7 +74,7 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_uncollapse_category_icon',
             [
-                'label' => esc_html__( 'UnCollapse Category Icon', 'textdomain' ),
+                'label' => esc_html__( 'UnCollapse Category Icon', 'wp-guide' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -82,7 +82,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_uncollapse_category_icon',
             [
-                'label'   => __( 'Icon', 'text-domain' ),
+                'label'   => __( 'Icon', 'wp-guide' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder-open',
@@ -94,7 +94,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_uncollapse_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'text-domain' ),
+                'label'   => __( 'Action Icon', 'wp-guide' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-up',
@@ -108,7 +108,7 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_style',
             [
-                'label' => esc_html__( 'Categories', 'textdomain' ),
+                'label' => esc_html__( 'Categories', 'wp-guide' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -168,14 +168,14 @@ class DocCategories extends Widget_Base
         $this->start_controls_tab(
             'wp_guide_category_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'textdomain' )
+                'label' => esc_html__( 'Normal', 'wp-guide' )
             ]
         );
 
         $this->add_control(
             'wp_guide_category_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'shopengine' ),
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
@@ -188,7 +188,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_color',
             [
-                'label'     => esc_html__( 'Color', 'shopengine' ),
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -201,7 +201,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'shopengine' ),
+                'label'     => esc_html__( 'Icon Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -214,7 +214,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'shopengine' ),
+                'label'     => esc_html__( 'Action Icon Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -229,14 +229,14 @@ class DocCategories extends Widget_Base
         $this->start_controls_tab(
             'wp_guide_category_active_tabs',
             [
-                'label' => esc_html__( 'Active', 'textdomain' )
+                'label' => esc_html__( 'Active', 'wp-guide' )
             ]
         );
 
         $this->add_control(
             'wp_guide_category_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'shopengine' ),
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
@@ -249,7 +249,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_active_color',
             [
-                'label'     => esc_html__( 'Color', 'shopengine' ),
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -262,7 +262,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_active_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'shopengine' ),
+                'label'     => esc_html__( 'Icon Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -275,7 +275,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_category_active_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'shopengine' ),
+                'label'     => esc_html__( 'Action Icon Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
@@ -292,7 +292,7 @@ class DocCategories extends Widget_Base
         $this->add_responsive_control(
             'wp_guide_category_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'shopengine' ),
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -314,7 +314,7 @@ class DocCategories extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'wp_guide_category_typography',
-                'label'          => esc_html__( 'Typography', 'shopengine' ),
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
                 'selector'       => '{{WRAPPER}} .wp-guide-doc-categories .submenu-link .title',
                 'exclude'        => ['font_style', 'text_decoration', 'letter_spacing'],
                 'fields_options' => [
@@ -322,7 +322,7 @@ class DocCategories extends Widget_Base
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'shopengine' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -336,7 +336,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'shopengine' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -352,7 +352,7 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_documents_style',
             [
-                'label' => esc_html__( 'Documents', 'textdomain' ),
+                'label' => esc_html__( 'Documents', 'wp-guide' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -360,7 +360,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_docs_gap',
             [
-                'label'      => esc_html__( 'Gap between', 'shopengine' ),
+                'label'      => esc_html__( 'Gap between', 'wp-guide' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -383,7 +383,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_docs_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'shopengine' ),
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
@@ -396,7 +396,7 @@ class DocCategories extends Widget_Base
         $this->add_responsive_control(
             'wp_guide_docs_padding',
             [
-                'label'      => esc_html__( 'Padding', 'shopengine' ),
+                'label'      => esc_html__( 'Padding', 'wp-guide' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -417,7 +417,7 @@ class DocCategories extends Widget_Base
         $this->add_responsive_control(
             'wp_guide_docs_margin',
             [
-                'label'      => esc_html__( 'Margin', 'shopengine' ),
+                'label'      => esc_html__( 'Margin', 'wp-guide' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -449,7 +449,7 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_document_style',
             [
-                'label' => esc_html__( 'Document', 'textdomain' ),
+                'label' => esc_html__( 'Document', 'wp-guide' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -461,14 +461,14 @@ class DocCategories extends Widget_Base
         $this->start_controls_tab(
             'wp_guide_doc_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'textdomain' )
+                'label' => esc_html__( 'Normal', 'wp-guide' )
             ]
         );
 
         $this->add_control(
             'wp_guide_doc_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'shopengine' ),
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
@@ -481,7 +481,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_doc_color',
             [
-                'label'     => esc_html__( 'Color', 'shopengine' ),
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
@@ -496,14 +496,14 @@ class DocCategories extends Widget_Base
         $this->start_controls_tab(
             'wp_guide_doc_active_tab',
             [
-                'label' => esc_html__( 'Active', 'textdomain' )
+                'label' => esc_html__( 'Active', 'wp-guide' )
             ]
         );
 
         $this->add_control(
             'wp_guide_doc_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'shopengine' ),
+                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
@@ -516,7 +516,7 @@ class DocCategories extends Widget_Base
         $this->add_control(
             'wp_guide_doc_active_color',
             [
-                'label'     => esc_html__( 'Color', 'shopengine' ),
+                'label'     => esc_html__( 'Color', 'wp-guide' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
@@ -542,7 +542,7 @@ class DocCategories extends Widget_Base
         $this->add_responsive_control(
             'wp_guide_doc_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'shopengine' ),
+                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -564,7 +564,7 @@ class DocCategories extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'wp_guide_doc_typography',
-                'label'          => esc_html__( 'Typography', 'shopengine' ),
+                'label'          => esc_html__( 'Typography', 'wp-guide' ),
                 'selector'       => '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents li a',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
@@ -572,7 +572,7 @@ class DocCategories extends Widget_Base
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'shopengine' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -586,7 +586,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'shopengine' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'

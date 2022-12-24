@@ -1,0 +1,530 @@
+# Copyright (C) 2022 DoatKolom
+# This file is distributed under the GPL v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wp Guide 1.0.0-beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-guide\n"
+"POT-Creation-Date: 2022-12-24 17:28:53+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: app/AdminPages/Doc.php:62 app/Providers/CptServiceProvider.php:37
+#: app/Providers/CptServiceProvider.php:43
+#: app/Providers/CptServiceProvider.php:46
+#: resources/views/admin/pages/docs/quick-view.php:4
+msgid "Product"
+msgstr ""
+
+#: app/AdminPages/Doc.php:63 app/AdminPages/Product.php:37
+msgid "Template"
+msgstr ""
+
+#: app/Https/Controllers/CategoryController.php:42
+msgid "Category updated successfully!"
+msgstr ""
+
+#: app/Https/Controllers/CategoryController.php:59
+msgid "Category deleted successfully!"
+msgstr ""
+
+#: app/Https/Controllers/CategoryController.php:105
+msgid "Sorting complete successfully!"
+msgstr ""
+
+#: app/Https/Controllers/CategoryController.php:149
+#: resources/views/admin/pages/category/doc-head.php:3
+#: resources/views/admin/pages/category/order-page.php:46
+#: resources/views/admin/pages/category/order-page.php:64
+msgid "Edit"
+msgstr ""
+
+#: app/Https/Controllers/CategoryController.php:152
+#: resources/views/admin/pages/category/delete.php:20
+#: resources/views/admin/pages/category/doc-head.php:6
+#: resources/views/admin/pages/category/order-page.php:67
+msgid "Delete"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Wp Guide"
+msgstr ""
+
+#: app/Providers/Admin/MenuServiceProvider.php:82
+#: app/Providers/CptServiceProvider.php:31
+msgid "All Docs"
+msgstr ""
+
+#: app/Providers/Admin/MenuServiceProvider.php:83
+#: app/Providers/CptServiceProvider.php:36
+#: app/Providers/CptServiceProvider.php:42
+#: app/Providers/CptServiceProvider.php:45 app/Widgets/DocSearch.php:82
+msgid "Products"
+msgstr ""
+
+#: app/Providers/Admin/MenuServiceProvider.php:84
+#: app/Providers/CptServiceProvider.php:98
+msgid "Templates"
+msgstr ""
+
+#: app/Providers/Admin/MenuServiceProvider.php:85
+msgid "Sidebar Category"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:19 app/Widgets/DocCategories.php:111
+msgid "Categories"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:32
+msgid "Doc"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:52
+msgid "Item Archives"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:53
+msgid "Item Attributes"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:54
+msgid "All Items"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:55
+msgid "Add New Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:56
+msgid "Add New"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:57
+msgid "New Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:58
+msgid "Edit Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:59
+msgid "Update Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:60
+msgid "View Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:61
+msgid "View Items"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:62
+msgid "Search Item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:63
+msgid "Not found"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:64
+msgid "Not found in Trash"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:65
+msgid "Featured Image"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:66
+msgid "Set featured image"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:67
+msgid "Remove featured image"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:68
+msgid "Use as featured image"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:69
+msgid "Insert into item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:70
+msgid "Uploaded to this item"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:71
+msgid "Items list"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:72
+msgid "Items list navigation"
+msgstr ""
+
+#: app/Providers/CptServiceProvider.php:73
+msgid "Filter items list"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:18
+msgid "Breadcrumb"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:41 app/Widgets/DocPrint.php:104
+msgid "Style"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:49 app/Widgets/DocCategories.php:191
+#: app/Widgets/DocCategories.php:252 app/Widgets/DocCategories.php:484
+#: app/Widgets/DocCategories.php:519 app/Widgets/DocPrint.php:136
+#: app/Widgets/DocSearch.php:149 app/Widgets/DocSearch.php:315
+#: app/Widgets/DocSearch.php:475 app/Widgets/DocSearch.php:587
+#: app/Widgets/DocSearch.php:732 app/Widgets/TableOfContent.php:82
+#: app/Widgets/TableOfContent.php:197
+msgid "Color"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:62
+msgid "Active Color"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:75
+msgid "Arrow Color"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:88 app/Widgets/DocCategories.php:363
+msgid "Gap between"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:111 app/Widgets/DocSearch.php:113
+#: app/Widgets/DocSearch.php:279 app/Widgets/DocSearch.php:442
+#: app/Widgets/DocSearch.php:538
+msgid "Width"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:135 app/Widgets/DocCategories.php:317
+#: app/Widgets/DocCategories.php:567 app/Widgets/DocSearch.php:210
+#: app/Widgets/DocSearch.php:376 app/Widgets/DocSearch.php:627
+#: app/Widgets/TableOfContent.php:138 app/Widgets/TableOfContent.php:233
+msgid "Typography"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:145 app/Widgets/DocCategories.php:325
+#: app/Widgets/DocCategories.php:575 app/Widgets/DocSearch.php:218
+#: app/Widgets/DocSearch.php:384 app/Widgets/DocSearch.php:635
+#: app/Widgets/TableOfContent.php:146 app/Widgets/TableOfContent.php:241
+msgid "Font Size (px)"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:159 app/Widgets/DocCategories.php:339
+#: app/Widgets/DocCategories.php:589 app/Widgets/DocSearch.php:232
+#: app/Widgets/DocSearch.php:398 app/Widgets/DocSearch.php:649
+#: app/Widgets/TableOfContent.php:160 app/Widgets/TableOfContent.php:255
+msgid "Line Height (px)"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:212
+msgid "Home"
+msgstr ""
+
+#: app/Widgets/Breadcrumb.php:220
+msgid "Documentation"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:20
+msgid "Doc Categories"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:43
+msgid "Category Icon"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:51 app/Widgets/DocCategories.php:85
+#: app/Widgets/DocPrint.php:63
+msgid "Icon"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:63 app/Widgets/DocCategories.php:97
+msgid "Action Icon"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:77
+msgid "UnCollapse Category Icon"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:119 app/Widgets/DocPrint.php:112
+msgid "Icon Size"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:143
+msgid "Action Icon Size"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:171 app/Widgets/DocCategories.php:464
+msgid "Normal"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:178 app/Widgets/DocCategories.php:239
+#: app/Widgets/DocCategories.php:386 app/Widgets/DocCategories.php:471
+#: app/Widgets/DocCategories.php:506 app/Widgets/DocSearch.php:136
+#: app/Widgets/DocSearch.php:302 app/Widgets/DocSearch.php:465
+#: app/Widgets/DocSearch.php:574 app/Widgets/DocSearch.php:719
+#: app/Widgets/TableOfContent.php:69 app/Widgets/TableOfContent.php:184
+msgid "Background Color"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:204 app/Widgets/DocCategories.php:265
+msgid "Icon Color"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:217 app/Widgets/DocCategories.php:278
+msgid "Action Icon Color"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:232 app/Widgets/DocCategories.php:499
+msgid "Active"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:295 app/Widgets/DocCategories.php:545
+#: app/Widgets/DocSearch.php:162 app/Widgets/DocSearch.php:328
+#: app/Widgets/DocSearch.php:561 app/Widgets/DocSearch.php:791
+#: app/Widgets/TableOfContent.php:95 app/Widgets/TableOfContent.php:211
+msgid "Padding (px)"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:355
+msgid "Documents"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:399
+msgid "Padding"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:420 app/Widgets/DocSearch.php:485
+msgid "Margin"
+msgstr ""
+
+#: app/Widgets/DocCategories.php:452
+msgid "Document"
+msgstr ""
+
+#: app/Widgets/DocContent.php:14
+msgid "Doc Content"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:18
+msgid "Doc Print"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:41 app/Widgets/DocSearch.php:42
+#: app/Widgets/TableOfContent.php:41
+msgid "Content"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:49
+msgid "Print"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:53
+msgid "Only Content Area"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:54
+msgid "Full Window"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:75
+msgid "Alignment"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:79
+msgid "Left"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:83
+msgid "Center"
+msgstr ""
+
+#: app/Widgets/DocPrint.php:87
+msgid "Right"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:19
+msgid "Doc Search"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:50
+msgid "All products title"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:60
+msgid "Button title"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:70
+msgid "Not found text"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:90 app/Widgets/DocSearch.php:256
+#: app/Widgets/DocSearch.php:515
+msgid "Height (px)"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:248
+msgid "Search"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:414
+msgid "Preloader"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:422
+msgid "Thickness"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:507
+msgid "Button"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:666
+msgid "Result"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:674
+msgid "Gap between docs (px)"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:696
+msgid "Max height (px)"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:745
+msgid "Background Color Doc Item"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:758
+msgid "Not Found Text Color"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:771
+msgid "Padding Doc Item (px)"
+msgstr ""
+
+#: app/Widgets/DocSearch.php:813 app/Widgets/TableOfContent.php:116
+msgid "Margin (px)"
+msgstr ""
+
+#: app/Widgets/TableOfContent.php:18
+msgid "Table of Content"
+msgstr ""
+
+#: app/Widgets/TableOfContent.php:49 app/Widgets/TableOfContent.php:61
+msgid "Heading Title"
+msgstr ""
+
+#: app/Widgets/TableOfContent.php:176
+msgid "Content List"
+msgstr ""
+
+#: resources/views/admin/pages/category/create.php:11
+msgid "Create Category"
+msgstr ""
+
+#: resources/views/admin/pages/category/create.php:18
+#: resources/views/admin/pages/category/edit.php:19
+msgid "Category Name"
+msgstr ""
+
+#: resources/views/admin/pages/category/delete.php:11
+msgid "Are you sure to delete this category?"
+msgstr ""
+
+#: resources/views/admin/pages/category/delete.php:23
+msgid "Cancel"
+msgstr ""
+
+#: resources/views/admin/pages/category/edit.php:11
+msgid "Edit Category"
+msgstr ""
+
+#: resources/views/admin/pages/category/edit.php:23
+msgid "Sumbit"
+msgstr ""
+
+#: resources/views/admin/pages/category/index.php:35
+msgid "Add Product"
+msgstr ""
+
+#: resources/views/admin/pages/category/order-page.php:43
+msgid "View"
+msgstr ""
+
+#: resources/views/admin/pages/category/order-page.php:87
+msgid "Uncategorized"
+msgstr ""
+
+#: resources/views/admin/pages/category/order-page.php:144
+msgid "Category List"
+msgstr ""
+
+#: resources/views/admin/pages/category/order-page.php:147
+msgid "Add Category"
+msgstr ""
+
+#: resources/views/admin/pages/docs/quick-view.php:6
+msgid "Main Page (no product)"
+msgstr ""
+
+#: resources/views/admin/pages/docs/quick-view.php:15
+#: resources/views/admin/pages/products/quick-view.php:4
+msgid "Wp Guide Template"
+msgstr ""
+
+#: resources/views/admin/pages/docs/quick-view.php:17
+msgid "Product Default"
+msgstr ""
+
+#: resources/views/admin/pages/products/quick-view.php:6
+msgid "-- Select Template --"
+msgstr ""
+
+#: resources/views/admin/pages/template/create.php:20
+msgid "Create Template"
+msgstr ""
+
+#: resources/views/admin/pages/template/create.php:26
+msgid "Template Name"
+msgstr ""
+
+#: resources/views/admin/pages/template/create.php:37
+msgid "Blank"
+msgstr ""
+
+#: resources/views/admin/pages/template/create.php:62
+msgid "Save Changes"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/wp-guide/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The Knowledge Base WordPress Plugin is an easy-to-use tool for creating a "
+"comprehensive knowledge base With its intuitive and user-friendly "
+"interface, this plugin helps you quickly and efficiently create a powerful "
+"knowledge base for your website"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "DoatKolom"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://doatkolom.com"
+msgstr ""

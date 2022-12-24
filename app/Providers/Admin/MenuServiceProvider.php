@@ -78,7 +78,7 @@ class MenuServiceProvider extends ServiceProvider
 
     public function action_admin_menu()
     {
-        add_menu_page( esc_html__( 'Wp Guide', 'x-currency' ), esc_html__( 'Wp Guide', 'x-currency' ), 'manage_options', 'wp-guide-menu', function () {}, 'dashicons-media-document', 5 );
+        add_menu_page( esc_html__( 'Wp Guide', 'wp-guide' ), esc_html__( 'Wp Guide', 'wp-guide' ), 'manage_options', 'wp-guide-menu', function () {}, 'dashicons-media-document', 5 );
         add_submenu_page( 'wp-guide-menu', esc_html__( 'All Docs', 'wp-guide' ), esc_html__( 'All Docs', 'wp-guide' ), 'manage_options', 'edit.php?post_type=' . wp_guide_docs_post_type() );
         add_submenu_page( 'wp-guide-menu', esc_html__( 'Products', 'wp-guide' ), esc_html__( 'Products', 'wp-guide' ), 'manage_options', 'edit.php?product=true&post_type=' . wp_guide_docs_post_type() );
         add_submenu_page( 'wp-guide-menu', esc_html__( 'Templates', 'wp-guide' ), esc_html__( 'Templates', 'wp-guide' ), 'manage_options', 'edit.php?post_type=' . wp_guide_template_post_type() );

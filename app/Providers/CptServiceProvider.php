@@ -95,8 +95,8 @@ class CptServiceProvider extends ServiceProvider
     public function layout_cpt_args()
     {
         return [
-            'label'               => esc_html__( 'Templates', 'textdomain' ),
-            'description'         => esc_html__( '', 'textdomain' ),
+            'label'               => esc_html__( 'Templates', 'wp-guide' ),
+            'description'         => esc_html__( '', 'wp-guide' ),
             'supports'            => ['title', 'editor', 'Category', 'elementor'],
             'taxonomies'          => [],
             'public'              => true,
