@@ -7,7 +7,7 @@ $tabs = [];
 foreach ( $products as $product ) {
     array_push( $tabs, [
         'title'               => $product->post_title,
-        'content_api'         => wp_commander_url_add_params( get_rest_url( null, 'super-docs/category/order' ), ['productId' => $product->ID] ),
+        'content_api'         => wp_commander_url_add_params( get_rest_url( null, 'superdocs/category/order' ), ['productId' => $product->ID] ),
         'contentCache'        => true,
         'contentApiOptions'   => [
             'headers' => [
@@ -20,7 +20,7 @@ foreach ( $products as $product ) {
     ] );
 }
 ?>
-<div class="super-docs doatkolom-ui">
+<div class="superdocs doatkolom-ui">
     <div class="pr-5">
         <div class="rounded overflow-hidden shadow-md bg-white mt-5 pb-7">
             <div class="rounded-xl">
@@ -30,9 +30,9 @@ foreach ( $products as $product ) {
                             <h4 class="text-[20px] font-bold font-primary text-heading mb-9 inline">Product List</h4>
                         </div>
                         <div class="float-left pl-16">
-                            <a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . super_docs_post_type() . '&product=true' ) )?>" 
+                            <a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . superdocs_post_type() . '&product=true' ) )?>" 
                                 class="cursor-pointer font-semibold rounded-md px-7 py-3 text-white items-center bg-primary hover:bg-primary-hover">
-                            + <?php esc_html_e('Add Product', 'super-docs')?>
+                            + <?php esc_html_e('Add Product', 'superdocs')?>
                             </a>
                         </div>
                     </div>

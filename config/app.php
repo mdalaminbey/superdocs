@@ -41,7 +41,7 @@ return [
     /**
      * Plugin Api Namespace
      */
-    'namespace'       => 'super-docs',
+    'namespace'       => 'superdocs',
 
     'api_versions'    => [],
 

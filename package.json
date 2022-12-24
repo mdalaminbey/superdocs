@@ -1,5 +1,5 @@
 {
-  "name": "super-docs",
+  "name": "superdocs",
   "version": "1.0.0",
   "description": "",
   "main": "tailwind.config.js",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doatkolom/super-docs.git"
+    "url": "git+https://github.com/doatkolom/superdocs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/doatkolom/super-docs/issues"
+    "url": "https://github.com/doatkolom/superdocs/issues"
   },
-  "homepage": "https://github.com/doatkolom/super-docs#readme"
+  "homepage": "https://github.com/doatkolom/superdocs#readme"
 }

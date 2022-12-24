@@ -2,7 +2,7 @@
 
 use SuperDocs\Bootstrap\Application;
 
-function super_docs_count( $type = 'post', $perm = '', $mim_type = false )
+function superdocs_count( $type = 'post', $perm = '', $mim_type = false )
 {
     global $wpdb;
 
@@ -35,22 +35,22 @@ function super_docs_count( $type = 'post', $perm = '', $mim_type = false )
     return apply_filters( 'wp_count_posts', (object) $counts, $type, $perm );
 }
 
-function super_docs_post_type()
+function superdocs_post_type()
 {
     return Application::$config['post_types']['docs'];
 }
 
-function super_docs_sidebar_taxonomy()
+function superdocs_sidebar_taxonomy()
 {
     return Application::$config['taxonomies']['sidebar'];
 }
 
-function super_docs_template_post_type()
+function superdocs_template_post_type()
 {
     return Application::$config['post_types']['template'];
 }
 
-function super_docs_version()
+function superdocs_version()
 {
     return Application::$config['version'];
 }

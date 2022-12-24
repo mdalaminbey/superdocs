@@ -32,7 +32,7 @@ class ElementorWidgetServicerProvider extends ServiceProvider
      */
     public function action_after_enqueue_scripts()
     {
-        wp_enqueue_script( 'super-docs-elementor-script', $this->application->get_root_url() . 'app/Widgets/assets/js/script.js', ['jquery', 'elementor-frontend'], $this->application::$config['version'] );
+        wp_enqueue_script( 'superdocs-elementor-script', $this->application->get_root_url() . 'app/Widgets/assets/js/script.js', ['jquery', 'elementor-frontend'], $this->application::$config['version'] );
     }
 
     /**

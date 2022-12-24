@@ -22,7 +22,7 @@ class TemplateServiceProvider extends ServiceProvider
     public function action_admin_footer(): void
     {
         ?>
-            <div class="super-docs">
+            <div class="superdocs">
                 <?php $drawer = new Drawer;
                 $drawer->render( ['width' => '700px'] );?>
             </div>
@@ -53,13 +53,13 @@ class TemplateServiceProvider extends ServiceProvider
      */
     public function filter_template_include( string $template ): string
     {
-        if ( is_singular( super_docs_post_type() ) ) {
+        if ( is_singular( superdocs_post_type() ) ) {
             global $post;
             if ( 'doc' === $post->post_mime_type ) {
-                $template_id = get_post_meta( $post->ID, 'super-docs-template', true );
+                $template_id = get_post_meta( $post->ID, 'superdocs-template', true );
                 $product_id  = $post->post_parent;
                 if ( $template_id == '0' ) {
-                    $template_id = get_post_meta( $product_id, 'super-docs-template', true );
+                    $template_id = get_post_meta( $product_id, 'superdocs-template', true );
                 }
                 $is_template_use_elementor = get_post_meta( $template_id, '_elementor_edit_mode', true ) ?? false;
 

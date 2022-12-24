@@ -10,7 +10,7 @@ class Doc
 {
     public function boot()
     {
-        $docs_post_type = super_docs_post_type();
+        $docs_post_type = superdocs_post_type();
 
         add_action( 'restrict_manage_posts', [$this, 'filter'] );
         add_filter( "views_edit-{$docs_post_type}", [$this, 'post_counter'] );
@@ -24,13 +24,13 @@ class Doc
 
     public function wp_enqueue_scripts()
     {
-        wp_enqueue_script( 'super-docs-docs', Application::$instance->get_root_url() . '/resources/js/docs.js', [], time() );
+        wp_enqueue_script( 'superdocs-docs', Application::$instance->get_root_url() . '/resources/js/docs.js', [], time() );
     }
 
     public function filter()
     {
         global $wpdb;
-        $products            = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", super_docs_post_type() ) );
+        $products            = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", superdocs_post_type() ) );
         $selected_product_id = isset( $_GET['filter-by-product'] ) ? intval( $_GET['filter-by-product'] ) : 0; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         View::render( 'admin/pages/docs/cpt-filter', compact( 'selected_product_id', 'products' ) );
     }
@@ -43,11 +43,11 @@ class Doc
 
         $query->set( 'meta_query', [
             [
-            'key'     => 'super_docs_product',
+            'key'     => 'superdocs_product',
             'compare' => 'NOT EXISTS'
             ],
             [
-            'key'     => 'super_docs_category',
+            'key'     => 'superdocs_category',
             'compare' => 'NOT EXISTS'
             ]
         ] );
@@ -59,8 +59,8 @@ class Doc
         $array = [
             'cb'       => $columns['cb'],
             'title'    => $columns['title'],
-            'product'  => esc_html__( 'Product', 'super-docs' ),
-            'template' => esc_html__( 'Template', 'super-docs' )
+            'product'  => esc_html__( 'Product', 'superdocs' ),
+            'template' => esc_html__( 'Template', 'superdocs' )
         ];
         return array_merge( $array, $columns );
     }
@@ -71,17 +71,17 @@ class Doc
             case 'product':
                 $product = get_post( get_post_meta($post_id, 'productId', true) );
                 if ( $product->ID != $post_id ) {
-                    echo "<div class='super-docs-product' data-product='" . wp_json_encode( ['id' => $product->ID, 'title' => $product->post_title] ) . "'>";
+                    echo "<div class='superdocs-product' data-product='" . wp_json_encode( ['id' => $product->ID, 'title' => $product->post_title] ) . "'>";
                     wp_commander_render($product->post_title);
                     echo "</div>";
                 }
                 break;
 
             case 'template':
-                $template_id   = get_post_meta( $post_id, 'super-docs-template', true );
+                $template_id   = get_post_meta( $post_id, 'superdocs-template', true );
                 $template_post = get_post( $template_id );
                 if ( $post_id != $template_post->ID ) {
-                    echo "<div class='super-docs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
+                    echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                     wp_commander_render($template_post->post_title);
                     echo "</div>";
                 }
@@ -92,15 +92,15 @@ class Doc
     {
         if ( 'product' === $column_name ) {
             global $wpdb;
-            $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", super_docs_post_type() ) );
-            $templates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish'", super_docs_template_post_type() ) );
+            $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", superdocs_post_type() ) );
+            $templates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish'", superdocs_template_post_type() ) );
             View::render( 'admin/pages/docs/quick-view', compact( 'products', 'templates' ) );
         }
     }
 
     public function post_counter( array $views )
     {
-        $counts      = super_docs_count( Application::$config['post_types']['docs'], 'super-docs-doc', 'doc' );
+        $counts      = superdocs_count( Application::$config['post_types']['docs'], 'superdocs-doc', 'doc' );
         $all         = $counts->publish + $counts->future + $counts->draft + $counts->pending + $counts->private + $counts->trash;
         $counts->all = $all;
         foreach ( $views as $key => $view ) {

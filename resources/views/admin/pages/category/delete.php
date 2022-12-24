@@ -2,13 +2,13 @@
 
 use DoatKolom\Ui\Utils\Common;
 $dataKey             = Common::generateRandomString( 10 );
-$categoryParentClass = 'super_docs_product_' . $productId;
+$categoryParentClass = 'superdocs_product_' . $productId;
 
 ?>
 
 <div class="p-7" x-data="<?php wp_commander_render($dataKey) ?>">
   <h2 class="line-clamp-1 dark:text-navy-100 text-xl font-bold tracking-wide text-slate-700 lg:text-base">
-  	<?php esc_html_e( 'Are you sure to delete this category?', 'super-docs' )?>
+  	<?php esc_html_e( 'Are you sure to delete this category?', 'superdocs' )?>
   </h2>
   <div class="mt-4">
     <p class="text-danger">
@@ -17,10 +17,10 @@ $categoryParentClass = 'super_docs_product_' . $productId;
   </div>
   <div class="mt-4">
     <button x-on:click="deleteCategory()" class="cursor-pointer font-semibold rounded-md px-7 py-3 text-white items-center bg-danger hover:bg-danger-hover">
-      <?php esc_html_e( 'Delete', 'super-docs' )?>
+      <?php esc_html_e( 'Delete', 'superdocs' )?>
     </button>
     <button x-on:click="cancelCategory()" class="cursor-pointer font-semibold rounded-md px-7 py-3 items-center border border-gray-200 bg-white hover:bg-gray-50">
-      <?php esc_html_e( 'Cancel', 'super-docs' )?>
+      <?php esc_html_e( 'Cancel', 'superdocs' )?>
     </button>
   </div>
 </div>
@@ -34,7 +34,7 @@ $categoryParentClass = 'super_docs_product_' . $productId;
         docs.push(doc.dataset.doc);
       }
       jQuery.ajax({
-            url: "<?php wp_commander_render( get_rest_url( null, 'super-docs/category/delete' ) )?>",
+            url: "<?php wp_commander_render( get_rest_url( null, 'superdocs/category/delete' ) )?>",
             method: 'POST',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader( 'X-WP-Nonce', "<?php wp_commander_render( wp_create_nonce( 'wp_rest' ) )?>" );

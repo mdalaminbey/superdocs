@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'doatkolom/super-docs',
+        'name' => 'doatkolom/superdocs',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
         'reference' => 'ddcca1dd06233224777645c536801907ea88b0f0',
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'doatkolom/super-docs' => array(
+        'doatkolom/superdocs' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'reference' => 'ddcca1dd06233224777645c536801907ea88b0f0',

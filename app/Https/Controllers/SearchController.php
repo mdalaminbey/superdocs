@@ -11,11 +11,11 @@ class SearchController
     {
         $metaQuery = [
             [
-                'key'     => 'super_docs_product',
+                'key'     => 'superdocs_product',
                 'compare' => 'NOT EXISTS'
             ],
             [
-                'key'     => 'super_docs_category',
+                'key'     => 'superdocs_category',
                 'compare' => 'NOT EXISTS'
             ]
         ];
@@ -30,7 +30,7 @@ class SearchController
         }
 
         $docs = get_posts( [
-            'post_type'      => super_docs_post_type(),
+            'post_type'      => superdocs_post_type(),
             'posts_per_page' => 100,
             's'              => sanitize_text_field( $wpRestRequest->get_param( 's' ) ),
             'meta_query'     => $metaQuery

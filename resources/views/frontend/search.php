@@ -1,4 +1,4 @@
-<div class="super-docs-search-results">
+<div class="superdocs-search-results">
 	<?php if ( !empty( $docs ) ) {?>
 	<ul>
 		<?php foreach ( $docs as $doc ): ?>

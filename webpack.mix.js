@@ -2,7 +2,7 @@ const mix = require('laravel-mix');
 
 require('mix-tailwindcss');
 
-const parent_selector = '.super-docs'
+const parent_selector = '.superdocs'
 
 mix.sass('resources/sass/app.scss', 'assets/css', {}, [{
 	postcss: function (root) {

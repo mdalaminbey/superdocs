@@ -10,12 +10,12 @@ class DocPrint extends Widget_Base
 {
     public function get_name()
     {
-        return 'super-docs-doc-print';
+        return 'superdocs-doc-print';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Print', 'super-docs' );
+        return esc_html__( 'Doc Print', 'superdocs' );
     }
 
     public function get_icon()
@@ -30,7 +30,7 @@ class DocPrint extends Widget_Base
 
     public function get_keywords()
     {
-        return ['super-docs', 'doc', 'content', 'knowledge base', 'print'];
+        return ['superdocs', 'doc', 'content', 'knowledge base', 'print'];
     }
 
     protected function register_controls()
@@ -38,7 +38,7 @@ class DocPrint extends Widget_Base
         $this->start_controls_section(
             'section_content',
             [
-                'label' => esc_html__( 'Content', 'super-docs' ),
+                'label' => esc_html__( 'Content', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -46,12 +46,12 @@ class DocPrint extends Widget_Base
         $this->add_control(
             'doc_print_content_area',
             [
-                'label'              => esc_html__( 'Print', 'super-docs' ),
+                'label'              => esc_html__( 'Print', 'superdocs' ),
                 'type'               => Controls_Manager::SELECT,
                 'default'            => 'only_content_area',
                 'options'            => [
-                    'only_content_area' => esc_html__( 'Only Content Area', 'super-docs' ),
-                    'full_window'       => esc_html__( 'Full Window', 'super-docs' )
+                    'only_content_area' => esc_html__( 'Only Content Area', 'superdocs' ),
+                    'full_window'       => esc_html__( 'Full Window', 'superdocs' )
                 ],
                 'frontend_available' => true
             ]
@@ -60,7 +60,7 @@ class DocPrint extends Widget_Base
         $this->add_control(
             'doc_print_icon',
             [
-                'label'   => __( 'Icon', 'super-docs' ),
+                'label'   => __( 'Icon', 'superdocs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'fas fa-print',
@@ -72,26 +72,26 @@ class DocPrint extends Widget_Base
         $this->add_control(
             'doc_print_icon_alignment',
             [
-                'label'     => esc_html__( 'Alignment', 'super-docs' ),
+                'label'     => esc_html__( 'Alignment', 'superdocs' ),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
                     'left'   => [
-                        'title' => esc_html__( 'Left', 'super-docs' ),
+                        'title' => esc_html__( 'Left', 'superdocs' ),
                         'icon'  => 'eicon-text-align-left'
                     ],
                     'center' => [
-                        'title' => esc_html__( 'Center', 'super-docs' ),
+                        'title' => esc_html__( 'Center', 'superdocs' ),
                         'icon'  => 'eicon-text-align-center'
                     ],
                     'right'  => [
-                        'title' => esc_html__( 'Right', 'super-docs' ),
+                        'title' => esc_html__( 'Right', 'superdocs' ),
                         'icon'  => 'eicon-text-align-right'
                     ]
                 ],
                 'default'   => 'center',
                 'toggle'    => true,
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-print' => 'text-align: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-print' => 'text-align: {{VALUE}};'
                 ]
             ]
         );
@@ -101,7 +101,7 @@ class DocPrint extends Widget_Base
         $this->start_controls_section(
             'section_style',
             [
-                'label' => esc_html__( 'Style', 'super-docs' ),
+                'label' => esc_html__( 'Style', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -109,7 +109,7 @@ class DocPrint extends Widget_Base
         $this->add_control(
             'doc_print_icon_size',
             [
-                'label'      => esc_html__( 'Icon Size', 'super-docs' ),
+                'label'      => esc_html__( 'Icon Size', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -124,8 +124,8 @@ class DocPrint extends Widget_Base
                     'size' => 25
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-print'     => 'font-size: {{SIZE}}{{UNIT}} !important;',
-                    '{{WRAPPER}} .super-docs-print svg' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    '{{WRAPPER}} .superdocs-print'     => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .superdocs-print svg' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ]
             ]
         );
@@ -133,13 +133,13 @@ class DocPrint extends Widget_Base
         $this->add_control(
             'doc_print_icon_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-print i'   => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .super-docs-print svg' => 'fill: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-print i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .superdocs-print svg' => 'fill: {{VALUE}};'
                 ]
             ]
         );
@@ -151,7 +151,7 @@ class DocPrint extends Widget_Base
     {
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="super-docs-print" style="cursor: pointer;">
+		<div class="superdocs-print" style="cursor: pointer;">
 			<?php Icons_Manager::render_icon($settings['doc_print_icon'])?>
 		</div>
 		<?php

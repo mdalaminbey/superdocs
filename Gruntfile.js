@@ -2,9 +2,9 @@ module.exports = grunt => {
     'use strict';
 
 	const projectConfig = {
-		name    : 'super-docs',   
+		name    : 'superdocs',   
 		srcDir  : './', 
-		distDir : `../dist/super-docs/`,
+		distDir : `../dist/superdocs/`,
         version : '1.0.0'
 	};
 	    

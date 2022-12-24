@@ -10,12 +10,12 @@ class Breadcrumb extends Widget_Base
 {
     public function get_name()
     {
-        return 'super-docs-breadcrumb';
+        return 'superdocs-breadcrumb';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Breadcrumb', 'super-docs' );
+        return esc_html__( 'Breadcrumb', 'superdocs' );
     }
 
     public function get_icon()
@@ -30,7 +30,7 @@ class Breadcrumb extends Widget_Base
 
     public function get_keywords()
     {
-        return ['super-docs', 'doc', 'content', 'knowledge base', 'breadcrumb'];
+        return ['superdocs', 'doc', 'content', 'knowledge base', 'breadcrumb'];
     }
 
 	protected function register_controls()
@@ -38,54 +38,54 @@ class Breadcrumb extends Widget_Base
 		$this->start_controls_section(
             'section_style',
             [
-                'label' => esc_html__( 'Style', 'super-docs' ),
+                'label' => esc_html__( 'Style', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
 		$this->add_control(
-			'super_docs_breadcrumb_color',
+			'superdocs_breadcrumb_color',
 			[
-				'label'     => esc_html__( 'Color', 'super-docs' ),
+				'label'     => esc_html__( 'Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
 				'alpha'     => false,
 				'default'   => '#000000',
 				'selectors' => [
-					'{{WRAPPER}} .super-docs .breadcrumbs .breadcrumb-item a' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-item a' => 'color: {{VALUE}};'
 				]
 			]
 		);
 
 		$this->add_control(
-			'super_docs_breadcrumb_active_color',
+			'superdocs_breadcrumb_active_color',
 			[
-				'label'     => esc_html__( 'Active Color', 'super-docs' ),
+				'label'     => esc_html__( 'Active Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
 				'alpha'     => false,
 				'default'   => '#4F46E5',
 				'selectors' => [
-					'{{WRAPPER}} .super-docs .breadcrumbs .breadcrumb-active' => 'color: {{VALUE}} !important;'
+					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-active' => 'color: {{VALUE}} !important;'
 				]
 			]
 		);
 
 		$this->add_control(
-			'super_docs_breadcrumb_arrow_color',
+			'superdocs_breadcrumb_arrow_color',
 			[
-				'label'     => esc_html__( 'Arrow Color', 'super-docs' ),
+				'label'     => esc_html__( 'Arrow Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
 				'alpha'     => false,
 				'default'   => '#6298BC',
 				'selectors' => [
-					'{{WRAPPER}} .super-docs .breadcrumbs .breadcrumb-icon' => 'color: {{VALUE}} !important;'
+					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-icon' => 'color: {{VALUE}} !important;'
 				]
 			]
 		);
 
 		$this->add_control(
-			'super_docs_breadcrumb_gap',
+			'superdocs_breadcrumb_gap',
 			[
-				'label'      => esc_html__( 'Gap between', 'super-docs' ),
+				'label'      => esc_html__( 'Gap between', 'superdocs' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range'      => [
@@ -100,15 +100,15 @@ class Breadcrumb extends Widget_Base
 					'size' => 5
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .super-docs .breadcrumbs' => 'gap: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .superdocs .breadcrumbs' => 'gap: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
 
 		$this->add_control(
-			'super_docs_breadcrumb_arrow_width',
+			'superdocs_breadcrumb_arrow_width',
 			[
-				'label'      => esc_html__( 'Width', 'super-docs' ),
+				'label'      => esc_html__( 'Width', 'superdocs' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range'      => [
@@ -123,7 +123,7 @@ class Breadcrumb extends Widget_Base
 					'size' => 8
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .super-docs .breadcrumbs .breadcrumb-icon' => 'width: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-icon' => 'width: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -131,10 +131,10 @@ class Breadcrumb extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'           => 'super_docs_breadcrumb_typography',
-				'label'          => esc_html__( 'Typography', 'super-docs' ),
+				'name'           => 'superdocs_breadcrumb_typography',
+				'label'          => esc_html__( 'Typography', 'superdocs' ),
 				'selectors'      => [
-					'{{WRAPPER}} .super-docs .breadcrumbs .breadcrumb-item',
+					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-item',
 				],
 				'exclude'        => ['font_style', 'letter_spacing'],
 				'fields_options' => [
@@ -142,7 +142,7 @@ class Breadcrumb extends Widget_Base
 						'default' => 'custom'
 					],
 					'font_size'      => [
-						'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
+						'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
 						'default'    => [
 							'size' => '14',
 							'unit' => 'px'
@@ -156,7 +156,7 @@ class Breadcrumb extends Widget_Base
 						'default' => '600'
 					],
 					'line_height'    => [
-						'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
+						'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
 						'default'    => [
 							'size' => '17',
 							'unit' => 'px'
@@ -205,19 +205,19 @@ class Breadcrumb extends Widget_Base
 				text-decoration: none !important;
 			}
 		</style>
-		<nav class="super-docs">
+		<nav class="superdocs">
 			<ul class="breadcrumbs">
 				<li class="breadcrumb-item">
 					<a href="<?php wp_commander_render(get_site_url())?>">
-						<?php esc_html_e('Home', 'super-docs')?>
+						<?php esc_html_e('Home', 'superdocs')?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">
 					<?php $this->arrowIcon()?>
 				</li>
 				<li class="breadcrumb-item">
-					<a href="<?php wp_commander_render(get_post_type_archive_link( super_docs_post_type() ))?>">
-						<?php esc_html_e('Documentation', 'super-docs')?>
+					<a href="<?php wp_commander_render(get_post_type_archive_link( superdocs_post_type() ))?>">
+						<?php esc_html_e('Documentation', 'superdocs')?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">

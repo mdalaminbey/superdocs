@@ -1,5 +1,5 @@
 {
-    "name": "doatkolom/super-docs",
+    "name": "doatkolom/superdocs",
     "autoload": {
         "psr-4": {
             "SuperDocs\\App\\": "app/",

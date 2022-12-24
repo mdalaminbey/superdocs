@@ -7,11 +7,11 @@ use Elementor\Widget_Base;
 class DocContent extends Widget_Base {
 
 	public function get_name() {
-		return 'super-docs-doc-content';
+		return 'superdocs-doc-content';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Doc Content', 'super-docs' );
+		return esc_html__( 'Doc Content', 'superdocs' );
 	}
 
 	public function get_icon() {
@@ -23,13 +23,13 @@ class DocContent extends Widget_Base {
 	}
 
 	public function get_keywords() {
-		return [ 'super-docs', 'doc', 'content', 'knowledge base' ];
+		return [ 'superdocs', 'doc', 'content', 'knowledge base' ];
 	}
 
 	protected function render() {
 		$elementor = \Elementor\Plugin::$instance;
 		global $post;
-		if( $elementor->editor->is_edit_mode() || is_preview() || (isset($post->post_type) && super_docs_template_post_type() === $post->post_type)) {
+		if( $elementor->editor->is_edit_mode() || is_preview() || (isset($post->post_type) && superdocs_template_post_type() === $post->post_type)) {
 			?>
 
 <article id="post-697" class="post-697 docs type-docs status-publish hentry" itemscope="" itemtype="http://schema.org/Article">

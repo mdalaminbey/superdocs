@@ -16,9 +16,9 @@
 	var SuperDocs = {
 		init: function () {
 			var widgets = {
-				'super-docs-doc-search.default': SuperDocs.docSearch,
-				'super-docs-doc-print.default': SuperDocs.docPrint,
-				'super-docs-doc-categories.default': SuperDocs.categories,
+				'superdocs-doc-search.default': SuperDocs.docSearch,
+				'superdocs-doc-print.default': SuperDocs.docPrint,
+				'superdocs-doc-categories.default': SuperDocs.categories,
 			}
 			$.each(widgets, function (widget, callback) {
 				elementor.hooks.addAction('frontend/element_ready/' + widget, callback);
@@ -46,11 +46,11 @@
 				let formData = $scope.find('form').serialize();
 				$scope.find('.loader-body').show();
 				$.ajax({
-					url: wpCommanderLocale.rest + 'super-docs/search',
+					url: wpCommanderLocale.rest + 'superdocs/search',
 					method: 'POST',
 					data: formData,
 					complete(data) {
-						$('body').addClass('super-docs-search-open');
+						$('body').addClass('superdocs-search-open');
 						$scope.find('.loader-body').hide();
 						resultArea.html(data.responseText);
 						if (resultArea.is(":hidden")) {
@@ -68,21 +68,21 @@
 				search()
 			});
 
-			$(document).on('click', '.super-docs-search-open', function (e) {
-				if ($(e.target).parents('.super-docs-doc-search').length > 0) {
+			$(document).on('click', '.superdocs-search-open', function (e) {
+				if ($(e.target).parents('.superdocs-doc-search').length > 0) {
 					return;
 				}
 				resultArea.slideToggle(250);
-				$('body').removeClass('super-docs-search-open');
+				$('body').removeClass('superdocs-search-open');
 			});
 		},
 		docPrint: function ($scope) {
-			$scope.find('.super-docs-print').on('click', function () {
+			$scope.find('.superdocs-print').on('click', function () {
 				let data = JSON.parse($scope.attr('data-settings'));
 				if ('full_window' === data.doc_print_content_area) {
 					window.print()
 				} else {
-					let html = document.querySelector("div[data-widget_type='super-docs-doc-content.default']").outerHTML;
+					let html = document.querySelector("div[data-widget_type='superdocs-doc-content.default']").outerHTML;
 					let stylesheets = document.querySelectorAll('link[rel="stylesheet"], style');
 					let myWindow = window.open('', 'PRINT', 'popup');
 
@@ -114,7 +114,7 @@
 
 	$(window).on('elementor/frontend/init', SuperDocs.init);
 	$(window).on('elementor/frontend/init', function () {
-		let tableOfContent = $('.super-docs-table-of-content ol');
+		let tableOfContent = $('.superdocs-table-of-content ol');
 		tableOfContent.html('');
 		$('.elementor-heading-title').each(function () {
 			let tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];

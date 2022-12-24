@@ -11,7 +11,7 @@ $headers = [
 	]
 ];
 
-$categoryActionKey     = 'super_docs_category_action_' . $productId;
+$categoryActionKey     = 'superdocs_category_action_' . $productId;
 $categoryDataKey       = Common::generateRandomString( 10 );
 $categoriesSortList    = get_post_meta($productId, 'categories', true);
 
@@ -26,9 +26,9 @@ $items = [];
 global $superDocsIds;
 $superDocsIds = [];
 
-function super_docs_category_content($productId, $categoryId, $docs = []) {
+function superdocs_category_content($productId, $categoryId, $docs = []) {
 	?>
-	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php wp_commander_render('super_docs_product_content_'. $productId) ?>" data-category="<?php wp_commander_render($categoryId)?>">
+	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php wp_commander_render('superdocs_product_content_'. $productId) ?>" data-category="<?php wp_commander_render($categoryId)?>">
 		<?php foreach ($docs as $key => $doc): 
 			global $superDocsIds;
 			array_push($superDocsIds, $doc->ID);
@@ -40,10 +40,10 @@ function super_docs_category_content($productId, $categoryId, $docs = []) {
 				<div class="float-left pl-2"><?php wp_commander_render($doc->post_title)?></div>
 				<div class="float-right">
 					<a href="<?php wp_commander_render( get_permalink($doc) )?>" target="_blank" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-success">
-						<?php esc_html_e('View', 'super-docs')?>
+						<?php esc_html_e('View', 'superdocs')?>
 					</a>
 					<a href="<?php wp_commander_render( get_edit_post_link($doc) )?>" type="button" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400">
-						<?php esc_html_e('Edit', 'super-docs')?>
+						<?php esc_html_e('Edit', 'superdocs')?>
 					</a>
 				</div>
 			</div>
@@ -61,10 +61,10 @@ foreach($categoriesSortList as $categorySort) {
 				?>
 					<div x-data="<?php wp_commander_render($categoryActionKey)?>">
 						<button type="button" x-on:click="showCategoryEditAlert($data)" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400" data-categorypostid="<?php wp_commander_render($category->ID) ?>">
-							<?php esc_html_e('Edit', 'super-docs')?>
+							<?php esc_html_e('Edit', 'superdocs')?>
 						</button>
 						<button type="button" x-on:click="showCategoryDeleteAlert($data)" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-danger hover:bg-danger-hover" data-categorypostid="<?php wp_commander_render($category->ID)?>">
-							<?php esc_html_e('Delete', 'super-docs')?>
+							<?php esc_html_e('Delete', 'superdocs')?>
 						</button>
 					</div>
 				<?php
@@ -73,30 +73,30 @@ foreach($categoriesSortList as $categorySort) {
 				$docs = [];
 				if(!empty($categorySort['docs'])) {
 					$docs = get_posts([
-						'post_type' => super_docs_post_type(),
+						'post_type' => superdocs_post_type(),
 						'orderby'   => 'post__in',
 						'post__in'  => $categorySort['docs']
 					]);
 				}
-				super_docs_category_content($productId, $category->ID, $docs);
+				superdocs_category_content($productId, $category->ID, $docs);
 			},
 			'icon' => Common::moveIcon()
 		]);
 	} else {
 		array_push($items, [
-			'title' => esc_html__('Uncategorized', 'super-docs'),
+			'title' => esc_html__('Uncategorized', 'superdocs'),
 			'content' => function() use($productId, $categorySort) {
 				global $superDocsIds;
 				$docs = get_posts([
-					'post_type' => super_docs_post_type(),
+					'post_type' => superdocs_post_type(),
 					'exclude' => $superDocsIds, 
 					'meta_query' => [
 						[
-							'key'     => 'super_docs_product',
+							'key'     => 'superdocs_product',
 							'compare' => 'NOT EXISTS'
 						],
 						[
-							'key'     => 'super_docs_category',
+							'key'     => 'superdocs_category',
 							'compare' => 'NOT EXISTS'
 						],
 						[
@@ -105,7 +105,7 @@ foreach($categoriesSortList as $categorySort) {
 						]
 					]
 				]);
-				super_docs_category_content($productId, '0', $docs);
+				superdocs_category_content($productId, '0', $docs);
 			},
 			'icon' => Common::moveIcon()
 		]);
@@ -131,7 +131,7 @@ foreach($categoriesSortList as $categorySort) {
 			'body'      => '',
 			'tablist'   => '',
 			'tabpanels' => 'bg-white',
-			'inner'     => 'super_docs_product_' . $productId,
+			'inner'     => 'superdocs_product_' . $productId,
 			'accordionHead' => 'bg-slate-100'
 		]
 	], $items );
@@ -141,10 +141,10 @@ foreach($categoriesSortList as $categorySort) {
 
 	<div x-data="<?php wp_commander_render($categoryDataKey)?>">
 		<div class="justify-between mb-10">
-			<h4 class="text-[20px] font-bold font-primary text-heading mb-9 inline"><?php esc_html_e('Category List', 'super-docs')?></h4>
+			<h4 class="text-[20px] font-bold font-primary text-heading mb-9 inline"><?php esc_html_e('Category List', 'superdocs')?></h4>
 			<div class="float-right">
 				<button x-on:click="createCategory($data)" class="cursor-pointer font-semibold rounded-md px-7 py-3 text-white items-center bg-primary hover:bg-primary-hover">
-				+ <?php esc_html_e('Add Category', 'super-docs')?>
+				+ <?php esc_html_e('Add Category', 'superdocs')?>
 				</button>
 			</div>
 		</div>
@@ -159,7 +159,7 @@ foreach($categoriesSortList as $categorySort) {
 	Alpine.data('<?php wp_commander_render($categoryDataKey) ?>', () => ({
 		createCategory($data) {
 			var modal = Alpine.store('DoatKolomUiModal');
-			modal.setContentByApi('<?php wp_commander_render(wp_commander_url_add_params(get_rest_url( null, 'super-docs/category/create' ), ['productId' => $productId]))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
+			modal.setContentByApi('<?php wp_commander_render(wp_commander_url_add_params(get_rest_url( null, 'superdocs/category/create' ), ['productId' => $productId]))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
 			modal.pushData('getCategories', $data);
 			modal.changeStatus();
 		}
@@ -178,7 +178,7 @@ foreach($categoriesSortList as $categorySort) {
 		openCategoryActionModal($data, api) {
 			var modal          = Alpine.store('DoatKolomUiModal');
 			var categoryPostId = this.$el.dataset.categorypostid;
-			var url            = new URL('<?php wp_commander_render( get_rest_url( null, 'super-docs/category' ) )?>' + api);
+			var url            = new URL('<?php wp_commander_render( get_rest_url( null, 'superdocs/category' ) )?>' + api);
 			url.searchParams.set('productId', '<?php wp_commander_render($productId) ?>');
 			url.searchParams.set('categoryPostId', categoryPostId);
 			modal.setContentByApi(url.toString(), <?php wp_commander_render( json_encode($headers) ); ?>);

@@ -12,12 +12,12 @@ class DocCategories extends Widget_Base
 {
     public function get_name()
     {
-        return 'super-docs-doc-categories';
+        return 'superdocs-doc-categories';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Categories', 'super-docs' );
+        return esc_html__( 'Doc Categories', 'superdocs' );
     }
 
     public function get_icon()
@@ -32,7 +32,7 @@ class DocCategories extends Widget_Base
 
     public function get_keywords()
     {
-        return ['super-docs', 'doc', 'categories', 'knowledge base'];
+        return ['superdocs', 'doc', 'categories', 'knowledge base'];
     }
 
     protected function register_controls()
@@ -40,15 +40,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_icon',
             [
-                'label' => esc_html__( 'Category Icon', 'super-docs' ),
+                'label' => esc_html__( 'Category Icon', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
 
         $this->add_control(
-            'super_docs_category_icon',
+            'superdocs_category_icon',
             [
-                'label'   => __( 'Icon', 'super-docs' ),
+                'label'   => __( 'Icon', 'superdocs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder',
@@ -58,9 +58,9 @@ class DocCategories extends Widget_Base
         );
 
         $this->add_control(
-            'super_docs_category_action_icon',
+            'superdocs_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'super-docs' ),
+                'label'   => __( 'Action Icon', 'superdocs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-down',
@@ -74,15 +74,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_uncollapse_category_icon',
             [
-                'label' => esc_html__( 'UnCollapse Category Icon', 'super-docs' ),
+                'label' => esc_html__( 'UnCollapse Category Icon', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
 
         $this->add_control(
-            'super_docs_uncollapse_category_icon',
+            'superdocs_uncollapse_category_icon',
             [
-                'label'   => __( 'Icon', 'super-docs' ),
+                'label'   => __( 'Icon', 'superdocs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder-open',
@@ -92,9 +92,9 @@ class DocCategories extends Widget_Base
         );
 
         $this->add_control(
-            'super_docs_uncollapse_category_action_icon',
+            'superdocs_uncollapse_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'super-docs' ),
+                'label'   => __( 'Action Icon', 'superdocs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-up',
@@ -108,15 +108,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_style',
             [
-                'label' => esc_html__( 'Categories', 'super-docs' ),
+                'label' => esc_html__( 'Categories', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->add_control(
-            'super_docs_category_icon_size',
+            'superdocs_category_icon_size',
             [
-                'label'      => esc_html__( 'Icon Size', 'super-docs' ),
+                'label'      => esc_html__( 'Icon Size', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -131,16 +131,16 @@ class DocCategories extends Widget_Base
                     'size' => 15
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link svg' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link svg' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_action_icon_size',
+            'superdocs_category_action_icon_size',
             [
-                'label'      => esc_html__( 'Action Icon Size', 'super-docs' ),
+                'label'      => esc_html__( 'Action Icon Size', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -155,71 +155,71 @@ class DocCategories extends Widget_Base
                     'size' => 15
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .action_icon i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .action_icon svg' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .action_icon i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .action_icon svg' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ]
             ]
         );
 
         $this->start_controls_tabs(
-            'super_docs_category_tabs'
+            'superdocs_category_tabs'
         );
 
         $this->start_controls_tab(
-            'super_docs_category_normal_tab',
+            'superdocs_category_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'super-docs' )
+                'label' => esc_html__( 'Normal', 'superdocs' )
             ]
         );
 
         $this->add_control(
-            'super_docs_category_background_color',
+            'superdocs_category_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_color',
+            'superdocs_category_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link' => 'color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_icon_color',
+            'superdocs_category_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'super-docs' ),
+                'label'     => esc_html__( 'Icon Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link .icon' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link .icon' => 'color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_action_color',
+            'superdocs_category_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'super-docs' ),
+                'label'     => esc_html__( 'Action Icon Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link .action_icon' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link .action_icon' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -227,60 +227,60 @@ class DocCategories extends Widget_Base
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'super_docs_category_active_tabs',
+            'superdocs_category_active_tabs',
             [
-                'label' => esc_html__( 'Active', 'super-docs' )
+                'label' => esc_html__( 'Active', 'superdocs' )
             ]
         );
 
         $this->add_control(
-            'super_docs_category_active_background_color',
+            'superdocs_category_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .active' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_active_color',
+            'superdocs_category_active_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .active' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_active_icon_color',
+            'superdocs_category_active_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'super-docs' ),
+                'label'     => esc_html__( 'Icon Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active .icon' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .active .icon' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_category_active_action_color',
+            'superdocs_category_active_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'super-docs' ),
+                'label'     => esc_html__( 'Action Icon Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active .action_icon' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .active .action_icon' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -290,9 +290,9 @@ class DocCategories extends Widget_Base
         $this->end_controls_tabs();
 
         $this->add_responsive_control(
-            'super_docs_category_padding',
+            'superdocs_category_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
+                'label'      => esc_html__( 'Padding (px)', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -304,7 +304,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .submenu-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -313,16 +313,16 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'           => 'super_docs_category_typography',
-                'label'          => esc_html__( 'Typography', 'super-docs' ),
-                'selector'       => '{{WRAPPER}} .super-docs-doc-categories .submenu-link .title',
+                'name'           => 'superdocs_category_typography',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-doc-categories .submenu-link .title',
                 'exclude'        => ['font_style', 'text_decoration', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -336,7 +336,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -352,15 +352,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_documents_style',
             [
-                'label' => esc_html__( 'Documents', 'super-docs' ),
+                'label' => esc_html__( 'Documents', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->add_control(
-            'super_docs_gap',
+            'superdocs_gap',
             [
-                'label'      => esc_html__( 'Gap between', 'super-docs' ),
+                'label'      => esc_html__( 'Gap between', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -375,28 +375,28 @@ class DocCategories extends Widget_Base
                     'size' => 5
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'gap: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents ul' => 'gap: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_background_color',
+            'superdocs_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents ul' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_responsive_control(
-            'super_docs_padding',
+            'superdocs_padding',
             [
-                'label'      => esc_html__( 'Padding', 'super-docs' ),
+                'label'      => esc_html__( 'Padding', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -408,16 +408,16 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
         );
 
         $this->add_responsive_control(
-            'super_docs_margin',
+            'superdocs_margin',
             [
-                'label'      => esc_html__( 'Margin', 'super-docs' ),
+                'label'      => esc_html__( 'Margin', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -429,7 +429,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -437,8 +437,8 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'       => 'super_docs_border',
-                'selector'   => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents',
+                'name'       => 'superdocs_border',
+                'selector'   => '{{WRAPPER}} .superdocs-doc-categories .submenu .documents',
                 'size_units' => ['px'],
                 'separator'  => 'before'
             ]
@@ -449,44 +449,44 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_document_style',
             [
-                'label' => esc_html__( 'Document', 'super-docs' ),
+                'label' => esc_html__( 'Document', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->start_controls_tabs(
-            'super_docs_doc_tabs'
+            'superdocs_doc_tabs'
         );
 
         $this->start_controls_tab(
-            'super_docs_doc_normal_tab',
+            'superdocs_doc_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'super-docs' )
+                'label' => esc_html__( 'Normal', 'superdocs' )
             ]
         );
 
         $this->add_control(
-            'super_docs_doc_background_color',
+            'superdocs_doc_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents li' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_doc_color',
+            'superdocs_doc_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li a' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents li a' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -494,34 +494,34 @@ class DocCategories extends Widget_Base
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'super_docs_doc_active_tab',
+            'superdocs_doc_active_tab',
             [
-                'label' => esc_html__( 'Active', 'super-docs' )
+                'label' => esc_html__( 'Active', 'superdocs' )
             ]
         );
 
         $this->add_control(
-            'super_docs_doc_active_background_color',
+            'superdocs_doc_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents .active-doc' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'super_docs_doc_active_color',
+            'superdocs_doc_active_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc a' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents .active-doc a' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -529,9 +529,9 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'       => 'super_docs_doc_active_border',
+                'name'       => 'superdocs_doc_active_border',
                 'size_units' => ['px'],
-                'selector'   => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc'
+                'selector'   => '{{WRAPPER}} .superdocs-doc-categories .submenu .documents .active-doc'
             ]
         );
 
@@ -540,9 +540,9 @@ class DocCategories extends Widget_Base
         $this->end_controls_tabs();
 
         $this->add_responsive_control(
-            'super_docs_doc_padding',
+            'superdocs_doc_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
+                'label'      => esc_html__( 'Padding (px)', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -554,7 +554,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-doc-categories .submenu .documents li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -563,16 +563,16 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'           => 'super_docs_doc_typography',
-                'label'          => esc_html__( 'Typography', 'super-docs' ),
-                'selector'       => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li a',
+                'name'           => 'superdocs_doc_typography',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-doc-categories .submenu .documents li a',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -586,7 +586,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -608,14 +608,14 @@ class DocCategories extends Widget_Base
 
 		if ( $elementor->editor->is_edit_mode() || is_preview()) {
 			$docs = get_posts([
-				'post_type' => super_docs_post_type(),
+				'post_type' => superdocs_post_type(),
 				'meta_query' => [
 					[
-						'key'     => 'super_docs_product',
+						'key'     => 'superdocs_product',
 						'compare' => 'NOT EXISTS'
 					],
 					[
-						'key'     => 'super_docs_category',
+						'key'     => 'superdocs_category',
 						'compare' => 'NOT EXISTS'
 					],
 					[
@@ -650,19 +650,19 @@ class DocCategories extends Widget_Base
 				padding: 0;
 			}
 
-			.super-docs-doc-categories .submenu .submenu-link {
+			.superdocs-doc-categories .submenu .submenu-link {
 				display: block;
 				text-decoration: none;
 			}
-			.super-docs-doc-categories .submenu .submenu-link .action_icon {
+			.superdocs-doc-categories .submenu .submenu-link .action_icon {
 				float: right;
 			}
-			.super-docs-doc-categories .submenu .documents ul {
+			.superdocs-doc-categories .submenu .documents ul {
 				display: flex;
 				flex-direction: column;
 			}
 		</style>
-		<div class="super-docs-doc-categories">
+		<div class="superdocs-doc-categories">
 			<ul>
 				<?php foreach($categories as $category):
                     if($category['categoryPostId'] == 0) { 
@@ -672,7 +672,7 @@ class DocCategories extends Widget_Base
 					$activeCategory  = false;
 					if(!empty($category['docs'])) {
 						$docs = get_posts([
-							'post_type' => super_docs_post_type(),
+							'post_type' => superdocs_post_type(),
 							'orderby'   => 'post__in',
 							'post__in'  => $category['docs']
 						]);
@@ -687,19 +687,19 @@ class DocCategories extends Widget_Base
 						<li class="submenu">
 							<a href="javascript:void(0)" class="submenu-link <?php wp_commander_render($activeCategory ? 'active': '')?>">
 								<span class="icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['super_docs_category_icon'])?>
+									<?php Icons_Manager::render_icon($settings['superdocs_category_icon'])?>
 								</span>
 								<span class="icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['super_docs_uncollapse_category_icon'])?>
+									<?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_icon'])?>
 								</span>
 								<span class="title">
 									<?php wp_commander_render($categoryTitle)?>
 								</span>
 								<span class="action_icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['super_docs_category_action_icon'])?>
+									<?php Icons_Manager::render_icon($settings['superdocs_category_action_icon'])?>
 								</span>
 								<span class="action_icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['super_docs_uncollapse_category_action_icon'])?>
+									<?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_action_icon'])?>
 								</span>
 							</a>
 							<div class="documents" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">

@@ -13,10 +13,10 @@ class CptServiceProvider extends ServiceProvider
 
     public function init()
     {
-        register_post_type( super_docs_post_type(), $this->docs_cpt_args() );
-        register_post_type( super_docs_template_post_type(), $this->layout_cpt_args() );
-        register_taxonomy( super_docs_sidebar_taxonomy(), [super_docs_post_type()], [
-            'label'             => __( 'Categories', 'super-docs' ),
+        register_post_type( superdocs_post_type(), $this->docs_cpt_args() );
+        register_post_type( superdocs_template_post_type(), $this->layout_cpt_args() );
+        register_taxonomy( superdocs_sidebar_taxonomy(), [superdocs_post_type()], [
+            'label'             => __( 'Categories', 'superdocs' ),
             'hierarchical'      => false,
             'public'            => false,
             'show_admin_column' => false,
@@ -28,56 +28,56 @@ class CptServiceProvider extends ServiceProvider
 
     public function docs_cpt_args()
     {
-        $label         = esc_html__( 'All Docs', 'super-docs' );
-        $singular_name = esc_html__( 'Doc', 'super-docs' );
+        $label         = esc_html__( 'All Docs', 'superdocs' );
+        $singular_name = esc_html__( 'Doc', 'superdocs' );
 
         if ( is_admin() ) {
-            if ( wp_commander_is_admin_page( 'edit', ['post_type' => super_docs_post_type(), 'product' => 'true'] ) ) {
-                $label         = esc_html__( 'Products', 'super-docs' );
-                $singular_name = esc_html__( 'Product', 'super-docs' );
+            if ( wp_commander_is_admin_page( 'edit', ['post_type' => superdocs_post_type(), 'product' => 'true'] ) ) {
+                $label         = esc_html__( 'Products', 'superdocs' );
+                $singular_name = esc_html__( 'Product', 'superdocs' );
             } elseif (
                 wp_commander_is_admin_page( 'post', ['product' => 'true'] ) ||
                 ( isset( $_GET['post'] ) && get_post_mime_type( sanitize_text_field( wp_unslash( $_GET['post'] ) ) ) === 'product' ) //phpcs:ignore WordPress.Security.NonceVerification.Recommended
             ) {
-                $label         = esc_html__( 'Products', 'super-docs' );
-                $singular_name = esc_html__( 'Product', 'super-docs' );
+                $label         = esc_html__( 'Products', 'superdocs' );
+                $singular_name = esc_html__( 'Product', 'superdocs' );
             } elseif ( wp_commander_is_admin_page( 'post-new', ['product' => 'true'] ) ) {
-                $label         = esc_html__( 'Products', 'super-docs' );
-                $singular_name = esc_html__( 'Product', 'super-docs' );
+                $label         = esc_html__( 'Products', 'superdocs' );
+                $singular_name = esc_html__( 'Product', 'superdocs' );
             }
         }
 
         $labels = [
             'singular_name'         => $singular_name,
-            'archives'              => esc_html__( 'Item Archives', 'super-docs' ),
-            'attributes'            => esc_html__( 'Item Attributes', 'super-docs' ),
-            'all_items'             => esc_html__( 'All Items', 'super-docs' ),
-            'add_new_item'          => esc_html__( 'Add New Item', 'super-docs' ),
-            'add_new'               => esc_html__( 'Add New', 'super-docs' ),
-            'new_item'              => esc_html__( 'New Item', 'super-docs' ),
-            'edit_item'             => esc_html__( 'Edit Item', 'super-docs' ),
-            'update_item'           => esc_html__( 'Update Item', 'super-docs' ),
-            'view_item'             => esc_html__( 'View Item', 'super-docs' ),
-            'view_items'            => esc_html__( 'View Items', 'super-docs' ),
-            'search_items'          => esc_html__( 'Search Item', 'super-docs' ),
-            'not_found'             => esc_html__( 'Not found', 'super-docs' ),
-            'not_found_in_trash'    => esc_html__( 'Not found in Trash', 'super-docs' ),
-            'featured_image'        => esc_html__( 'Featured Image', 'super-docs' ),
-            'set_featured_image'    => esc_html__( 'Set featured image', 'super-docs' ),
-            'remove_featured_image' => esc_html__( 'Remove featured image', 'super-docs' ),
-            'use_featured_image'    => esc_html__( 'Use as featured image', 'super-docs' ),
-            'insert_into_item'      => esc_html__( 'Insert into item', 'super-docs' ),
-            'uploaded_to_this_item' => esc_html__( 'Uploaded to this item', 'super-docs' ),
-            'items_list'            => esc_html__( 'Items list', 'super-docs' ),
-            'items_list_navigation' => esc_html__( 'Items list navigation', 'super-docs' ),
-            'filter_items_list'     => esc_html__( 'Filter items list', 'super-docs' )
+            'archives'              => esc_html__( 'Item Archives', 'superdocs' ),
+            'attributes'            => esc_html__( 'Item Attributes', 'superdocs' ),
+            'all_items'             => esc_html__( 'All Items', 'superdocs' ),
+            'add_new_item'          => esc_html__( 'Add New Item', 'superdocs' ),
+            'add_new'               => esc_html__( 'Add New', 'superdocs' ),
+            'new_item'              => esc_html__( 'New Item', 'superdocs' ),
+            'edit_item'             => esc_html__( 'Edit Item', 'superdocs' ),
+            'update_item'           => esc_html__( 'Update Item', 'superdocs' ),
+            'view_item'             => esc_html__( 'View Item', 'superdocs' ),
+            'view_items'            => esc_html__( 'View Items', 'superdocs' ),
+            'search_items'          => esc_html__( 'Search Item', 'superdocs' ),
+            'not_found'             => esc_html__( 'Not found', 'superdocs' ),
+            'not_found_in_trash'    => esc_html__( 'Not found in Trash', 'superdocs' ),
+            'featured_image'        => esc_html__( 'Featured Image', 'superdocs' ),
+            'set_featured_image'    => esc_html__( 'Set featured image', 'superdocs' ),
+            'remove_featured_image' => esc_html__( 'Remove featured image', 'superdocs' ),
+            'use_featured_image'    => esc_html__( 'Use as featured image', 'superdocs' ),
+            'insert_into_item'      => esc_html__( 'Insert into item', 'superdocs' ),
+            'uploaded_to_this_item' => esc_html__( 'Uploaded to this item', 'superdocs' ),
+            'items_list'            => esc_html__( 'Items list', 'superdocs' ),
+            'items_list_navigation' => esc_html__( 'Items list navigation', 'superdocs' ),
+            'filter_items_list'     => esc_html__( 'Filter items list', 'superdocs' )
         ];
         return [
             'label'               => $label,
             'labels'              => $labels,
             'rewrite'             => ['slug' => 'docs'],
             'supports'            => ['title', 'editor', 'Category', 'elementor'],
-            'taxonomies'          => [super_docs_sidebar_taxonomy()],
+            'taxonomies'          => [superdocs_sidebar_taxonomy()],
             'public'              => true,
             'show_ui'             => true,
             'show_in_menu'        => false,
@@ -95,8 +95,8 @@ class CptServiceProvider extends ServiceProvider
     public function layout_cpt_args()
     {
         return [
-            'label'               => esc_html__( 'Templates', 'super-docs' ),
-            'description'         => esc_html__( '', 'super-docs' ),
+            'label'               => esc_html__( 'Templates', 'superdocs' ),
+            'description'         => esc_html__( '', 'superdocs' ),
             'supports'            => ['title', 'editor', 'Category', 'elementor'],
             'taxonomies'          => [],
             'public'              => true,

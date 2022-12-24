@@ -10,12 +10,12 @@ class TableOfContent extends Widget_Base
 {
     public function get_name()
     {
-        return 'super-docs-table-of-content';
+        return 'superdocs-table-of-content';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Table of Content', 'super-docs' );
+        return esc_html__( 'Table of Content', 'superdocs' );
     }
 
     public function get_icon()
@@ -30,7 +30,7 @@ class TableOfContent extends Widget_Base
 
     public function get_keywords()
     {
-        return ['super-docs', 'doc', 'content', 'knowledge base'];
+        return ['superdocs', 'doc', 'content', 'knowledge base'];
     }
 
     protected function register_controls()
@@ -38,7 +38,7 @@ class TableOfContent extends Widget_Base
         $this->start_controls_section(
             'section_content',
             [
-                'label' => esc_html__( 'Content', 'super-docs' ),
+                'label' => esc_html__( 'Content', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -46,7 +46,7 @@ class TableOfContent extends Widget_Base
         $this->add_control(
             'table_of_content_heading_title',
             [
-                'label'       => esc_html__( 'Heading Title', 'super-docs' ),
+                'label'       => esc_html__( 'Heading Title', 'superdocs' ),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'default'     => 'Table of Content'
@@ -58,7 +58,7 @@ class TableOfContent extends Widget_Base
         $this->start_controls_section(
             'section_heading_style',
             [
-                'label' => esc_html__( 'Heading Title', 'super-docs' ),
+                'label' => esc_html__( 'Heading Title', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -66,12 +66,12 @@ class TableOfContent extends Widget_Base
         $this->add_control(
             'table_of_content_heading_title_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-table-of-content h4' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-table-of-content h4' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -79,12 +79,12 @@ class TableOfContent extends Widget_Base
         $this->add_control(
             'table_of_content_heading_title_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-table-of-content h4' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-table-of-content h4' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -92,7 +92,7 @@ class TableOfContent extends Widget_Base
         $this->add_responsive_control(
             'table_of_content_heading_title_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
+                'label'      => esc_html__( 'Padding (px)', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -104,7 +104,7 @@ class TableOfContent extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-table-of-content h4' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-table-of-content h4' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -113,7 +113,7 @@ class TableOfContent extends Widget_Base
         $this->add_responsive_control(
             'table_of_content_heading_title_margin',
             [
-                'label'      => esc_html__( 'Margin (px)', 'super-docs' ),
+                'label'      => esc_html__( 'Margin (px)', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -125,7 +125,7 @@ class TableOfContent extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-table-of-content h4' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-table-of-content h4' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -135,15 +135,15 @@ class TableOfContent extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'table_of_content_heading_title_typography',
-                'label'          => esc_html__( 'Typography', 'super-docs' ),
-                'selector'       => '{{WRAPPER}} .super-docs-table-of-content h4',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-table-of-content h4',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -157,7 +157,7 @@ class TableOfContent extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -173,7 +173,7 @@ class TableOfContent extends Widget_Base
         $this->start_controls_section(
             'section_content_list_style',
             [
-                'label' => esc_html__( 'Content List', 'super-docs' ),
+                'label' => esc_html__( 'Content List', 'superdocs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -181,12 +181,12 @@ class TableOfContent extends Widget_Base
         $this->add_control(
             'table_of_content_list_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'super-docs' ),
+                'label'     => esc_html__( 'Background Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#E5E5E6',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-table-of-content .content-list' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-table-of-content .content-list' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -194,13 +194,13 @@ class TableOfContent extends Widget_Base
         $this->add_control(
             'table_of_content_list_color',
             [
-                'label'     => esc_html__( 'Color', 'super-docs' ),
+                'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#2C2B2D',
                 'selectors' => [
-                    '{{WRAPPER}} .super-docs-table-of-content li' => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .super-docs-table-of-content a'  => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .superdocs-table-of-content li' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .superdocs-table-of-content a'  => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -208,7 +208,7 @@ class TableOfContent extends Widget_Base
         $this->add_responsive_control(
             'table_of_content_list_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
+                'label'      => esc_html__( 'Padding (px)', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -220,7 +220,7 @@ class TableOfContent extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .super-docs-table-of-content .content-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-table-of-content .content-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -230,15 +230,15 @@ class TableOfContent extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'table_of_content_list_typography',
-                'label'          => esc_html__( 'Typography', 'super-docs' ),
-                'selector'       => '{{WRAPPER}} .super-docs-table-of-content li',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-table-of-content li',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '16',
                             'unit' => 'px'
@@ -252,7 +252,7 @@ class TableOfContent extends Widget_Base
                         'default' => '500'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
                         'default'    => [
                             'size' => '24',
                             'unit' => 'px'
@@ -274,7 +274,7 @@ class TableOfContent extends Widget_Base
         $settings  = $this->get_settings_for_display();
         $elementor = \Elementor\Plugin::$instance;
         ?>
-        <div class="super-docs-table-of-content">
+        <div class="superdocs-table-of-content">
             <h4><?php wp_commander_render( $settings['table_of_content_heading_title'] )?></h4>
             <div class="content-list">
         <?php if ( $elementor->editor->is_edit_mode() || is_preview() ) {?>
