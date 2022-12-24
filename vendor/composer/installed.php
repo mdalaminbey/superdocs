@@ -3,7 +3,7 @@
         'name' => 'doatkolom/wp-guide',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'cdcbc380bae856b0411bf6bc48859366cdbf7bff',
+        'reference' => 'a2ab56860e6efd5af54cef49a86fef46c5aacbe7',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'doatkolom/ui' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '34c3190913731f09c59519ee1a5c39d7d21e79da',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '12d5ec2a5fafc88b85f0b470dc813ab97c68c65b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doatkolom/ui',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'doatkolom/wp-commander' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'a3d5dad94dfa96bbbe3e1a3e67a136119589ff0e',
+            'reference' => '4a47f46d5b143895f0af3ec973923f99f4f4b409',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doatkolom/wp-commander',
             'aliases' => array(),
@@ -31,7 +31,7 @@
         'doatkolom/wp-guide' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'cdcbc380bae856b0411bf6bc48859366cdbf7bff',
+            'reference' => 'a2ab56860e6efd5af54cef49a86fef46c5aacbe7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

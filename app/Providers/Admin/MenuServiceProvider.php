@@ -2,14 +2,12 @@
 
 namespace WpGuide\App\Providers\Admin;
 
-use DoatKolom\Ui\WpLayout;
 use WP_Post;
 use WpCommander\Contracts\ServiceProvider;
 use WpGuide\App\AdminPages\Doc;
 use WpGuide\App\AdminPages\Product;
 use WpGuide\App\AdminPages\Sidebar;
 use WpGuide\App\Https\Controllers\CategoryController;
-use WpGuide\Bootstrap\Application;
 use WpGuide\Bootstrap\View;
 
 class MenuServiceProvider extends ServiceProvider

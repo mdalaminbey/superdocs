@@ -13,12 +13,19 @@
     "mix-tailwindcss": "^1.3.0",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.56.1",
-    "sass-loader": "^12.1.0"
+    "sass-loader": "^12.1.0",
+    "grunt": "^1.3.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-compress": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-checktextdomain": "^1.0.1",
+    "grunt-wp-i18n": "^1.0.3"
   },
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
-    "prod": "mix --production"
+    "prod": "mix --production",
+    "build": "npm run minify && grunt build"
   },
   "repository": {
     "type": "git",

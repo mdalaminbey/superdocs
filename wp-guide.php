@@ -3,17 +3,17 @@
 /**
  * Plugin Name:       Wp Guide
  * Plugin URI:        http://wordpress.org/plugins/wp-guide/
- * Description:       This is not just a plugin!
- * Version:           1.0.0
+ * Description:       The Knowledge Base WordPress Plugin is an easy-to-use tool for creating a comprehensive knowledge base With its intuitive and user-friendly interface, this plugin helps you quickly and efficiently create a powerful knowledge base for your website
+ * Version:           1.0.0-beta
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            DoatKolom
  * Author URI:        http://doatkolom.com
- * License:           GPL v2 or later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * License:           GPL v3 or later
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       wp-guide
  * Domain Path:       /languages
- * Tested up to:      6.0.1
+ * Tested up to:      6.1.1
  */
 
 use WpGuide\Bootstrap\Application;

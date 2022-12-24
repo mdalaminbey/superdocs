@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite0570cb1645a4435c17a4198a9363605
+class ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63
 {
     public static $files = array (
         '437783d9527d26076c208ba4b7291c10' => __DIR__ . '/..' . '/doatkolom/ui/src/Helpers/Helper.php',
@@ -51,9 +51,9 @@ class ComposerStaticInite0570cb1645a4435c17a4198a9363605
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite0570cb1645a4435c17a4198a9363605::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite0570cb1645a4435c17a4198a9363605::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite0570cb1645a4435c17a4198a9363605::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63::$classMap;
 
         }, null, ClassLoader::class);
     }
