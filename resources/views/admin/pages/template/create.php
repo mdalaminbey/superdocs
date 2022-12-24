@@ -1,1 +1,103 @@
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit maxime vero harum, doloremque, sint totam distinctio quas ad porro quisquam vitae iure repellendus! Error, officiis, quibusdam voluptates accusantium, sed numquam omnis assumenda maiores aperiam vitae itaque ipsa quas distinctio similique veritatis? Sequi magnam dolore dolorum repellendus nisi? Amet aliquid illo consectetur tenetur facilis excepturi dolore a. Est ad eum nemo perspiciatis pariatur ab soluta aliquid cumque numquam aperiam! Nam saepe aspernatur corrupti? Dolorum reprehenderit amet praesentium dolore eveniet esse laborum exercitationem pariatur ipsa. Debitis inventore neque ut harum id esse, consectetur illum fuga error deleniti impedit quas maiores est, minus odio modi, aut ipsam at repellat aspernatur numquam? Et odio nam sint non culpa nobis saepe, expedita sunt eum molestias cum fugit ut asperiores voluptatem. Beatae unde facilis impedit quaerat quod obcaecati, consequatur earum culpa excepturi officia at, autem eveniet error odio praesentium quam saepe minus quos possimus dolorum! Officia fuga veritatis a ad? Temporibus officia quasi explicabo expedita eos unde mollitia ea adipisci, dolores blanditiis labore, odio placeat eum libero tempora tenetur veritatis rerum ab vitae ipsum reprehenderit. Maiores magnam consequatur sunt atque. Est et facere reprehenderit corrupti aspernatur perspiciatis ipsam enim voluptatem vitae, placeat eius amet doloremque quasi commodi ea quas quam nam velit cumque molestiae? Nam deserunt harum doloremque! Inventore earum vel reiciendis quis aspernatur quos, obcaecati voluptates adipisci neque tempore tempora minima, impedit, quo suscipit ducimus esse incidunt vero! Repudiandae labore optio magni illo ipsam, doloribus odio iste natus dolore pariatur ab reiciendis explicabo qui perspiciatis. Est aspernatur, quisquam ab beatae ipsam rem laborum sequi eum placeat reprehenderit! Explicabo nobis, similique est nesciunt quia quos. Officia, dolores fugiat quidem laudantium tempore iure eos recusandae cupiditate, nemo quae ipsam aut nulla provident atque vel eveniet voluptates sint, et neque nesciunt laborum id voluptatum molestias unde. Recusandae, maiores voluptatibus iste sint odio perferendis ipsam doloremque adipisci, ullam ab id doloribus accusamus quis. Aspernatur sunt sit dolorum, eligendi non sequi mollitia. Architecto voluptates harum consequatur ducimus hic repudiandae molestiae suscipit saepe consectetur eius corrupti nesciunt voluptas, libero rem ut a nobis officia aliquid dignissimos provident perspiciatis iste? Deserunt quasi hic, explicabo voluptates perferendis tempore officiis iusto inventore est repellat nulla nostrum itaque, vel nemo maxime mollitia suscipit earum sunt doloribus. Facere hic porro quam deleniti nostrum earum ea sit ut accusantium minus exercitationem pariatur, voluptatibus debitis, ullam impedit quia. Aspernatur cupiditate nesciunt perferendis impedit, ratione, tempora voluptate eum iure doloribus doloremque voluptatum non ipsam quasi quam reprehenderit, quidem dolore laborum tenetur! Voluptatibus nulla recusandae eum nam expedita placeat maiores mollitia, labore earum vel repellat possimus. Aperiam ad impedit labore quae libero laudantium a voluptate! Vitae quo mollitia odit ut aut! Officia hic unde, accusantium distinctio vel eveniet rerum voluptatem ad deserunt error alias amet a odit quam nemo voluptas iste ipsam doloribus pariatur molestias reiciendis obcaecati! Vitae voluptatum harum placeat repellendus consequuntur impedit quis natus et, incidunt rerum facilis distinctio obcaecati quo nobis magni veniam nihil ad doloribus sunt voluptate deserunt pariatur. Error perferendis quo commodi asperiores illum? Eos?
+<style>
+	.form-checkbox.is-basic::before,
+	.form-radio.is-basic::before {
+		background-image: var(--tw-thumb) !important;
+		content: var(--tw-content) !important;
+	}
+</style>
+<?php
+
+use DoatKolom\Ui\Utils\Common;
+
+$dataKey = Common::generateRandomString();
+
+?>
+<div class="wp-guide">
+	<div class="h-screen relative" x-data="<?php wp_commander_render($dataKey) ?>">
+		<div class="pt-8 w-full h-full flex flex-col">
+			<div class="py-4 px-6 border-b">
+				<h2 class="text-lg font-semibold text-gray-900">
+					<?php esc_html_e('Create Template', 'wp-guide') ?>
+				</h2>
+			</div>
+			<div class="overflow-scroll p-5">
+				<form action="" x-ref="templateForm">
+					<div>
+						<label class="block text-base"><?php esc_html_e('Template Name', 'wp-guide') ?></label>
+						<input type="text" required name="template-name" class="mt-2 form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" />
+					</div>
+					<div class="mt-4">
+						<label class="block text-base font-semibold">Select Template</label>
+						<div class="mt-2 mb-24 grid grid-cols-3 gap-4">
+							<label class="relative group">
+								<input type="radio" name="template" value="0" required checked class="peer absolute z-50 float-right top-2 right-2 form-checkbox is-basic h-5 w-5 rounded border-slate-400/70 before:invisible checked:border-primary checked:bg-primary hover:border-primary focus:border-primary dark:border-navy-400 dark:checked:border-accent dark:checked:bg-accent dark:hover:border-accent dark:focus:border-accent">
+								<div class="border h-72 overflow-hidden bg-white group-hover:border-primary/50 peer-checked:border-primary/50">
+								</div>
+								<div class="relative w-full h-12 border-x border-b group-hover:border-primary/50 peer-checked:border-primary/50 bg-white">
+									<span class="absolute text-base top-2/4 -translate-y-1/2 pl-4"><?php esc_html_e('Blank', 'wp-guide') ?></span>
+								</div>
+							</label>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="absolute bg-white inline-flex grid-rows-2 grid-flow-col gap-4 border-t bottom-0 right-0 w-full py-4 px-6">
+				<button x-on:click="insertAndRedirect()" class="w-1/2 cursor-pointer font-semibold px-7 py-3 items-center border border-indigo-200 hover:bg-indigo-50 text-primary">
+					<div class="float-left mt-1 pr-3 pl-6">
+						<div class="w-4 h-5">
+							<div class="w-3/12 float-left h-full bg-primary"></div>
+							<div class="w-2/12 float-left h-full"></div>
+							<div class="w-7/12 float-left h-full grid grid-rows-3 gap-1">
+								<div class="bg-primary h-full"></div>
+								<div class="bg-primary h-full"></div>
+								<div class="bg-primary h-full"></div>
+							</div>
+						</div>
+					</div>
+					<div class="float-left text-base">
+						Edit With Elementor
+					</div>
+				</button>
+				<button x-on:click="insertAndReload()" class="w-1/2 cursor-pointer text-base font-semibold px-7 py-3 text-white items-center bg-primary hover:bg-primary-hover">
+					<?php esc_html_e('Save Changes', 'wp-guide') ?>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	Alpine.data("<?php wp_commander_render($dataKey) ?>", () => ({
+		insertAndReload() {
+			this.insert({
+				'reload': true
+			});
+		},
+		insertAndRedirect() {
+			this.insert({
+				'reload': false
+			});
+		},
+		insert(options) {
+			let form = this.$refs.templateForm;
+			jQuery.ajax({
+				url: "<?php wp_commander_render(get_rest_url(null, 'wp-guide/template/create')) ?>",
+				method: 'POST',
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader('X-WP-Nonce', "<?php wp_commander_render(wp_create_nonce('wp_rest')) ?>");
+				},
+				data: jQuery(form).serialize(),
+				success: function(data) {
+					var drawer = Alpine.store('DoatKolomUiDrawer');
+					drawer.changeStatus();
+					if (options.reload) {
+						location.reload();
+					} else {
+						let editUrl = window.location.origin + '/wp-admin/post.php?action=elementor&post=' + data.data.templateId;
+						location.href = editUrl;
+					}
+				},
+				complete: function() {}
+			})
+		}
+	}));
+</script>

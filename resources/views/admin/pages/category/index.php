@@ -8,7 +8,7 @@ foreach ( $products as $product ) {
     array_push( $tabs, [
         'title'               => $product->post_title,
         'content_api'         => wp_commander_url_add_params( get_rest_url( null, 'wp-guide/category/order' ), ['productId' => $product->ID] ),
-        'contentCache'        => false,
+        'contentCache'        => true,
         'contentApiOptions'   => [
             'headers' => [
                 'X-WP-Nonce' => wp_create_nonce( 'wp_rest' )
@@ -20,7 +20,7 @@ foreach ( $products as $product ) {
     ] );
 }
 ?>
-<div class="doatkolom-ui wp-guide">
+<div class="wp-guide doatkolom-ui">
     <div class="pr-5">
         <div class="rounded overflow-hidden shadow-md bg-white mt-5 pb-7">
             <div class="rounded-xl">

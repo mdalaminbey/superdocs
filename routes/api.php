@@ -18,6 +18,7 @@ Route::group( 'category', function () {
 
 Route::group( 'template', function () {
     Route::get( 'create', [TemplateController::class, 'create_page'] );
+    Route::post( 'create', [TemplateController::class, 'create'] );
 } );
 
 Route::post( 'search', [SearchController::class, 'get'], true );

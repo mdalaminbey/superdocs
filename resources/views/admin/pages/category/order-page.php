@@ -23,10 +23,16 @@ if($categoriesSortList) {
 
 $items = [];
 
+global $wpGuideDocs;
+$wpGuideDocs = [];
+
 function wp_guide_category_content($productId, $categoryId, $docs = []) {
 	?>
 	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php echo 'wp_guide_product_content_'. $productId ?>" data-category="<?php echo $categoryId?>">
-		<?php foreach ($docs as $key => $doc): ?>
+		<?php foreach ($docs as $key => $doc): 
+			global $wpGuideDocs;
+			array_push($wpGuideDocs, $doc->ID);
+		?>
 			<div class="bg-slate-50 font-primary capitalize shadow p-2" data-doc="<?php echo $doc->ID?>">
 				<div class="float-left">
 					<?php echo Common::moveIcon() ?>
@@ -80,20 +86,10 @@ foreach($categoriesSortList as $categorySort) {
 		array_push($items, [
 			'title' => esc_html__('Uncategorized', 'wp-guide'),
 			'content' => function() use($productId, $categorySort) {
-				$docsIds  = [];
-				$sortedDocs = [];
-				if(!empty($categorySort['docs'])) {
-					$docsIds = $categorySort['docs'];
-					$sortedDocs = get_posts([
-						'post_type' => wp_guide_docs_post_type(),
-						'orderby'   => 'post__in',
-						'post__in'  => $docsIds
-					]);
-				}
-
-				$newDocs = get_posts([
+				global $wpGuideDocs;
+				$docs = get_posts([
 					'post_type' => wp_guide_docs_post_type(),
-					'exclude' => $docsIds, 
+					'exclude' => $wpGuideDocs, 
 					'meta_query' => [
 						[
 							'key'     => 'wp_guide_product',
@@ -104,16 +100,12 @@ foreach($categoriesSortList as $categorySort) {
 							'compare' => 'NOT EXISTS'
 						],
 						[
-							'key'     => 'categoryId',
-							'compare'   => 'NOT EXISTS'
-						],
-						[
 							'key'     => 'productId',
 							'value'   => $productId
 						]
 					]
 				]);
-				wp_guide_category_content($productId, '0', array_merge($sortedDocs, $newDocs));
+				wp_guide_category_content($productId, '0', $docs);
 			},
 			'icon' => Common::moveIcon()
 		]);

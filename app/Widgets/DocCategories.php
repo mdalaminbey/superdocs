@@ -665,9 +665,11 @@ class DocCategories extends Widget_Base
 		<div class="wp-guide-doc-categories">
 			<ul>
 				<?php foreach($categories as $category):
+                    if($category['categoryPostId'] == 0) { 
+                        continue;   
+                    } 
 					$docs            = [];
 					$activeCategory  = false;
-
 					if(!empty($category['docs'])) {
 						$docs = get_posts([
 							'post_type' => wp_guide_docs_post_type(),
@@ -678,39 +680,9 @@ class DocCategories extends Widget_Base
 							$activeCategory = true;
 						}
 					}
-
-					if($category['categoryPostId'] != 0) { 
+                    $categoryPost  = get_post($category['categoryPostId']);
+                    $categoryTitle = $categoryPost->post_title;
 					
-						$categoryPost  = get_post($category['categoryPostId']);
-						$categoryTitle = $categoryPost->post_title;
-
-						
-					} else {
-						$categoryTitle = esc_html__('Uncategorized', 'wp-guide');
-						// $newDocs       = get_posts([
-						// 	'post_type' => wp_guide_docs_post_type(),
-						// 	'exclude' => $category['docs'], 
-						// 	'meta_query' => [
-						// 		[
-						// 			'key'     => 'wp_guide_product',
-						// 			'compare' => 'NOT EXISTS'
-						// 		],
-						// 		[
-						// 			'key'     => 'wp_guide_category',
-						// 			'compare' => 'NOT EXISTS'
-						// 		],
-						// 		[
-						// 			'key'     => 'categoryId',
-						// 			'compare'   => 'NOT EXISTS'
-						// 		],
-						// 		[
-						// 			'key'     => 'productId',
-						// 			'value'   => $productId
-						// 		]
-						// 	]
-						// ]);
-						// $docs = array_merge($docs, $newDocs);
-					}
 					?>
 						<li class="submenu">
 							<a href="javascript:void(0)" class="submenu-link <?php wp_commander_render($activeCategory ? 'active': '')?>">
