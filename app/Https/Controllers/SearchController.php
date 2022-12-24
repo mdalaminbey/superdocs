@@ -1,8 +1,8 @@
 <?php
 
-namespace WpGuide\App\Https\Controllers;
+namespace SuperDocs\App\Https\Controllers;
 
-use WpGuide\Bootstrap\View;
+use SuperDocs\Bootstrap\View;
 use WP_REST_Request;
 
 class SearchController
@@ -11,11 +11,11 @@ class SearchController
     {
         $metaQuery = [
             [
-                'key'     => 'wp_guide_product',
+                'key'     => 'super_docs_product',
                 'compare' => 'NOT EXISTS'
             ],
             [
-                'key'     => 'wp_guide_category',
+                'key'     => 'super_docs_category',
                 'compare' => 'NOT EXISTS'
             ]
         ];
@@ -30,7 +30,7 @@ class SearchController
         }
 
         $docs = get_posts( [
-            'post_type'      => wp_guide_docs_post_type(),
+            'post_type'      => super_docs_post_type(),
             'posts_per_page' => 100,
             's'              => sanitize_text_field( $wpRestRequest->get_param( 's' ) ),
             'meta_query'     => $metaQuery

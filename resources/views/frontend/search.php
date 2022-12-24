@@ -1,4 +1,4 @@
-<div class="wp-guide-search-results">
+<div class="super-docs-search-results">
 	<?php if ( !empty( $docs ) ) {?>
 	<ul>
 		<?php foreach ( $docs as $doc ): ?>

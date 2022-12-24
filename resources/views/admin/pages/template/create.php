@@ -12,18 +12,18 @@ use DoatKolom\Ui\Utils\Common;
 $dataKey = Common::generateRandomString();
 
 ?>
-<div class="wp-guide">
+<div class="super-docs">
 	<div class="h-screen relative" x-data="<?php wp_commander_render($dataKey) ?>">
 		<div class="pt-8 w-full h-full flex flex-col">
 			<div class="py-4 px-6 border-b">
 				<h2 class="text-lg font-semibold text-gray-900">
-					<?php esc_html_e('Create Template', 'wp-guide') ?>
+					<?php esc_html_e('Create Template', 'super-docs') ?>
 				</h2>
 			</div>
 			<div class="overflow-scroll p-5">
 				<form action="" x-ref="templateForm">
 					<div>
-						<label class="block text-base"><?php esc_html_e('Template Name', 'wp-guide') ?></label>
+						<label class="block text-base"><?php esc_html_e('Template Name', 'super-docs') ?></label>
 						<input type="text" required name="template-name" class="mt-2 form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" />
 					</div>
 					<div class="mt-4">
@@ -34,7 +34,7 @@ $dataKey = Common::generateRandomString();
 								<div class="border h-72 overflow-hidden bg-white group-hover:border-primary/50 peer-checked:border-primary/50">
 								</div>
 								<div class="relative w-full h-12 border-x border-b group-hover:border-primary/50 peer-checked:border-primary/50 bg-white">
-									<span class="absolute text-base top-2/4 -translate-y-1/2 pl-4"><?php esc_html_e('Blank', 'wp-guide') ?></span>
+									<span class="absolute text-base top-2/4 -translate-y-1/2 pl-4"><?php esc_html_e('Blank', 'super-docs') ?></span>
 								</div>
 							</label>
 						</div>
@@ -59,7 +59,7 @@ $dataKey = Common::generateRandomString();
 					</div>
 				</button>
 				<button x-on:click="insertAndReload()" class="w-1/2 cursor-pointer text-base font-semibold px-7 py-3 text-white items-center bg-primary hover:bg-primary-hover">
-					<?php esc_html_e('Save Changes', 'wp-guide') ?>
+					<?php esc_html_e('Save Changes', 'super-docs') ?>
 				</button>
 			</div>
 		</div>
@@ -80,7 +80,7 @@ $dataKey = Common::generateRandomString();
 		insert(options) {
 			let form = this.$refs.templateForm;
 			jQuery.ajax({
-				url: "<?php wp_commander_render(get_rest_url(null, 'wp-guide/template/create')) ?>",
+				url: "<?php wp_commander_render(get_rest_url(null, 'super-docs/template/create')) ?>",
 				method: 'POST',
 				beforeSend: function(xhr) {
 					xhr.setRequestHeader('X-WP-Nonce', "<?php wp_commander_render(wp_create_nonce('wp_rest')) ?>");

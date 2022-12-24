@@ -9,15 +9,18 @@ class ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63
     public static $files = array (
         '437783d9527d26076c208ba4b7291c10' => __DIR__ . '/..' . '/doatkolom/ui/src/Helpers/Helper.php',
         '1cc9ea721a0565d807e0d13296ede723' => __DIR__ . '/..' . '/doatkolom/wp-commander/src/Helpers/Helper.php',
-        '28d75bc2b7a89a867a84f51420e5e49f' => __DIR__ . '/../..' . '/app/helpers/helper.php',
+        '4e6784c843075e2c268e095941d0bf4e' => __DIR__ . '/../..' . '/app/helpers/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
-            'WpGuide\\Bootstrap\\' => 18,
-            'WpGuide\\App\\' => 12,
             'WpCommander\\' => 12,
+        ),
+        'S' => 
+        array (
+            'SuperDocs\\Bootstrap\\' => 20,
+            'SuperDocs\\App\\' => 14,
         ),
         'D' => 
         array (
@@ -26,17 +29,17 @@ class ComposerStaticInitc2a830fd683c8674f0300e6f28d4ea63
     );
 
     public static $prefixDirsPsr4 = array (
-        'WpGuide\\Bootstrap\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/bootstrap',
-        ),
-        'WpGuide\\App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
-        ),
         'WpCommander\\' => 
         array (
             0 => __DIR__ . '/..' . '/doatkolom/wp-commander/src',
+        ),
+        'SuperDocs\\Bootstrap\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/bootstrap',
+        ),
+        'SuperDocs\\App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
         'DoatKolom\\Ui\\' => 
         array (

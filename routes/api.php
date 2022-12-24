@@ -1,9 +1,9 @@
 <?php
 
-use WpGuide\App\Https\Controllers\CategoryController;
-use WpGuide\App\Https\Controllers\SearchController;
-use WpGuide\App\Https\Controllers\TemplateController;
-use WpGuide\Bootstrap\Route;
+use SuperDocs\App\Https\Controllers\CategoryController;
+use SuperDocs\App\Https\Controllers\SearchController;
+use SuperDocs\App\Https\Controllers\TemplateController;
+use SuperDocs\Bootstrap\Route;
 
 Route::group( 'category', function () {
     Route::get( 'order', [CategoryController::class, 'get'] );

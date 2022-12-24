@@ -1,8 +1,8 @@
 <?php
 
-use WpGuide\Bootstrap\Application;
+use SuperDocs\Bootstrap\Application;
 
-function wp_guide_docs_count( $type = 'post', $perm = '', $mim_type = false )
+function super_docs_count( $type = 'post', $perm = '', $mim_type = false )
 {
     global $wpdb;
 
@@ -35,22 +35,22 @@ function wp_guide_docs_count( $type = 'post', $perm = '', $mim_type = false )
     return apply_filters( 'wp_count_posts', (object) $counts, $type, $perm );
 }
 
-function wp_guide_docs_post_type()
+function super_docs_post_type()
 {
     return Application::$config['post_types']['docs'];
 }
 
-function wp_guide_sidebar_taxonomy()
+function super_docs_sidebar_taxonomy()
 {
     return Application::$config['taxonomies']['sidebar'];
 }
 
-function wp_guide_template_post_type()
+function super_docs_template_post_type()
 {
     return Application::$config['post_types']['template'];
 }
 
-function wp_guide_version()
+function super_docs_version()
 {
     return Application::$config['version'];
 }

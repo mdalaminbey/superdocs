@@ -1,7 +1,7 @@
 
 (function ($, elementor) {
 	var elementor = window.elementorFrontend;
-	var WpGuideUtils = {
+	var SuperDocsUtils = {
 		debounce(func, delay) {
 			let debounceTimer
 			return function () {
@@ -13,12 +13,12 @@
 		}
 	}
 
-	var WpGuide = {
+	var SuperDocs = {
 		init: function () {
 			var widgets = {
-				'wp-guide-doc-search.default': WpGuide.docSearch,
-				'wp-guide-doc-print.default': WpGuide.docPrint,
-				'wp-guide-doc-categories.default': WpGuide.categories,
+				'super-docs-doc-search.default': SuperDocs.docSearch,
+				'super-docs-doc-print.default': SuperDocs.docPrint,
+				'super-docs-doc-categories.default': SuperDocs.categories,
 			}
 			$.each(widgets, function (widget, callback) {
 				elementor.hooks.addAction('frontend/element_ready/' + widget, callback);
@@ -46,11 +46,11 @@
 				let formData = $scope.find('form').serialize();
 				$scope.find('.loader-body').show();
 				$.ajax({
-					url: wpCommanderLocale.rest + 'wp-guide/search',
+					url: wpCommanderLocale.rest + 'super-docs/search',
 					method: 'POST',
 					data: formData,
 					complete(data) {
-						$('body').addClass('wp-guide-search-open');
+						$('body').addClass('super-docs-search-open');
 						$scope.find('.loader-body').hide();
 						resultArea.html(data.responseText);
 						if (resultArea.is(":hidden")) {
@@ -61,28 +61,28 @@
 			}
 
 			let searchInput = $scope.find('input[name="s"]');
-			searchInput.keyup(WpGuideUtils.debounce(search, 500));
+			searchInput.keyup(SuperDocsUtils.debounce(search, 500));
 
 			$scope.find('.normal-search-form').submit(function (event) {
 				event.preventDefault();
 				search()
 			});
 
-			$(document).on('click', '.wp-guide-search-open', function (e) {
-				if ($(e.target).parents('.wp-guide-doc-search').length > 0) {
+			$(document).on('click', '.super-docs-search-open', function (e) {
+				if ($(e.target).parents('.super-docs-doc-search').length > 0) {
 					return;
 				}
 				resultArea.slideToggle(250);
-				$('body').removeClass('wp-guide-search-open');
+				$('body').removeClass('super-docs-search-open');
 			});
 		},
 		docPrint: function ($scope) {
-			$scope.find('.wp-guide-print').on('click', function () {
+			$scope.find('.super-docs-print').on('click', function () {
 				let data = JSON.parse($scope.attr('data-settings'));
 				if ('full_window' === data.doc_print_content_area) {
 					window.print()
 				} else {
-					let html = document.querySelector("div[data-widget_type='wp-guide-doc-content.default']").outerHTML;
+					let html = document.querySelector("div[data-widget_type='super-docs-doc-content.default']").outerHTML;
 					let stylesheets = document.querySelectorAll('link[rel="stylesheet"], style');
 					let myWindow = window.open('', 'PRINT', 'popup');
 
@@ -112,9 +112,9 @@
 		}
 	}
 
-	$(window).on('elementor/frontend/init', WpGuide.init);
+	$(window).on('elementor/frontend/init', SuperDocs.init);
 	$(window).on('elementor/frontend/init', function () {
-		let tableOfContent = $('.wp-guide-table-of-content ol');
+		let tableOfContent = $('.super-docs-table-of-content ol');
 		tableOfContent.html('');
 		$('.elementor-heading-title').each(function () {
 			let tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];

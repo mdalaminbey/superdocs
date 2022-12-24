@@ -1,27 +1,27 @@
 <?php
 
-namespace WpGuide\App\Providers\Admin;
+namespace SuperDocs\App\Providers\Admin;
 
 use WP_Post;
 use WpCommander\Contracts\ServiceProvider;
-use WpGuide\App\AdminPages\Doc;
-use WpGuide\App\AdminPages\Product;
-use WpGuide\App\AdminPages\Sidebar;
-use WpGuide\App\Https\Controllers\CategoryController;
-use WpGuide\Bootstrap\View;
+use SuperDocs\App\AdminPages\Doc;
+use SuperDocs\App\AdminPages\Product;
+use SuperDocs\App\AdminPages\Sidebar;
+use SuperDocs\App\Https\Controllers\CategoryController;
+use SuperDocs\Bootstrap\View;
 
 class MenuServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         add_action( 'admin_menu', [$this, 'action_admin_menu'] );
-        add_action( 'save_post_' . wp_guide_docs_post_type(), [$this, 'save_post'], 10, 3 );
+        add_action( 'save_post_' . super_docs_post_type(), [$this, 'save_post'], 10, 3 );
 
-        if ( wp_commander_is_admin_page( 'edit', ['post_type' => wp_guide_docs_post_type(), 'product' => 'true'] ) ) {
+        if ( wp_commander_is_admin_page( 'edit', ['post_type' => super_docs_post_type(), 'product' => 'true'] ) ) {
             ( new Product )->boot();
-        } elseif ( wp_commander_is_admin_page( 'edit', ['post_type' => wp_guide_docs_post_type(), 'product' => '!true'] ) ) {
+        } elseif ( wp_commander_is_admin_page( 'edit', ['post_type' => super_docs_post_type(), 'product' => '!true'] ) ) {
             ( new Doc )->boot();
-        } elseif ( wp_commander_is_admin_page( 'admin-ajax', ['post_type' => wp_guide_docs_post_type()] ) ) {
+        } elseif ( wp_commander_is_admin_page( 'admin-ajax', ['post_type' => super_docs_post_type()] ) ) {
             check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
             $type = isset( $_REQUEST['post_ID'] ) ? get_post_mime_type( intval( $_REQUEST['post_ID'] ) ) : false;
             if ( 'doc' === $type ) {
@@ -29,7 +29,7 @@ class MenuServiceProvider extends ServiceProvider
             } elseif ( 'product' === $type ) {
                 ( new Product )->boot();
             }
-        } elseif ( wp_commander_is_admin_page( 'admin', ['page' => 'wp-guide-sidebar-category'] ) ) {
+        } elseif ( wp_commander_is_admin_page( 'admin', ['page' => 'super-docs-sidebar-category'] ) ) {
             ( new Sidebar )->boot();
         }
     }
@@ -40,9 +40,9 @@ class MenuServiceProvider extends ServiceProvider
 
         if(isset($_SERVER['HTTP_REFERER'])) {
             //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-            if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=wp-guide-sidebar-category' ) ) ) {
+            if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=super-docs-sidebar-category' ) ) ) {
                 $type = 'product';
-                add_post_meta( $post_ID, 'wp_guide_product', true );
+                add_post_meta( $post_ID, 'super_docs_product', true );
             } else {
                 $type = 'doc';
             }
@@ -70,26 +70,26 @@ class MenuServiceProvider extends ServiceProvider
         }
 
         //phpcs:ignore WordPress.Security.NonceVerification.Missing
-        if ( !empty( $_POST['wp-guide-template'] ) ) {
+        if ( !empty( $_POST['super-docs-template'] ) ) {
             //phpcs:ignore WordPress.Security.NonceVerification.Missing
-            update_post_meta( $post_ID, 'wp-guide-template', sanitize_text_field( wp_unslash( $_POST['wp-guide-template'] ) ) );
+            update_post_meta( $post_ID, 'super-docs-template', sanitize_text_field( wp_unslash( $_POST['super-docs-template'] ) ) );
         }
     }
 
     public function action_admin_menu()
     {
-        add_menu_page( esc_html__( 'Wp Guide', 'wp-guide' ), esc_html__( 'Wp Guide', 'wp-guide' ), 'manage_options', 'wp-guide-menu', function () {}, 'dashicons-media-document', 5 );
-        add_submenu_page( 'wp-guide-menu', esc_html__( 'All Docs', 'wp-guide' ), esc_html__( 'All Docs', 'wp-guide' ), 'manage_options', 'edit.php?post_type=' . wp_guide_docs_post_type() );
-        add_submenu_page( 'wp-guide-menu', esc_html__( 'Products', 'wp-guide' ), esc_html__( 'Products', 'wp-guide' ), 'manage_options', 'edit.php?product=true&post_type=' . wp_guide_docs_post_type() );
-        add_submenu_page( 'wp-guide-menu', esc_html__( 'Templates', 'wp-guide' ), esc_html__( 'Templates', 'wp-guide' ), 'manage_options', 'edit.php?post_type=' . wp_guide_template_post_type() );
-        add_submenu_page( 'wp-guide-menu', esc_html__( 'Sidebar Category', 'wp-guide' ), esc_html__( 'Sidebar Category', 'wp-guide' ), 'manage_options', 'wp-guide-sidebar-category', [$this, 'sidebar_category'] );
-        remove_submenu_page( 'wp-guide-menu', 'wp-guide-menu' );
+        add_menu_page( esc_html__( 'SuperDocs', 'super-docs' ), esc_html__( 'SuperDocs', 'super-docs' ), 'manage_options', 'super-docs-menu', function () {}, 'dashicons-media-document', 5 );
+        add_submenu_page( 'super-docs-menu', esc_html__( 'All Docs', 'super-docs' ), esc_html__( 'All Docs', 'super-docs' ), 'manage_options', 'edit.php?post_type=' . super_docs_post_type() );
+        add_submenu_page( 'super-docs-menu', esc_html__( 'Products', 'super-docs' ), esc_html__( 'Products', 'super-docs' ), 'manage_options', 'edit.php?product=true&post_type=' . super_docs_post_type() );
+        add_submenu_page( 'super-docs-menu', esc_html__( 'Templates', 'super-docs' ), esc_html__( 'Templates', 'super-docs' ), 'manage_options', 'edit.php?post_type=' . super_docs_template_post_type() );
+        add_submenu_page( 'super-docs-menu', esc_html__( 'Sidebar Category', 'super-docs' ), esc_html__( 'Sidebar Category', 'super-docs' ), 'manage_options', 'super-docs-sidebar-category', [$this, 'sidebar_category'] );
+        remove_submenu_page( 'super-docs-menu', 'super-docs-menu' );
     }
 
     public function sidebar_category()
     {
         global $wpdb;
-        $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", wp_guide_docs_post_type() ) );
+        $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", super_docs_post_type() ) );
         View::render( 'admin/pages/category/index', ['products' => $products] );
     }
 }

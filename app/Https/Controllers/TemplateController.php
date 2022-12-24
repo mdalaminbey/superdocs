@@ -1,8 +1,8 @@
 <?php
 
-namespace WpGuide\App\Https\Controllers;
+namespace SuperDocs\App\Https\Controllers;
 
-use WpGuide\Bootstrap\View;
+use SuperDocs\Bootstrap\View;
 use WP_REST_Request;
 
 class TemplateController
@@ -15,12 +15,12 @@ class TemplateController
             $template_name = '#Template ' . time();
         }
         $templateId = wp_insert_post( [
-            'post_type'   => wp_guide_template_post_type(),
+            'post_type'   => super_docs_template_post_type(),
             'post_title'  => $template_name,
             'post_status' => 'publish'
         ] );
 
-        update_post_meta( $templateId, 'wp_guide_edit_with_option', 'elementor' );
+        update_post_meta( $templateId, 'super_docs_edit_with_option', 'elementor' );
         update_post_meta( $templateId, '_wp_page_template', 'elementor_header_footer' );
         update_post_meta( $templateId, '_elementor_edit_mode', 'builder' );
         update_post_meta( $templateId, '_elementor_version', '3.4.6' );

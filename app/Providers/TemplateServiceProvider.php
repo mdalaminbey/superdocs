@@ -1,10 +1,10 @@
 <?php
 
-namespace WpGuide\App\Providers;
+namespace SuperDocs\App\Providers;
 
 use DoatKolom\Ui\Components\Drawer;
 use WpCommander\Contracts\ServiceProvider;
-use WpGuide\Bootstrap\View;
+use SuperDocs\Bootstrap\View;
 
 class TemplateServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class TemplateServiceProvider extends ServiceProvider
     public function action_admin_footer(): void
     {
         ?>
-            <div class="wp-guide">
+            <div class="super-docs">
                 <?php $drawer = new Drawer;
                 $drawer->render( ['width' => '700px'] );?>
             </div>
@@ -53,13 +53,13 @@ class TemplateServiceProvider extends ServiceProvider
      */
     public function filter_template_include( string $template ): string
     {
-        if ( is_singular( wp_guide_docs_post_type() ) ) {
+        if ( is_singular( super_docs_post_type() ) ) {
             global $post;
             if ( 'doc' === $post->post_mime_type ) {
-                $template_id = get_post_meta( $post->ID, 'wp-guide-template', true );
+                $template_id = get_post_meta( $post->ID, 'super-docs-template', true );
                 $product_id  = $post->post_parent;
                 if ( $template_id == '0' ) {
-                    $template_id = get_post_meta( $product_id, 'wp-guide-template', true );
+                    $template_id = get_post_meta( $product_id, 'super-docs-template', true );
                 }
                 $is_template_use_elementor = get_post_meta( $template_id, '_elementor_edit_mode', true ) ?? false;
 
@@ -71,7 +71,7 @@ class TemplateServiceProvider extends ServiceProvider
                             ob_start();
                             the_content();
                             $content = ob_get_clean();
-                            wp_commander_render( str_replace( "{{ Wp Guide Doc Content }}", $content, $layout ) );
+                            wp_commander_render( str_replace( "{{ SuperDocs Doc Content }}", $content, $layout ) );
                         } );
                         return View::get_path( 'frontend/elementor-header-footer' );
                     }

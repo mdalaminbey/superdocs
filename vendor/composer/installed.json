@@ -7,7 +7,7 @@
             "dist": {
                 "type": "path",
                 "url": "./../ui",
-                "reference": "12d5ec2a5fafc88b85f0b470dc813ab97c68c65b"
+                "reference": "3be384a572b9209be8262e94f8867d76444738f5"
             },
             "type": "library",
             "installation-source": "dist",
@@ -19,6 +19,9 @@
                     "src/Helpers/Helper.php"
                 ]
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "MD AL AMIN",
@@ -37,7 +40,7 @@
             "dist": {
                 "type": "path",
                 "url": "./../wp-commander",
-                "reference": "4a47f46d5b143895f0af3ec973923f99f4f4b409"
+                "reference": "d44935f38a766a0d2806d82315b58a83d176de97"
             },
             "type": "library",
             "installation-source": "dist",
@@ -49,6 +52,9 @@
                     "src/Helpers/Helper.php"
                 ]
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "MD AL AMIN",

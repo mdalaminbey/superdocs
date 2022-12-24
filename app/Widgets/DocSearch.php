@@ -1,6 +1,6 @@
 <?php
 
-namespace WpGuide\App\Widgets;
+namespace SuperDocs\App\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
@@ -11,12 +11,12 @@ class DocSearch extends Widget_Base
 {
     public function get_name()
     {
-        return 'wp-guide-doc-search';
+        return 'super-docs-doc-search';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Search', 'wp-guide' );
+        return esc_html__( 'Doc Search', 'super-docs' );
     }
 
     public function get_icon()
@@ -31,7 +31,7 @@ class DocSearch extends Widget_Base
 
     public function get_keywords()
     {
-        return ['wp-guide', 'doc', 'content', 'knowledge base', 'search'];
+        return ['super-docs', 'doc', 'content', 'knowledge base', 'search'];
     }
 
     protected function register_controls()
@@ -39,7 +39,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_content',
             [
-                'label' => esc_html__( 'Content', 'wp-guide' ),
+                'label' => esc_html__( 'Content', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
@@ -47,7 +47,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_all_product',
             [
-                'label'       => esc_html__( 'All products title', 'wp-guide' ),
+                'label'       => esc_html__( 'All products title', 'super-docs' ),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'default'     => 'All Products'
@@ -57,7 +57,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_button_text',
             [
-                'label'       => esc_html__( 'Button title', 'wp-guide' ),
+                'label'       => esc_html__( 'Button title', 'super-docs' ),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'default'     => 'Search'
@@ -67,7 +67,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_not_found_text',
             [
-                'label'       => esc_html__( 'Not found text', 'wp-guide' ),
+                'label'       => esc_html__( 'Not found text', 'super-docs' ),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'default'     => 'No Documentation found'
@@ -79,7 +79,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_products_style',
             [
-                'label' => esc_html__( 'Products', 'wp-guide' ),
+                'label' => esc_html__( 'Products', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -87,7 +87,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_product_height',
             [
-                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Height (px)', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -110,7 +110,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_product_width',
             [
-                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'label'      => esc_html__( 'Width', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -133,7 +133,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_product_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
@@ -146,7 +146,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_product_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
@@ -159,7 +159,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_product_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -207,7 +207,7 @@ class DocSearch extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'doc_search_product_typography',
-                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'label'          => esc_html__( 'Typography', 'super-docs' ),
                 'selector'       => '{{WRAPPER}} .search-inputs select',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
@@ -215,7 +215,7 @@ class DocSearch extends Widget_Base
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -229,7 +229,7 @@ class DocSearch extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -245,7 +245,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_search_style',
             [
-                'label' => esc_html__( 'Search', 'wp-guide' ),
+                'label' => esc_html__( 'Search', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -253,7 +253,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_height',
             [
-                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Height (px)', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -276,7 +276,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_width',
             [
-                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'label'      => esc_html__( 'Width', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -299,7 +299,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
@@ -312,7 +312,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4F46E5',
@@ -325,7 +325,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -373,7 +373,7 @@ class DocSearch extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'doc_search_search_typography',
-                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'label'          => esc_html__( 'Typography', 'super-docs' ),
                 'selector'       => '{{WRAPPER}} .search-inputs input',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
@@ -381,7 +381,7 @@ class DocSearch extends Widget_Base
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -395,7 +395,7 @@ class DocSearch extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -411,7 +411,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_preloader_style',
             [
-                'label' => esc_html__( 'Preloader', 'wp-guide' ),
+                'label' => esc_html__( 'Preloader', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -419,7 +419,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_preloader_thickness',
             [
-                'label'      => esc_html__( 'Thickness', 'wp-guide' ),
+                'label'      => esc_html__( 'Thickness', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -439,7 +439,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_preloader_width',
             [
-                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'label'      => esc_html__( 'Width', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -454,7 +454,7 @@ class DocSearch extends Widget_Base
                     'size' => 30
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-search .loader' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-search .loader' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -462,7 +462,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_preloader_background_color',
             [
-                'label'   => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'   => esc_html__( 'Background Color', 'super-docs' ),
                 'type'    => Controls_Manager::COLOR,
                 'alpha'   => false,
                 'default' => '#AAB6C3'
@@ -472,7 +472,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_preloader_color',
             [
-                'label'   => esc_html__( 'Color', 'wp-guide' ),
+                'label'   => esc_html__( 'Color', 'super-docs' ),
                 'type'    => Controls_Manager::COLOR,
                 'alpha'   => false,
                 'default' => '#4B42DD'
@@ -482,7 +482,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_preloader_margin',
             [
-                'label'      => esc_html__( 'Margin', 'wp-guide' ),
+                'label'      => esc_html__( 'Margin', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -494,7 +494,7 @@ class DocSearch extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-search .loader-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-search .loader-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -504,7 +504,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_button_style',
             [
-                'label' => esc_html__( 'Button', 'wp-guide' ),
+                'label' => esc_html__( 'Button', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -512,7 +512,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_button_height',
             [
-                'label'      => esc_html__( 'Height (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Height (px)', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -535,7 +535,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_button_width',
             [
-                'label'      => esc_html__( 'Width', 'wp-guide' ),
+                'label'      => esc_html__( 'Width', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -558,7 +558,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_button_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'selectors'  => [
@@ -571,7 +571,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_button_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#DEDEE0',
@@ -584,7 +584,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_button_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
@@ -624,7 +624,7 @@ class DocSearch extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'           => 'doc_search_button_typography',
-                'label'          => esc_html__( 'Typography', 'wp-guide' ),
+                'label'          => esc_html__( 'Typography', 'super-docs' ),
                 'selector'       => '{{WRAPPER}} .search-inputs button',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
@@ -632,7 +632,7 @@ class DocSearch extends Widget_Base
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -646,7 +646,7 @@ class DocSearch extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -663,7 +663,7 @@ class DocSearch extends Widget_Base
         $this->start_controls_section(
             'section_result_style',
             [
-                'label' => esc_html__( 'Result', 'wp-guide' ),
+                'label' => esc_html__( 'Result', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
@@ -671,7 +671,7 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_gap_between_docs',
             [
-                'label'      => esc_html__( 'Gap between docs (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Gap between docs (px)', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -686,14 +686,14 @@ class DocSearch extends Widget_Base
                     'size' => 10
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results ul' => 'gap: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results ul' => 'gap: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
         $this->add_control(
             'doc_search_box_max_height',
             [
-                'label'      => esc_html__( 'Max height (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Max height (px)', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -716,12 +716,12 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_result_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
@@ -729,12 +729,12 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_result_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results li a' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results li a' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -742,12 +742,12 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_result_doc_background_color',
             [
-                'label'     => esc_html__( 'Background Color Doc Item', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color Doc Item', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results li' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results li' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
@@ -755,12 +755,12 @@ class DocSearch extends Widget_Base
         $this->add_control(
             'doc_search_result_not_found_color',
             [
-                'label'     => esc_html__( 'Not Found Text Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Not Found Text Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results .empty-result' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results .empty-result' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -768,7 +768,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_result_doc_padding',
             [
-                'label'      => esc_html__( 'Padding Doc Item (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding Doc Item (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -780,7 +780,7 @@ class DocSearch extends Widget_Base
                     'isLinked' => true
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -788,7 +788,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_result_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -800,7 +800,7 @@ class DocSearch extends Widget_Base
                     'isLinked' => true
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .search-inputs .wp-guide-search-results' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .search-inputs .super-docs-search-results' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -810,7 +810,7 @@ class DocSearch extends Widget_Base
         $this->add_responsive_control(
             'doc_search_result_margin',
             [
-                'label'      => esc_html__( 'Margin (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Margin (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -861,10 +861,10 @@ class DocSearch extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		$preloaderThickness = $settings['doc_search_preloader_thickness']['size'].$settings['doc_search_preloader_thickness']['unit'];
 		$products = get_posts([
-			'post_type' => wp_guide_docs_post_type(),
+			'post_type' => super_docs_post_type(),
 			'meta_query' => [
 				[
-					'key'     => 'wp_guide_product',
+					'key'     => 'super_docs_product',
 					'compare' => 'EXISTS'
 				]
 			]
@@ -902,12 +902,12 @@ class DocSearch extends Widget_Base
 					display: none;
 				}
 
-				.wp-guide-doc-search .search-results {
+				.super-docs-doc-search .search-results {
 					width: 100%;
 					position: relative;
 				}
 
-                .wp-guide-doc-search .search-results a {
+                .super-docs-doc-search .search-results a {
                     display: inline-flex;
                     width: 100%;
                 }
@@ -924,7 +924,7 @@ class DocSearch extends Widget_Base
                     z-index: 9999;
 		width: 100%;
                 }
-                .wp-guide-search-results ul {
+                .super-docs-search-results ul {
 		display: flex;
 		flex-direction: column;
 	}
@@ -940,7 +940,7 @@ class DocSearch extends Widget_Base
 					100% { transform: rotate(360deg); }
 				}
 			</style>
-			<div class="wp-guide-doc-search">
+			<div class="super-docs-doc-search">
 				<form action="" class="normal-search-form">
                     <input type="hidden" name="not_found_text" value="<?php wp_commander_render($settings['doc_search_not_found_text'])?>">
 					<div class="search-inputs">

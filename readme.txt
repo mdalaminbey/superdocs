@@ -1,4 +1,4 @@
-=== Wp Guide Knowledge ===
+=== SuperDocs Knowledge ===
 Contributors: doatkolom
 Donate link: https://doatkolom.com/
 Tags: docs, documentation, knowledge

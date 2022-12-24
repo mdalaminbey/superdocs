@@ -1,14 +1,14 @@
 <?php
 
-namespace WpGuide\App\Providers;
+namespace SuperDocs\App\Providers;
 
 use WpCommander\Contracts\ServiceProvider;
-use WpGuide\App\Widgets\Breadcrumb;
-use WpGuide\App\Widgets\DocCategories;
-use WpGuide\App\Widgets\DocContent;
-use WpGuide\App\Widgets\DocPrint;
-use WpGuide\App\Widgets\DocSearch;
-use WpGuide\App\Widgets\TableOfContent;
+use SuperDocs\App\Widgets\Breadcrumb;
+use SuperDocs\App\Widgets\DocCategories;
+use SuperDocs\App\Widgets\DocContent;
+use SuperDocs\App\Widgets\DocPrint;
+use SuperDocs\App\Widgets\DocSearch;
+use SuperDocs\App\Widgets\TableOfContent;
 
 class ElementorWidgetServicerProvider extends ServiceProvider
 {
@@ -32,7 +32,7 @@ class ElementorWidgetServicerProvider extends ServiceProvider
      */
     public function action_after_enqueue_scripts()
     {
-        wp_enqueue_script( 'wp-guide-elementor-script', $this->application->get_root_url() . 'app/Widgets/assets/js/script.js', ['jquery', 'elementor-frontend'], $this->application::$config['version'] );
+        wp_enqueue_script( 'super-docs-elementor-script', $this->application->get_root_url() . 'app/Widgets/assets/js/script.js', ['jquery', 'elementor-frontend'], $this->application::$config['version'] );
     }
 
     /**

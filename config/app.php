@@ -1,9 +1,9 @@
 <?php
 
-use WpGuide\App\Providers\Admin\MenuServiceProvider;
-use WpGuide\App\Providers\CptServiceProvider;
-use WpGuide\App\Providers\ElementorWidgetServicerProvider;
-use WpGuide\App\Providers\TemplateServiceProvider;
+use SuperDocs\App\Providers\Admin\MenuServiceProvider;
+use SuperDocs\App\Providers\CptServiceProvider;
+use SuperDocs\App\Providers\ElementorWidgetServicerProvider;
+use SuperDocs\App\Providers\TemplateServiceProvider;
 
 return [
     /**
@@ -15,15 +15,15 @@ return [
      * All post types for this plugin
      */
     'post_types'      => [
-        'docs'     => 'wpguidedocs',
-        'template' => 'wpguidetemplate'
+        'docs'     => 'superdocs',
+        'template' => 'superdocstemplate'
     ],
 
     /**
      * All taxonomies for this plugin
      */
     'taxonomies'      => [
-        'sidebar' => 'wpguidedocs-category'
+        'sidebar' => 'superdocs-category'
     ],
 
     /**
@@ -41,7 +41,7 @@ return [
     /**
      * Plugin Api Namespace
      */
-    'namespace'       => 'wp-guide',
+    'namespace'       => 'super-docs',
 
     'api_versions'    => [],
 

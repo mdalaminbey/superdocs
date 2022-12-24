@@ -1,9 +1,9 @@
 {
-    "name": "doatkolom/wp-guide",
+    "name": "doatkolom/super-docs",
     "autoload": {
         "psr-4": {
-            "WpGuide\\App\\": "app/",
-            "WpGuide\\Bootstrap\\": "bootstrap/"
+            "SuperDocs\\App\\": "app/",
+            "SuperDocs\\Bootstrap\\": "bootstrap/"
         },
         "files": [
             "./app/helpers/helper.php"

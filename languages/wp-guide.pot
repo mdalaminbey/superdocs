@@ -2,8 +2,8 @@
 # This file is distributed under the GPL v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Wp Guide 1.0.0-beta\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-guide\n"
+"Project-Id-Version: SuperDocs 1.0.0-beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/super-docs\n"
 "POT-Creation-Date: 2022-12-24 17:28:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -51,7 +51,7 @@ msgid "Delete"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "Wp Guide"
+msgid "SuperDocs"
 msgstr ""
 
 #: app/Providers/Admin/MenuServiceProvider.php:82
@@ -482,7 +482,7 @@ msgstr ""
 
 #: resources/views/admin/pages/docs/quick-view.php:15
 #: resources/views/admin/pages/products/quick-view.php:4
-msgid "Wp Guide Template"
+msgid "SuperDocs Template"
 msgstr ""
 
 #: resources/views/admin/pages/docs/quick-view.php:17
@@ -510,7 +510,7 @@ msgid "Save Changes"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/plugins/wp-guide/"
+msgid "http://wordpress.org/plugins/super-docs/"
 msgstr ""
 
 #. Description of the plugin/theme

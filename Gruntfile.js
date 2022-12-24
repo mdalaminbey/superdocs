@@ -2,9 +2,9 @@ module.exports = grunt => {
     'use strict';
 
 	const projectConfig = {
-		name    : 'wp-guide',   
+		name    : 'super-docs',   
 		srcDir  : './', 
-		distDir : `../dist/wp-guide/`,
+		distDir : `../dist/super-docs/`,
         version : '1.0.0'
 	};
 	    

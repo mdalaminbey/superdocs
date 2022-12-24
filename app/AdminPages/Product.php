@@ -1,16 +1,16 @@
 <?php
 
-namespace WpGuide\App\AdminPages;
+namespace SuperDocs\App\AdminPages;
 
-use WpGuide\Bootstrap\Application;
-use WpGuide\Bootstrap\View;
+use SuperDocs\Bootstrap\Application;
+use SuperDocs\Bootstrap\View;
 use WP_Query;
 
 class Product
 {
     public function boot()
     {
-        $docs_post_type = wp_guide_docs_post_type();
+        $docs_post_type = super_docs_post_type();
         add_action( 'admin_url', [$this, 'admin_url'] );
         add_filter( 'pre_get_posts', [$this, 'pre_get_posts'] );
         add_filter( "views_edit-{$docs_post_type}", [$this, 'post_counter'] );
@@ -24,7 +24,7 @@ class Product
     {
         if ( 'template' === $column_name ) {
             global $wpdb;
-            $templates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish'", wp_guide_template_post_type() ) );
+            $templates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish'", super_docs_template_post_type() ) );
             View::render( 'admin/pages/products/quick-view', compact( 'templates' ) );
         }
     }
@@ -34,7 +34,7 @@ class Product
         $array = [
             'cb'       => $columns['cb'],
             'title'    => $columns['title'],
-            'template' => esc_html__( 'Template', 'wp-guide' )
+            'template' => esc_html__( 'Template', 'super-docs' )
         ];
         return array_merge( $array, $columns );
     }
@@ -43,10 +43,10 @@ class Product
     {
         switch ( $column ) {
             case 'template':
-                $template_id   = get_post_meta( $post_id, 'wp-guide-template', true );
+                $template_id   = get_post_meta( $post_id, 'super-docs-template', true );
                 $template_post = get_post( $template_id );
                 if ( $post_id != $template_post->ID ) {
-                    echo "<div class='wp-guide-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
+                    echo "<div class='super-docs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                     wp_commander_render($template_post->post_title);
                     echo "</div>";
                 }
@@ -56,7 +56,7 @@ class Product
 
     public function post_counter( array $views )
     {
-        $counts      = wp_guide_docs_count( Application::$config['post_types']['docs'], 'wp-guide-product', 'product' );
+        $counts      = super_docs_count( Application::$config['post_types']['docs'], 'super-docs-product', 'product' );
         $all         = $counts->publish + $counts->future + $counts->draft + $counts->pending + $counts->private + $counts->trash;
         $counts->all = $all;
         foreach ( $views as $key => $view ) {
@@ -70,7 +70,7 @@ class Product
     public function pre_get_posts( WP_Query $query ): WP_Query
     {
         $query->set( 'meta_query', [[
-            'key'     => 'wp_guide_product',
+            'key'     => 'super_docs_product',
             'compare' => 'EXISTS'
         ]] );
         return $query;

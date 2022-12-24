@@ -1,6 +1,6 @@
 <?php
 
-namespace WpGuide\App\Widgets;
+namespace SuperDocs\App\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
@@ -12,12 +12,12 @@ class DocCategories extends Widget_Base
 {
     public function get_name()
     {
-        return 'wp-guide-doc-categories';
+        return 'super-docs-doc-categories';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Categories', 'wp-guide' );
+        return esc_html__( 'Doc Categories', 'super-docs' );
     }
 
     public function get_icon()
@@ -32,7 +32,7 @@ class DocCategories extends Widget_Base
 
     public function get_keywords()
     {
-        return ['wp-guide', 'doc', 'categories', 'knowledge base'];
+        return ['super-docs', 'doc', 'categories', 'knowledge base'];
     }
 
     protected function register_controls()
@@ -40,15 +40,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_icon',
             [
-                'label' => esc_html__( 'Category Icon', 'wp-guide' ),
+                'label' => esc_html__( 'Category Icon', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_icon',
+            'super_docs_category_icon',
             [
-                'label'   => __( 'Icon', 'wp-guide' ),
+                'label'   => __( 'Icon', 'super-docs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder',
@@ -58,9 +58,9 @@ class DocCategories extends Widget_Base
         );
 
         $this->add_control(
-            'wp_guide_category_action_icon',
+            'super_docs_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'wp-guide' ),
+                'label'   => __( 'Action Icon', 'super-docs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-down',
@@ -74,15 +74,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_uncollapse_category_icon',
             [
-                'label' => esc_html__( 'UnCollapse Category Icon', 'wp-guide' ),
+                'label' => esc_html__( 'UnCollapse Category Icon', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_CONTENT
             ]
         );
 
         $this->add_control(
-            'wp_guide_uncollapse_category_icon',
+            'super_docs_uncollapse_category_icon',
             [
-                'label'   => __( 'Icon', 'wp-guide' ),
+                'label'   => __( 'Icon', 'super-docs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-folder-open',
@@ -92,9 +92,9 @@ class DocCategories extends Widget_Base
         );
 
         $this->add_control(
-            'wp_guide_uncollapse_category_action_icon',
+            'super_docs_uncollapse_category_action_icon',
             [
-                'label'   => __( 'Action Icon', 'wp-guide' ),
+                'label'   => __( 'Action Icon', 'super-docs' ),
                 'type'    => Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'far fa-arrow-alt-circle-up',
@@ -108,15 +108,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_category_style',
             [
-                'label' => esc_html__( 'Categories', 'wp-guide' ),
+                'label' => esc_html__( 'Categories', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_icon_size',
+            'super_docs_category_icon_size',
             [
-                'label'      => esc_html__( 'Icon Size', 'wp-guide' ),
+                'label'      => esc_html__( 'Icon Size', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -131,16 +131,16 @@ class DocCategories extends Widget_Base
                     'size' => 15
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link svg' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link svg' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_action_icon_size',
+            'super_docs_category_action_icon_size',
             [
-                'label'      => esc_html__( 'Action Icon Size', 'wp-guide' ),
+                'label'      => esc_html__( 'Action Icon Size', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -155,71 +155,71 @@ class DocCategories extends Widget_Base
                     'size' => 15
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .action_icon i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .action_icon svg' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .action_icon i'   => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .action_icon svg' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ]
             ]
         );
 
         $this->start_controls_tabs(
-            'wp_guide_category_tabs'
+            'super_docs_category_tabs'
         );
 
         $this->start_controls_tab(
-            'wp_guide_category_normal_tab',
+            'super_docs_category_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'wp-guide' )
+                'label' => esc_html__( 'Normal', 'super-docs' )
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_background_color',
+            'super_docs_category_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_color',
+            'super_docs_category_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_icon_color',
+            'super_docs_category_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Icon Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link .icon' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link .icon' => 'color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_action_color',
+            'super_docs_category_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Action Icon Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link .action_icon' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link .action_icon' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -227,60 +227,60 @@ class DocCategories extends Widget_Base
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'wp_guide_category_active_tabs',
+            'super_docs_category_active_tabs',
             [
-                'label' => esc_html__( 'Active', 'wp-guide' )
+                'label' => esc_html__( 'Active', 'super-docs' )
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_active_background_color',
+            'super_docs_category_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#4f46e5',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .active' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_active_color',
+            'super_docs_category_active_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .active' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_active_icon_color',
+            'super_docs_category_active_icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Icon Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .active .icon' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active .icon' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_category_active_action_color',
+            'super_docs_category_active_action_color',
             [
-                'label'     => esc_html__( 'Action Icon Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Action Icon Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .active .action_icon' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .active .action_icon' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -290,9 +290,9 @@ class DocCategories extends Widget_Base
         $this->end_controls_tabs();
 
         $this->add_responsive_control(
-            'wp_guide_category_padding',
+            'super_docs_category_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -304,7 +304,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .submenu-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .submenu-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -313,16 +313,16 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'           => 'wp_guide_category_typography',
-                'label'          => esc_html__( 'Typography', 'wp-guide' ),
-                'selector'       => '{{WRAPPER}} .wp-guide-doc-categories .submenu-link .title',
+                'name'           => 'super_docs_category_typography',
+                'label'          => esc_html__( 'Typography', 'super-docs' ),
+                'selector'       => '{{WRAPPER}} .super-docs-doc-categories .submenu-link .title',
                 'exclude'        => ['font_style', 'text_decoration', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -336,7 +336,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -352,15 +352,15 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_documents_style',
             [
-                'label' => esc_html__( 'Documents', 'wp-guide' ),
+                'label' => esc_html__( 'Documents', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->add_control(
-            'wp_guide_docs_gap',
+            'super_docs_gap',
             [
-                'label'      => esc_html__( 'Gap between', 'wp-guide' ),
+                'label'      => esc_html__( 'Gap between', 'super-docs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
@@ -375,28 +375,28 @@ class DocCategories extends Widget_Base
                     'size' => 5
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents ul' => 'gap: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'gap: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_docs_background_color',
+            'super_docs_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents ul' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_responsive_control(
-            'wp_guide_docs_padding',
+            'super_docs_padding',
             [
-                'label'      => esc_html__( 'Padding', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -408,16 +408,16 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
         );
 
         $this->add_responsive_control(
-            'wp_guide_docs_margin',
+            'super_docs_margin',
             [
-                'label'      => esc_html__( 'Margin', 'wp-guide' ),
+                'label'      => esc_html__( 'Margin', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -429,7 +429,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -437,8 +437,8 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'       => 'wp_guide_docs_border',
-                'selector'   => '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents',
+                'name'       => 'super_docs_border',
+                'selector'   => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents',
                 'size_units' => ['px'],
                 'separator'  => 'before'
             ]
@@ -449,44 +449,44 @@ class DocCategories extends Widget_Base
         $this->start_controls_section(
             'section_document_style',
             [
-                'label' => esc_html__( 'Document', 'wp-guide' ),
+                'label' => esc_html__( 'Document', 'super-docs' ),
                 'tab'   => Controls_Manager::TAB_STYLE
             ]
         );
 
         $this->start_controls_tabs(
-            'wp_guide_doc_tabs'
+            'super_docs_doc_tabs'
         );
 
         $this->start_controls_tab(
-            'wp_guide_doc_normal_tab',
+            'super_docs_doc_normal_tab',
             [
-                'label' => esc_html__( 'Normal', 'wp-guide' )
+                'label' => esc_html__( 'Normal', 'super-docs' )
             ]
         );
 
         $this->add_control(
-            'wp_guide_doc_background_color',
+            'super_docs_doc_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents li' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li' => 'background-color: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_doc_color',
+            'super_docs_doc_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents li a' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li a' => 'color: {{VALUE}};'
                 ]
             ]
         );
@@ -494,34 +494,34 @@ class DocCategories extends Widget_Base
         $this->end_controls_tab();
 
         $this->start_controls_tab(
-            'wp_guide_doc_active_tab',
+            'super_docs_doc_active_tab',
             [
-                'label' => esc_html__( 'Active', 'wp-guide' )
+                'label' => esc_html__( 'Active', 'super-docs' )
             ]
         );
 
         $this->add_control(
-            'wp_guide_doc_active_background_color',
+            'super_docs_doc_active_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Background Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#f1f5f9',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents .active-doc' => 'background-color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc' => 'background-color: {{VALUE}} !important;'
                 ]
             ]
         );
 
         $this->add_control(
-            'wp_guide_doc_active_color',
+            'super_docs_doc_active_color',
             [
-                'label'     => esc_html__( 'Color', 'wp-guide' ),
+                'label'     => esc_html__( 'Color', 'super-docs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
                 'default'   => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents .active-doc a' => 'color: {{VALUE}} !important;'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc a' => 'color: {{VALUE}} !important;'
                 ]
             ]
         );
@@ -529,9 +529,9 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'       => 'wp_guide_doc_active_border',
+                'name'       => 'super_docs_doc_active_border',
                 'size_units' => ['px'],
-                'selector'   => '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents .active-doc'
+                'selector'   => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents .active-doc'
             ]
         );
 
@@ -540,9 +540,9 @@ class DocCategories extends Widget_Base
         $this->end_controls_tabs();
 
         $this->add_responsive_control(
-            'wp_guide_doc_padding',
+            'super_docs_doc_padding',
             [
-                'label'      => esc_html__( 'Padding (px)', 'wp-guide' ),
+                'label'      => esc_html__( 'Padding (px)', 'super-docs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [
@@ -554,7 +554,7 @@ class DocCategories extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator'  => 'before'
             ]
@@ -563,16 +563,16 @@ class DocCategories extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name'           => 'wp_guide_doc_typography',
-                'label'          => esc_html__( 'Typography', 'wp-guide' ),
-                'selector'       => '{{WRAPPER}} .wp-guide-doc-categories .submenu .documents li a',
+                'name'           => 'super_docs_doc_typography',
+                'label'          => esc_html__( 'Typography', 'super-docs' ),
+                'selector'       => '{{WRAPPER}} .super-docs-doc-categories .submenu .documents li a',
                 'exclude'        => ['font_style', 'letter_spacing'],
                 'fields_options' => [
                     'typography'     => [
                         'default' => 'custom'
                     ],
                     'font_size'      => [
-                        'label'      => esc_html__( 'Font Size (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Font Size (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '14',
                             'unit' => 'px'
@@ -586,7 +586,7 @@ class DocCategories extends Widget_Base
                         'default' => '600'
                     ],
                     'line_height'    => [
-                        'label'      => esc_html__( 'Line Height (px)', 'wp-guide' ),
+                        'label'      => esc_html__( 'Line Height (px)', 'super-docs' ),
                         'default'    => [
                             'size' => '17',
                             'unit' => 'px'
@@ -608,14 +608,14 @@ class DocCategories extends Widget_Base
 
 		if ( $elementor->editor->is_edit_mode() || is_preview()) {
 			$docs = get_posts([
-				'post_type' => wp_guide_docs_post_type(),
+				'post_type' => super_docs_post_type(),
 				'meta_query' => [
 					[
-						'key'     => 'wp_guide_product',
+						'key'     => 'super_docs_product',
 						'compare' => 'NOT EXISTS'
 					],
 					[
-						'key'     => 'wp_guide_category',
+						'key'     => 'super_docs_category',
 						'compare' => 'NOT EXISTS'
 					],
 					[
@@ -650,19 +650,19 @@ class DocCategories extends Widget_Base
 				padding: 0;
 			}
 
-			.wp-guide-doc-categories .submenu .submenu-link {
+			.super-docs-doc-categories .submenu .submenu-link {
 				display: block;
 				text-decoration: none;
 			}
-			.wp-guide-doc-categories .submenu .submenu-link .action_icon {
+			.super-docs-doc-categories .submenu .submenu-link .action_icon {
 				float: right;
 			}
-			.wp-guide-doc-categories .submenu .documents ul {
+			.super-docs-doc-categories .submenu .documents ul {
 				display: flex;
 				flex-direction: column;
 			}
 		</style>
-		<div class="wp-guide-doc-categories">
+		<div class="super-docs-doc-categories">
 			<ul>
 				<?php foreach($categories as $category):
                     if($category['categoryPostId'] == 0) { 
@@ -672,7 +672,7 @@ class DocCategories extends Widget_Base
 					$activeCategory  = false;
 					if(!empty($category['docs'])) {
 						$docs = get_posts([
-							'post_type' => wp_guide_docs_post_type(),
+							'post_type' => super_docs_post_type(),
 							'orderby'   => 'post__in',
 							'post__in'  => $category['docs']
 						]);
@@ -687,19 +687,19 @@ class DocCategories extends Widget_Base
 						<li class="submenu">
 							<a href="javascript:void(0)" class="submenu-link <?php wp_commander_render($activeCategory ? 'active': '')?>">
 								<span class="icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['wp_guide_category_icon'])?>
+									<?php Icons_Manager::render_icon($settings['super_docs_category_icon'])?>
 								</span>
 								<span class="icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['wp_guide_uncollapse_category_icon'])?>
+									<?php Icons_Manager::render_icon($settings['super_docs_uncollapse_category_icon'])?>
 								</span>
 								<span class="title">
 									<?php wp_commander_render($categoryTitle)?>
 								</span>
 								<span class="action_icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['wp_guide_category_action_icon'])?>
+									<?php Icons_Manager::render_icon($settings['super_docs_category_action_icon'])?>
 								</span>
 								<span class="action_icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['wp_guide_uncollapse_category_action_icon'])?>
+									<?php Icons_Manager::render_icon($settings['super_docs_uncollapse_category_action_icon'])?>
 								</span>
 							</a>
 							<div class="documents" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">

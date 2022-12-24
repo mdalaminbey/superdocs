@@ -1,5 +1,5 @@
 {
-  "name": "wp-guide",
+  "name": "super-docs",
   "version": "1.0.0",
   "description": "",
   "main": "tailwind.config.js",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doatkolom/wp-guide.git"
+    "url": "git+https://github.com/doatkolom/super-docs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/doatkolom/wp-guide/issues"
+    "url": "https://github.com/doatkolom/super-docs/issues"
   },
-  "homepage": "https://github.com/doatkolom/wp-guide#readme"
+  "homepage": "https://github.com/doatkolom/super-docs#readme"
 }

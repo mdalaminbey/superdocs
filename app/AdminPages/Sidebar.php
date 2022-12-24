@@ -1,6 +1,6 @@
 <?php
 
-namespace WpGuide\App\AdminPages;
+namespace SuperDocs\App\AdminPages;
 
 class Sidebar
 {

@@ -1,8 +1,8 @@
 <?php
 
-$docsParentClass     = 'wp_guide_product_content_' . $productId;
-$categoryParentClass = 'wp_guide_product_' . $productId;
-$sortMethod          = 'wp_guide_docs_sort_'. $productId;
+$docsParentClass     = 'super_docs_product_content_' . $productId;
+$categoryParentClass = 'super_docs_product_' . $productId;
+$sortMethod          = 'super_docs_sort_'. $productId;
 
 ?>
 jQuery( function($) {
@@ -31,7 +31,7 @@ jQuery( function($) {
 				}
 			}
 			jQuery.ajax({
-				url: "<?php wp_commander_render( get_rest_url( null, 'wp-guide/category/order' ) )?>",
+				url: "<?php wp_commander_render( get_rest_url( null, 'super-docs/category/order' ) )?>",
 				method: 'POST',
 				beforeSend: function(xhr) {
 					xhr.setRequestHeader( 'X-WP-Nonce', "<?php wp_commander_render( wp_create_nonce( 'wp_rest' ) )?>" );

@@ -1,17 +1,17 @@
 <?php
 
-namespace WpGuide\App\Widgets;
+namespace SuperDocs\App\Widgets;
 
 use Elementor\Widget_Base;
 
 class DocContent extends Widget_Base {
 
 	public function get_name() {
-		return 'wp-guide-doc-content';
+		return 'super-docs-doc-content';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Doc Content', 'wp-guide' );
+		return esc_html__( 'Doc Content', 'super-docs' );
 	}
 
 	public function get_icon() {
@@ -23,13 +23,13 @@ class DocContent extends Widget_Base {
 	}
 
 	public function get_keywords() {
-		return [ 'wp-guide', 'doc', 'content', 'knowledge base' ];
+		return [ 'super-docs', 'doc', 'content', 'knowledge base' ];
 	}
 
 	protected function render() {
 		$elementor = \Elementor\Plugin::$instance;
 		global $post;
-		if( $elementor->editor->is_edit_mode() || is_preview() || (isset($post->post_type) && wp_guide_template_post_type() === $post->post_type)) {
+		if( $elementor->editor->is_edit_mode() || is_preview() || (isset($post->post_type) && super_docs_template_post_type() === $post->post_type)) {
 			?>
 
 <article id="post-697" class="post-697 docs type-docs status-publish hentry" itemscope="" itemtype="http://schema.org/Article">
@@ -111,7 +111,7 @@ class DocContent extends Widget_Base {
                 </article>
 <?php
 		} else { ?>
-			{{ Wp Guide Doc Content }}
+			{{ SuperDocs Doc Content }}
 		<?php }
 	}
 }

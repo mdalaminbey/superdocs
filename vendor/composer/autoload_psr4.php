@@ -6,8 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WpGuide\\Bootstrap\\' => array($baseDir . '/bootstrap'),
-    'WpGuide\\App\\' => array($baseDir . '/app'),
     'WpCommander\\' => array($vendorDir . '/doatkolom/wp-commander/src'),
+    'SuperDocs\\Bootstrap\\' => array($baseDir . '/bootstrap'),
+    'SuperDocs\\App\\' => array($baseDir . '/app'),
     'DoatKolom\\Ui\\' => array($vendorDir . '/doatkolom/ui/src'),
 );

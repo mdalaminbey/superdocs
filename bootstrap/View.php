@@ -1,6 +1,6 @@
 <?php
 
-namespace WpGuide\Bootstrap;
+namespace SuperDocs\Bootstrap;
 
 use WpCommander\View\View as WpCommanderView;
 

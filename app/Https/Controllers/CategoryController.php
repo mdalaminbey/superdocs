@@ -1,9 +1,9 @@
 <?php
 
-namespace WpGuide\App\Https\Controllers;
+namespace SuperDocs\App\Https\Controllers;
 
 use DoatKolom\Ui\Utils\Common;
-use WpGuide\Bootstrap\View;
+use SuperDocs\Bootstrap\View;
 use WP_REST_Request;
 
 class CategoryController
@@ -39,7 +39,7 @@ class CategoryController
             'data'    => [
                 'categoryName' => $wpRestRequest->get_param( 'categoryName' )
             ],
-            'message' => esc_html__( 'Category updated successfully!', 'wp-guide' )
+            'message' => esc_html__( 'Category updated successfully!', 'super-docs' )
         ] );
     }
 
@@ -56,7 +56,7 @@ class CategoryController
         self::removeCategoryFormCategories( $wpRestRequest->get_param( 'productId' ), $wpRestRequest->get_param( 'categoryPostId' ) );
 
         wp_send_json( [
-            'message' => esc_html__( 'Category deleted successfully!', 'wp-guide' )
+            'message' => esc_html__( 'Category deleted successfully!', 'super-docs' )
         ] );
     }
 
@@ -102,21 +102,21 @@ class CategoryController
         }
 
         wp_send_json( [
-            'message' => esc_html__( 'Sorting complete successfully!', 'wp-guide' )
+            'message' => esc_html__( 'Sorting complete successfully!', 'super-docs' )
         ] );
     }
 
     public function create( WP_REST_Request $wpRestRequest )
     {
         $categoryPost = wp_insert_post( [
-            'post_type'      => wp_guide_docs_post_type(),
+            'post_type'      => super_docs_post_type(),
             'post_title'     => $wpRestRequest->get_param( 'categoryName' ),
             'post_parent'    => $wpRestRequest->get_param( 'productId' ),
             'post_status'    => 'publish',
             'post_mime_type' => 'category'
         ] );
 
-        add_post_meta( $categoryPost, 'wp_guide_category', true );
+        add_post_meta( $categoryPost, 'super_docs_category', true );
         add_post_meta( $categoryPost, 'productId', $wpRestRequest->get_param( 'productId' ) );
 
         $categoriesSortList = get_post_meta( $wpRestRequest->get_param( 'productId' ), 'categories', true );
@@ -136,8 +136,8 @@ class CategoryController
 
         wp_send_json( [
             'title'   => $wpRestRequest->get_param( 'categoryName' ),
-            'head'    => self::getDocHeadContent( 'wp_guide_category_action_' . $productId, $categoryPost ),
-            'content' => '<div class="px-6 py-4 grid gap-3 grid-cols-1 wp_guide_product_content_' . $wpRestRequest->get_param( 'productId' ) . ' ui-sortable" data-category="' . $categoryPost . '">',
+            'head'    => self::getDocHeadContent( 'super_docs_category_action_' . $productId, $categoryPost ),
+            'content' => '<div class="px-6 py-4 grid gap-3 grid-cols-1 super_docs_product_content_' . $wpRestRequest->get_param( 'productId' ) . ' ui-sortable" data-category="' . $categoryPost . '">',
             'icon'    => Common::moveIcon()
         ] );
     }
@@ -146,10 +146,10 @@ class CategoryController
     {
         return '<div x-data="' . $categoryActionKey . '">
             <button type="button" x-on:click="showCategoryEditAlert($data)" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400" data-categorypostid="' . $categoryId . '">
-                ' . esc_html__( 'Edit', 'wp-guide' ) . '
+                ' . esc_html__( 'Edit', 'super-docs' ) . '
             </button>
             <button type="button" x-on:click="showCategoryDeleteAlert($data)" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-danger hover:bg-danger-hover" data-categorypostid="' . $categoryId . '">
-            ' . esc_html__( 'Delete', 'wp-guide' ) . '
+            ' . esc_html__( 'Delete', 'super-docs' ) . '
             </button>
         </div>';
     }
