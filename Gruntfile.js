@@ -37,7 +37,7 @@ module.exports = grunt => {
 						'!' + projectConfig.srcDir + '**/*-beta/**',
 						'!' + projectConfig.srcDir + '**/scss/**',
 						'!' + projectConfig.srcDir + '**/sass/**',
-						'!' + projectConfig.srcDir + '**/src/**',
+						// '!' + projectConfig.srcDir + '**/src/**',
 						'!' + projectConfig.srcDir + '**/.*',
 						'!' + projectConfig.srcDir + '**/build/*.txt',
 						'!' + projectConfig.srcDir + '**/*.map',

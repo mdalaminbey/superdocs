@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec6f1ee1d051cd763b3db32b55066017",
+    "content-hash": "28f1a7b93b6e03d5a981c4c226c309b6",
     "packages": [
         {
             "name": "doatkolom/ui",

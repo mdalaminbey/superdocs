@@ -8,5 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     '437783d9527d26076c208ba4b7291c10' => $vendorDir . '/doatkolom/ui/src/Helpers/Helper.php',
     '1cc9ea721a0565d807e0d13296ede723' => $vendorDir . '/doatkolom/wp-commander/src/Helpers/Helper.php',
-    '4e6784c843075e2c268e095941d0bf4e' => $baseDir . '/app/helpers/helper.php',
+    '95310056b4646506c235b6e4434fc5a3' => $baseDir . '/app/helpers/helper.php',
 );

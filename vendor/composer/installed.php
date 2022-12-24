@@ -3,7 +3,7 @@
         'name' => 'doatkolom/superdocs',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'ddcca1dd06233224777645c536801907ea88b0f0',
+        'reference' => '28e810194a84dac6f05ebb6b29656fe564da9e1d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'doatkolom/superdocs' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ddcca1dd06233224777645c536801907ea88b0f0',
+            'reference' => '28e810194a84dac6f05ebb6b29656fe564da9e1d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -4,7 +4,7 @@
  * Plugin Name:       SuperDocs
  * Plugin URI:        http://wordpress.org/plugins/superdocs/
  * Description:       The Knowledge Base WordPress Plugin is an easy-to-use tool for creating a comprehensive knowledge base With its intuitive and user-friendly interface, this plugin helps you quickly and efficiently create a powerful knowledge base for your website
- * Version:           1.0.0-beta
+ * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            DoatKolom
