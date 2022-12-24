@@ -7,7 +7,7 @@ $categoryPost        = get_post( $categoryPostId );
 $categoryParentClass = 'wp_guide_product_' . $productId;
 ?>
 
-<div class="p-7" x-data="<?php echo $dataKey ?>">
+<div class="p-7" x-data="<?php wp_commander_render($dataKey) ?>">
   <h2 class="line-clamp-1 dark:text-navy-100 text-xl font-bold tracking-wide text-slate-700 lg:text-base"><?php esc_html_e('Edit Category', 'wp-guide')?></h2>
   <hr class="mt-2" />
   <div class="mt-4">
@@ -42,7 +42,7 @@ $categoryParentClass = 'wp_guide_product_' . $productId;
 				data: jqueryForm.serialize(),
 				success: function(data) {
 					let categoryContent = document.querySelector('[data-category="<?php wp_commander_render( $categoryPostId )?>"]');
-					let ChildNo = DoatKolomUiUtils.getChildNo(categoryContent.closest('.accordionItem'), categoryContent.closest('.<?php echo $categoryParentClass ?>'));
+					let ChildNo = DoatKolomUiUtils.getChildNo(categoryContent.closest('.accordionItem'), categoryContent.closest('.<?php wp_commander_render($categoryParentClass) ?>'));
 					modal.getCategories.accordions[ChildNo - 1].title = data.data.categoryName
 				},
 				complete: function() {

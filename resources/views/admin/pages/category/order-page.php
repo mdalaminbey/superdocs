@@ -28,16 +28,16 @@ $wpGuideDocs = [];
 
 function wp_guide_category_content($productId, $categoryId, $docs = []) {
 	?>
-	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php echo 'wp_guide_product_content_'. $productId ?>" data-category="<?php echo $categoryId?>">
+	<div class="grid gap-3 grid-cols-1 px-6 py-4 <?php wp_commander_render('wp_guide_product_content_'. $productId) ?>" data-category="<?php wp_commander_render($categoryId)?>">
 		<?php foreach ($docs as $key => $doc): 
 			global $wpGuideDocs;
 			array_push($wpGuideDocs, $doc->ID);
 		?>
-			<div class="bg-slate-50 font-primary capitalize shadow p-2" data-doc="<?php echo $doc->ID?>">
+			<div class="bg-slate-50 font-primary capitalize shadow p-2" data-doc="<?php wp_commander_render($doc->ID) ?>">
 				<div class="float-left">
-					<?php echo Common::moveIcon() ?>
+					<?php wp_commander_render(Common::moveIcon()) ?>
 				</div>
-				<div class="float-left pl-2"><?php echo $doc->post_title?></div>
+				<div class="float-left pl-2"><?php wp_commander_render($doc->post_title)?></div>
 				<div class="float-right">
 					<a href="<?php wp_commander_render( get_permalink($doc) )?>" target="_blank" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-success">
 						<?php esc_html_e('View', 'wp-guide')?>
@@ -59,11 +59,11 @@ foreach($categoriesSortList as $categorySort) {
 			'title' => $category->post_title,
 			'head' => function() use( $category, $categoryActionKey ) {
 				?>
-					<div x-data="<?php echo $categoryActionKey?>">
-						<button type="button" x-on:click="showCategoryEditAlert($data)" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400" data-categorypostid="<?php echo $category->ID?>">
+					<div x-data="<?php wp_commander_render($categoryActionKey)?>">
+						<button type="button" x-on:click="showCategoryEditAlert($data)" class="rounded-md text-xs px-4 py-0.5 shadow text-neutral-50 !bg-amber-400" data-categorypostid="<?php wp_commander_render($category->ID) ?>">
 							<?php esc_html_e('Edit', 'wp-guide')?>
 						</button>
-						<button type="button" x-on:click="showCategoryDeleteAlert($data)" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-danger hover:bg-danger-hover" data-categorypostid="<?php echo $category->ID?>">
+						<button type="button" x-on:click="showCategoryDeleteAlert($data)" class="rounded-md text-xs px-4 py-0.5 mr-7 shadow text-neutral-50 !bg-danger hover:bg-danger-hover" data-categorypostid="<?php wp_commander_render($category->ID)?>">
 							<?php esc_html_e('Delete', 'wp-guide')?>
 						</button>
 					</div>
@@ -139,7 +139,7 @@ foreach($categoriesSortList as $categorySort) {
 
 	?>
 
-	<div x-data="<?php echo $categoryDataKey?>">
+	<div x-data="<?php wp_commander_render($categoryDataKey)?>">
 		<div class="justify-between mb-10">
 			<h4 class="text-[20px] font-bold font-primary text-heading mb-9 inline"><?php esc_html_e('Category List', 'wp-guide')?></h4>
 			<div class="float-right">
@@ -156,7 +156,7 @@ foreach($categoriesSortList as $categorySort) {
 	/**
 	 * Create category
 	 */
-	Alpine.data('<?php echo $categoryDataKey?>', () => ({
+	Alpine.data('<?php wp_commander_render($categoryDataKey) ?>', () => ({
 		createCategory($data) {
 			var modal = Alpine.store('DoatKolomUiModal');
 			modal.setContentByApi('<?php wp_commander_render(wp_commander_url_add_params(get_rest_url( null, 'wp-guide/category/create' ), ['productId' => $productId]))?>', <?php wp_commander_render(json_encode($headers)); ?>, '<?php wp_commander_render( Common::generateRandomString() ); ?>');
@@ -168,7 +168,7 @@ foreach($categoriesSortList as $categorySort) {
 	/**
 	 * Category Edit And Delete 
 	 */
-	Alpine.data('<?php echo $categoryActionKey?>', () => ({
+	Alpine.data('<?php wp_commander_render($categoryActionKey)?>', () => ({
 		showCategoryDeleteAlert($data) {
 			this.openCategoryActionModal($data, '/delete')
 		},
@@ -179,7 +179,7 @@ foreach($categoriesSortList as $categorySort) {
 			var modal          = Alpine.store('DoatKolomUiModal');
 			var categoryPostId = this.$el.dataset.categorypostid;
 			var url            = new URL('<?php wp_commander_render( get_rest_url( null, 'wp-guide/category' ) )?>' + api);
-			url.searchParams.set('productId', '<?php echo $productId?>');
+			url.searchParams.set('productId', '<?php wp_commander_render($productId) ?>');
 			url.searchParams.set('categoryPostId', categoryPostId);
 			modal.setContentByApi(url.toString(), <?php wp_commander_render( json_encode($headers) ); ?>);
 			modal.pushData('getCategories', $data);

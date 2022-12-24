@@ -6,7 +6,7 @@ $sortMethod          = 'wp_guide_docs_sort_'. $productId;
 
 ?>
 jQuery( function($) {
-	var	<?php echo $sortMethod ?> = function(event, ui) {
+	var	<?php wp_commander_render($sortMethod) ?> = function(event, ui) {
 		if(event.type === 'sortstop') {
 			/**
 			 * check if dragged is docs
@@ -14,14 +14,14 @@ jQuery( function($) {
 			let draggedDocs = {};
 
 			if(!ui.item[0].classList.contains('accordionItem')) {
-				var category = ui.item[0].closest('.<?php echo $docsParentClass?>');
+				var category = ui.item[0].closest('.<?php wp_commander_render($docsParentClass)?>');
 				draggedDocs  = { categoryPostId: category.dataset.category, docId: ui.item[0].dataset.doc };
 			}
 
-			let categoriesElement = document.querySelector(".<?php echo $categoryParentClass ?>");
+			let categoriesElement = document.querySelector(".<?php wp_commander_render($categoryParentClass) ?>");
 			var categories = [];
 			for (let category of categoriesElement.children) {
-				var docsElement = category.querySelector('.<?php echo $docsParentClass ?>');
+				var docsElement = category.querySelector('.<?php wp_commander_render($docsParentClass) ?>');
 				if(docsElement) {
 					var docs = [];
 					for(let doc of docsElement.children) {
@@ -36,7 +36,7 @@ jQuery( function($) {
 				beforeSend: function(xhr) {
 					xhr.setRequestHeader( 'X-WP-Nonce', "<?php wp_commander_render( wp_create_nonce( 'wp_rest' ) )?>" );
 				},
-				data: {categories, draggedDocs, productId: '<?php echo $productId?>' }
+				data: {categories, draggedDocs, productId: '<?php wp_commander_render($productId) ?>' }
 			})
 		}
 	}
@@ -44,20 +44,20 @@ jQuery( function($) {
 	/**
 	 * Category sort
 	 */
-    var <?php echo $categoryParentClass ?> = $( ".<?php echo $categoryParentClass ?>" );
-    <?php echo $categoryParentClass ?>.sortable({
-        stop: <?php echo $sortMethod ?>,
-		connectWith: ".<?php echo $categoryParentClass ?>"
+    var <?php wp_commander_render($categoryParentClass) ?> = $( ".<?php wp_commander_render($categoryParentClass) ?>" );
+    <?php wp_commander_render($categoryParentClass) ?>.sortable({
+        stop: <?php wp_commander_render($sortMethod) ?>,
+		connectWith: ".<?php wp_commander_render($categoryParentClass) ?>"
     }).disableSelection();
-    <?php echo $categoryParentClass ?>.on("sortchange",<?php echo $sortMethod ?>);
+    <?php wp_commander_render($categoryParentClass) ?>.on("sortchange",<?php wp_commander_render($sortMethod) ?>);
 
 	/**
 	 * Docs sort
 	 */
-    var <?php echo $docsParentClass ?> = $( ".<?php echo $docsParentClass ?>" );
-    <?php echo $docsParentClass ?>.sortable({
-        stop: <?php echo $sortMethod ?>,
-		connectWith: ".<?php echo $docsParentClass ?>"
+    var <?php wp_commander_render($docsParentClass) ?> = $( ".<?php wp_commander_render($docsParentClass) ?>" );
+    <?php wp_commander_render($docsParentClass) ?>.sortable({
+        stop: <?php wp_commander_render($sortMethod) ?>,
+		connectWith: ".<?php wp_commander_render($docsParentClass) ?>"
     }).disableSelection();
-    <?php echo $docsParentClass ?>.on("sortchange",<?php echo $sortMethod ?>);
+    <?php wp_commander_render($docsParentClass) ?>.on("sortchange",<?php wp_commander_render($sortMethod) ?>);
 } );

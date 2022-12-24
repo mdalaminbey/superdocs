@@ -5,7 +5,7 @@
 			<select name="productId">
 				<option value="0"><?php esc_html_e( "Main Page (no product)", "wp-guide" )?></option>
 				<?php foreach ( $products as $product ) {?>
-					<option value="<?php echo $product->ID ?>"><?php echo $product->post_title ?></option>
+					<option value="<?php wp_commander_render($product->ID) ?>"><?php wp_commander_render($product->post_title) ?></option>
 				<?php }?>
 			</select>
 		</label>
@@ -16,7 +16,7 @@
 			<select name="wp-guide-template">
 				<option value="0"><?php esc_html_e( "Product Default", "wp-guide" )?></option>
 				<?php foreach ( $templates as $template ) {?>
-					<option value="<?php echo $template->ID ?>"><?php echo $template->post_title ?></option>
+					<option value="<?php wp_commander_render($template->ID) ?>"><?php wp_commander_render($template->post_title) ?></option>
 				<?php }?>
 			</select>
 		</label>

@@ -24,6 +24,7 @@ class MenuServiceProvider extends ServiceProvider
         } elseif ( wp_commander_is_admin_page( 'edit', ['post_type' => wp_guide_docs_post_type(), 'product' => '!true'] ) ) {
             ( new Doc )->boot();
         } elseif ( wp_commander_is_admin_page( 'admin-ajax', ['post_type' => wp_guide_docs_post_type()] ) ) {
+            check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
             $type = isset( $_REQUEST['post_ID'] ) ? get_post_mime_type( intval( $_REQUEST['post_ID'] ) ) : false;
             if ( 'doc' === $type ) {
                 ( new Doc )->boot();
@@ -38,34 +39,41 @@ class MenuServiceProvider extends ServiceProvider
     public function save_post( int $post_ID, WP_Post $post)
     {
         global $wpdb;
-        if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=wp-guide-sidebar-category' ) ) ) {
-            $type = 'product';
-            add_post_meta( $post_ID, 'wp_guide_product', true );
-        } else {
-            $type = 'doc';
-        }
 
-        $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_mime_type = %s WHERE ID=%d", $type, $post_ID ) );
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+            if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=wp-guide-sidebar-category' ) ) ) {
+                $type = 'product';
+                add_post_meta( $post_ID, 'wp_guide_product', true );
+            } else {
+                $type = 'doc';
+            }
+            $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_mime_type = %s WHERE ID=%d", $type, $post_ID ) );
+        }
         
-        if( !empty($_POST['productId']) ) {
+        if( !empty($_POST['productId']) ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
             $oldProductId = get_post_meta( $post_ID, 'productId', true);
-            if($oldProductId != $_POST['productId']) {
+            if($oldProductId != $_POST['productId']) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
                 $categoryPostId = get_post_meta($post_ID, 'categoryId', true);
                 if($categoryPostId) {
                     CategoryController::removeProductFormCategories($post_ID, $categoryPostId, $oldProductId,);
                     delete_post_meta($post_ID, 'categoryId');
                 }
             }
-            update_post_meta( $post_ID, 'productId', sanitize_text_field( wp_unslash( $_POST['productId'] ) ) );
+            //phpcs:ignore WordPress.Security.NonceVerification.Missing
+            $productId = sanitize_text_field( wp_unslash( $_POST['productId'] ) );
+            update_post_meta( $post_ID, 'productId',  $productId);
 
             // $parent_post = get_post($post->post_parent);
 
             // if($parent_post && $parent_post->post_mime_type !== 'category') {
-                $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_parent = %s WHERE ID=%d", $_POST['productId'], $post_ID ) );
+                $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}posts SET post_parent = %s WHERE ID=%d", $productId, $post_ID ) );
             // }
         }
 
+        //phpcs:ignore WordPress.Security.NonceVerification.Missing
         if ( !empty( $_POST['wp-guide-template'] ) ) {
+            //phpcs:ignore WordPress.Security.NonceVerification.Missing
             update_post_meta( $post_ID, 'wp-guide-template', sanitize_text_field( wp_unslash( $_POST['wp-guide-template'] ) ) );
         }
     }

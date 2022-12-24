@@ -31,14 +31,14 @@ class Doc
     {
         global $wpdb;
         $products            = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", wp_guide_docs_post_type() ) );
-        $selected_product_id = isset( $_GET['filter-by-product'] ) ? intval( $_GET['filter-by-product'] ) : 0;
+        $selected_product_id = isset( $_GET['filter-by-product'] ) ? intval( $_GET['filter-by-product'] ) : 0; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         View::render( 'admin/pages/docs/cpt-filter', compact( 'selected_product_id', 'products' ) );
     }
 
     public function pre_get_posts( WP_Query $query )
     {
-        if ( !empty( $_GET['filter-by-product'] ) ) {
-            $query->set( 'post_parent', intval( $_GET['filter-by-product'] ) );
+        if ( !empty( $_GET['filter-by-product'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $query->set( 'post_parent', intval( $_GET['filter-by-product'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         }
 
         $query->set( 'meta_query', [
@@ -72,7 +72,7 @@ class Doc
                 $product = get_post( get_post_meta($post_id, 'productId', true) );
                 if ( $product->ID != $post_id ) {
                     echo "<div class='wp-guide-product' data-product='" . wp_json_encode( ['id' => $product->ID, 'title' => $product->post_title] ) . "'>";
-                    echo $product->post_title;
+                    wp_commander_render($product->post_title);
                     echo "</div>";
                 }
                 break;
@@ -82,7 +82,7 @@ class Doc
                 $template_post = get_post( $template_id );
                 if ( $post_id != $template_post->ID ) {
                     echo "<div class='wp-guide-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
-                    echo $template_post->post_title;
+                    wp_commander_render($template_post->post_title);
                     echo "</div>";
                 }
         }

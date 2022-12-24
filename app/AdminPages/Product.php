@@ -47,7 +47,7 @@ class Product
                 $template_post = get_post( $template_id );
                 if ( $post_id != $template_post->ID ) {
                     echo "<div class='wp-guide-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
-                    echo $template_post->post_title;
+                    wp_commander_render($template_post->post_title);
                     echo "</div>";
                 }
                 break;

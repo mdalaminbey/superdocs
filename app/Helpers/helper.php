@@ -24,6 +24,7 @@ function wp_guide_docs_count( $type = 'post', $perm = '', $mim_type = false )
 
     $query .= $wpdb->prepare( " AND post_mime_type = %s GROUP BY post_status", $mim_type );
 
+    //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Already prepared
     $results = (array) $wpdb->get_results( $wpdb->prepare( $query, $type ), ARRAY_A );
     $counts  = array_fill_keys( get_post_stati(), 0 );
 

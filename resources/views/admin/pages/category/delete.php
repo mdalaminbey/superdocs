@@ -6,7 +6,7 @@ $categoryParentClass = 'wp_guide_product_' . $productId;
 
 ?>
 
-<div class="p-7" x-data="<?php echo $dataKey ?>">
+<div class="p-7" x-data="<?php wp_commander_render($dataKey) ?>">
   <h2 class="line-clamp-1 dark:text-navy-100 text-xl font-bold tracking-wide text-slate-700 lg:text-base">
   	<?php esc_html_e( 'Are you sure to delete this category?', 'wp-guide' )?>
   </h2>
@@ -41,7 +41,7 @@ $categoryParentClass = 'wp_guide_product_' . $productId;
             },
             data: { docs, productId: '<?php wp_commander_render( $productId )?>', categoryPostId: '<?php wp_commander_render( $categoryPostId )?>' },
             complete: function() {
-                let ChildNo = DoatKolomUiUtils.getChildNo(categoryContent.closest('.accordionItem'), categoryContent.closest('.<?php echo $categoryParentClass ?>'));
+                let ChildNo = DoatKolomUiUtils.getChildNo(categoryContent.closest('.accordionItem'), categoryContent.closest('.<?php wp_commander_render($categoryParentClass) ?>'));
                 delete modal.getCategories.accordions[ChildNo - 1];
                 modal.changeStatus()
             }

@@ -5,7 +5,7 @@
 			<select name="wp-guide-template">
 				<option value="0"><?php esc_html_e( "-- Select Template --", "wp-guide" )?></option>
 				<?php foreach ( $templates as $template ) {?>
-					<option value="<?php echo $template->ID ?>"><?php echo $template->post_title ?></option>
+					<option value="<?php wp_commander_render($template->ID) ?>"><?php wp_commander_render($template->post_title) ?></option>
 				<?php }?>
 			</select>
 		</label>

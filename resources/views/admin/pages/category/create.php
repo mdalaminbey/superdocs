@@ -7,7 +7,7 @@ $dataKey = Common::generateRandomString(10);
 
 ?>
 
-<div class="p-7" x-data="<?php echo $dataKey?>">
+<div class="p-7" x-data="<?php wp_commander_render($dataKey) ?>">
   <h2 class="line-clamp-1 dark:text-navy-100 text-xl font-bold tracking-wide text-slate-700 lg:text-base"><?php esc_html_e('Create Category')?></h2>
   <hr class="mt-2" />
   <div class="mt-4">

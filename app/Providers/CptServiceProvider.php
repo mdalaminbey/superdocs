@@ -37,7 +37,7 @@ class CptServiceProvider extends ServiceProvider
                 $singular_name = esc_html__( 'Product', 'wp-guide' );
             } elseif (
                 wp_commander_is_admin_page( 'post', ['product' => 'true'] ) ||
-                ( isset( $_GET['post'] ) && get_post_mime_type( sanitize_text_field( wp_unslash( $_GET['post'] ) ) ) === 'product' )
+                ( isset( $_GET['post'] ) && get_post_mime_type( sanitize_text_field( wp_unslash( $_GET['post'] ) ) ) === 'product' ) //phpcs:ignore WordPress.Security.NonceVerification.Recommended
             ) {
                 $label         = esc_html__( 'Products', 'wp-guide' );
                 $singular_name = esc_html__( 'Product', 'wp-guide' );
