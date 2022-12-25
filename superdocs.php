@@ -20,7 +20,7 @@ use SuperDocs\Bootstrap\Application;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-class WpPluginEngine
+class SuperDocs
 {
     public static function boot()
     {
@@ -35,4 +35,4 @@ class WpPluginEngine
     }
 }
 
-WpPluginEngine::boot();
+SuperDocs::boot();
