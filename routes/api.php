@@ -2,8 +2,11 @@
 
 use SuperDocs\App\Https\Controllers\CategoryController;
 use SuperDocs\App\Https\Controllers\SearchController;
+use SuperDocs\App\Https\Controllers\SettingsController;
 use SuperDocs\App\Https\Controllers\TemplateController;
 use SuperDocs\Bootstrap\Route;
+
+Route::post( 'search', [SearchController::class, 'get'], true );
 
 Route::group( 'category', function () {
     Route::get( 'order', [CategoryController::class, 'get'] );
@@ -21,4 +24,7 @@ Route::group( 'template', function () {
     Route::post( 'create', [TemplateController::class, 'create'] );
 } );
 
-Route::post( 'search', [SearchController::class, 'get'], true );
+Route::group( 'settings', function () {
+    Route::get( 'general', [SettingsController::class, 'general_page'] );
+    Route::post( 'general', [SettingsController::class, 'general'] );
+} );

@@ -70,7 +70,7 @@ class Doc
         switch ( $column ) {
             case 'product':
                 $product = get_post( get_post_meta($post_id, 'productId', true) );
-                if ( $product->ID != $post_id ) {
+                if ($product && $product->ID != $post_id ) {
                     echo "<div class='superdocs-product' data-product='" . wp_json_encode( ['id' => $product->ID, 'title' => $product->post_title] ) . "'>";
                     wp_commander_render($product->post_title);
                     echo "</div>";
@@ -79,11 +79,17 @@ class Doc
 
             case 'template':
                 $template_id   = get_post_meta( $post_id, 'superdocs-template', true );
-                $template_post = get_post( $template_id );
-                if ( $post_id != $template_post->ID ) {
-                    echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
-                    wp_commander_render($template_post->post_title);
+                if(0 == $template_id) {
+                    echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => '0', 'title' => esc_html__( 'Product Default', 'wp-guide' )] ) . "'>";
+                    esc_html_e( 'Product Default', 'wp-guide' );
                     echo "</div>";
+                } else {
+                    $template_post = get_post( $template_id );
+                    if ($template_post && $post_id != $template_post->ID ) {
+                        echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
+                        wp_commander_render($template_post->post_title);
+                        echo "</div>";
+                    }
                 }
         }
     }

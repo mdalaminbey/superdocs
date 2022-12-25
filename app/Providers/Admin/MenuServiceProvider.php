@@ -73,6 +73,8 @@ class MenuServiceProvider extends ServiceProvider
         if ( !empty( $_POST['superdocs-template'] ) ) {
             //phpcs:ignore WordPress.Security.NonceVerification.Missing
             update_post_meta( $post_ID, 'superdocs-template', sanitize_text_field( wp_unslash( $_POST['superdocs-template'] ) ) );
+        } else {
+            update_post_meta( $post_ID, 'superdocs-template','0' );
         }
     }
 
@@ -83,6 +85,7 @@ class MenuServiceProvider extends ServiceProvider
         add_submenu_page( 'superdocs-menu', esc_html__( 'Products', 'superdocs' ), esc_html__( 'Products', 'superdocs' ), 'manage_options', 'edit.php?product=true&post_type=' . superdocs_post_type() );
         add_submenu_page( 'superdocs-menu', esc_html__( 'Templates', 'superdocs' ), esc_html__( 'Templates', 'superdocs' ), 'manage_options', 'edit.php?post_type=' . superdocs_template_post_type() );
         add_submenu_page( 'superdocs-menu', esc_html__( 'Sidebar Category', 'superdocs' ), esc_html__( 'Sidebar Category', 'superdocs' ), 'manage_options', 'superdocs-sidebar-category', [$this, 'sidebar_category'] );
+        add_submenu_page( 'superdocs-menu', esc_html__( 'Settings', 'superdocs' ), esc_html__( 'Settings', 'superdocs' ), 'manage_options', 'superdocs-settings', [$this, 'settings'] );
         remove_submenu_page( 'superdocs-menu', 'superdocs-menu' );
     }
 
@@ -91,5 +94,10 @@ class MenuServiceProvider extends ServiceProvider
         global $wpdb;
         $products  = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}posts WHERE post_type = %s AND post_status = 'publish' AND post_mime_type = 'product'", superdocs_post_type() ) );
         View::render( 'admin/pages/category/index', ['products' => $products] );
+    }
+
+    public function settings()
+    {
+        View::render( 'admin/pages/settings/index');   
     }
 }

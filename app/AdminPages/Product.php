@@ -45,7 +45,7 @@ class Product
             case 'template':
                 $template_id   = get_post_meta( $post_id, 'superdocs-template', true );
                 $template_post = get_post( $template_id );
-                if ( $post_id != $template_post->ID ) {
+                if ($template_post && $post_id != $template_post->ID ) {
                     echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => $template_post->ID, 'title' => $template_post->post_title] ) . "'>";
                     wp_commander_render($template_post->post_title);
                     echo "</div>";

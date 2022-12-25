@@ -632,7 +632,9 @@ class DocCategories extends Widget_Base
 	
 		} else {
 			global $post;
-			$docId = $post->ID;
+            if(isset($post->ID)) {
+                $docId = $post->ID;
+            }
 		}
 
 		$productId  = get_post_meta( $docId, 'productId', true );
