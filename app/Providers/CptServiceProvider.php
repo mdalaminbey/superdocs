@@ -23,7 +23,6 @@ class CptServiceProvider extends ServiceProvider
             'show_in_menu'      => false,
             'show_in_nav_menus' => false
         ] );
-        // flush_rewrite_rules();
     }
 
     public function docs_cpt_args()
@@ -72,10 +71,19 @@ class CptServiceProvider extends ServiceProvider
             'items_list_navigation' => esc_html__( 'Items list navigation', 'superdocs' ),
             'filter_items_list'     => esc_html__( 'Filter items list', 'superdocs' )
         ];
+
+        $general_settings = superdocs_general_settings();
+
+        if ( empty( $general_settings['single_docs_slug']['value'] ) ) {
+            $slug = 'docs';
+        } else {
+            $slug = $general_settings['single_docs_slug']['value'];
+        }
+
         return [
             'label'               => $label,
             'labels'              => $labels,
-            'rewrite'             => ['slug' => 'docs'],
+            'rewrite'             => ['slug' => $slug],
             'supports'            => ['title', 'editor', 'Category', 'elementor'],
             'taxonomies'          => [superdocs_sidebar_taxonomy()],
             'public'              => true,

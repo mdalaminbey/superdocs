@@ -114,13 +114,17 @@
 
 	$(window).on('elementor/frontend/init', SuperDocs.init);
 	$(window).on('elementor/frontend/init', function () {
-		let tableOfContent = $('.superdocs-table-of-content ol');
-		tableOfContent.html('');
+		let tableOfContent = $('.superdocs-table-of-content');
+		let tags = JSON.parse(tableOfContent.attr('data-allowed_heading'));
+		if(0 === tags.length) {
+			tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+		}
+		let orderList      = tableOfContent.find('ol');
+		orderList.html('');
 		$('.elementor-heading-title').each(function () {
-			let tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
 			let tag = $(this);
 			if (tags.includes(tag.prop("tagName"))) {
-				tableOfContent.append('<li>' + tag.html() + '</li>');
+				orderList.append('<li>' + tag.html() + '</li>');
 			}
 		})
 	});

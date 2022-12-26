@@ -36,6 +36,94 @@ class Breadcrumb extends Widget_Base
 	protected function register_controls()
 	{
 		$this->start_controls_section(
+            'section_home',
+            [
+                'label' => esc_html__( 'Home', 'superdocs' ),
+                'tab'   => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+		$this->add_control(
+			'superdocs_breadcrumb_home_text',
+			[
+				'label'     => esc_html__( 'Text', 'superdocs' ),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => 'Home',
+			]
+		);
+
+		$this->add_control(
+			'superdocs_breadcrumb_home_url',
+			[
+				'label'     => esc_html__( 'Url', 'superdocs' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'home',
+				'options'    => [
+					'home' => esc_html__('Home', 'wp-guide'),
+					'custom' => esc_html__('Custom', 'wp-guide')
+				]
+			]
+		);
+
+		$this->add_control(
+			'superdocs_breadcrumb_home_custom_url',
+			[
+				'label'       => esc_html__( 'Custom Url', 'superdocs' ),
+				'type'        => Controls_Manager::URL,
+				'options'     => false,
+				'condition'   => [
+					'superdocs_breadcrumb_home_url' => 'custom'
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+            'section_docs',
+            [
+                'label' => esc_html__( 'Documentations', 'superdocs' ),
+                'tab'   => Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+		$this->add_control(
+			'superdocs_breadcrumb_docs_text',
+			[
+				'label'     => esc_html__( 'Text', 'superdocs' ),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => 'Documentations',
+			]
+		);
+
+		$this->add_control(
+			'superdocs_breadcrumb_docs_url',
+			[
+				'label'     => esc_html__( 'Url', 'superdocs' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'docs',
+				'options'    => [
+					'docs' => '/docs',
+					'custom' => esc_html__('Custom', 'wp-guide')
+				]
+			]
+		);
+
+		$this->add_control(
+			'superdocs_breadcrumb_docs_custom_url',
+			[
+				'label'       => esc_html__( 'Custom Url', 'superdocs' ),
+				'type'        => Controls_Manager::URL,
+				'options'     => false,
+				'condition'   => [
+					'superdocs_breadcrumb_docs_url' => 'custom'
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
             'section_style',
             [
                 'label' => esc_html__( 'Style', 'superdocs' ),
@@ -173,7 +261,7 @@ class Breadcrumb extends Widget_Base
     protected function render()
     {
 		global $post;
-
+		$settings     = $this->get_settings_for_display();
 		$docTitle     = $post->post_title;
 		$productId    = get_post_meta($post->ID, 'productId', true);
 		$product      = get_post($productId);
@@ -183,6 +271,18 @@ class Breadcrumb extends Widget_Base
 		if($product) {
 			$productTitle = $product->post_title;
 			$productLink  = get_post_permalink($product);
+		}
+
+		if( 'home' === $settings['superdocs_breadcrumb_home_url'] ) {
+			$homeUrl = get_site_url();
+		} else {
+			$homeUrl = $settings['superdocs_breadcrumb_home_custom_url']['url'];
+		}
+
+		if( 'docs' === $settings['superdocs_breadcrumb_docs_url'] ) {
+			$docsUrl = get_site_url(null, 'docs');
+		} else {
+			$docsUrl = $settings['superdocs_breadcrumb_docs_custom_url']['url'];
 		}
 
 		?>
@@ -208,16 +308,16 @@ class Breadcrumb extends Widget_Base
 		<nav class="superdocs">
 			<ul class="breadcrumbs">
 				<li class="breadcrumb-item">
-					<a href="<?php wp_commander_render(get_site_url())?>">
-						<?php esc_html_e('Home', 'superdocs')?>
+					<a href="<?php wp_commander_render( $homeUrl )?>">
+						<?php wp_commander_render($settings['superdocs_breadcrumb_home_text'])?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">
 					<?php $this->arrowIcon()?>
 				</li>
 				<li class="breadcrumb-item">
-					<a href="<?php wp_commander_render(get_post_type_archive_link( superdocs_post_type() ))?>">
-						<?php esc_html_e('Documentation', 'superdocs')?>
+					<a href="<?php wp_commander_render( $docsUrl )?>">
+						<?php wp_commander_render($settings['superdocs_breadcrumb_docs_text'])?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">

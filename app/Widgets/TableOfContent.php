@@ -271,10 +271,11 @@ class TableOfContent extends Widget_Base
 
     protected function render()
     {
-        $settings  = $this->get_settings_for_display();
-        $elementor = \Elementor\Plugin::$instance;
+        $settings         = $this->get_settings_for_display();
+        $elementor        = \Elementor\Plugin::$instance;
+        $general_settings = superdocs_general_settings();
         ?>
-        <div class="superdocs-table-of-content">
+        <div class="superdocs-table-of-content" data-allowed_heading="<?php wp_commander_render(wp_commander_json_encode_for_attr($general_settings['toc_supported_heading_tag']['value'])) ?>">
             <h4><?php wp_commander_render( $settings['table_of_content_heading_title'] )?></h4>
             <div class="content-list">
         <?php if ( $elementor->editor->is_edit_mode() || is_preview() ) {?>

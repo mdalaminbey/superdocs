@@ -10,6 +10,7 @@ class SettingsController
     public function general( WP_REST_Request $wpRestRequest )
     {
         update_option('superdocs-general-settings', serialize($wpRestRequest->get_param('settings')));
+        flush_rewrite_rules();
         wp_send_json([
             'message' => esc_html__('Settings saved successfully!', 'superdocs')
         ]);

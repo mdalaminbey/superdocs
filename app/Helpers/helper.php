@@ -54,3 +54,83 @@ function superdocs_version()
 {
     return Application::$config['version'];
 }
+
+function superdocs_general_settings()
+{
+    global $superdocs;
+
+    if ( isset( $superdocs['general_settings'] ) ) {
+        return $superdocs['general_settings'];
+    }
+
+    $saved_values = get_option( 'superdocs-general-settings', true );
+
+    if ( $saved_values ) {
+        $saved_values = unserialize( $saved_values );
+    } else {
+        $saved_values = [];
+    }
+
+    $inputs = [
+        'single_docs_slug'          => [
+            'title'    => esc_html__( 'Single Docs Permalink', 'superdocs' ),
+            'type'     => 'text',
+            'value'    => 'docs',
+            'required' => true
+        ],
+        'breadcrumb_home_url'       => [
+            'title'    => esc_html__( 'Breadcrumb Home Url', 'superdocs' ),
+            'type'     => 'text',
+            'value'    => '',
+            'required' => true
+        ],
+        'toc_supported_heading_tag' => [
+            'title'    => esc_html__( 'TOC Supported Heading Tag', 'superdocs' ),
+            'type'     => 'checkbox',
+            'required' => false,
+            'value'    => [],
+            'options'  => [
+                [
+                    'title' => 'H1',
+                    'value' => 'H1'
+                ],
+                [
+                    'title' => 'H2',
+                    'value' => 'H2'
+                ],
+                [
+                    'title' => 'H3',
+                    'value' => 'H3'
+                ],
+                [
+                    'title' => 'H4',
+                    'value' => 'H4'
+                ],
+                [
+                    'title' => 'H5',
+                    'value' => 'H5'
+                ],
+                [
+                    'title' => 'H6',
+                    'value' => 'H6'
+                ]
+            ]
+        ]
+    ];
+
+    foreach ( $inputs as $name => $input ) {
+        if ( isset( $saved_values[$name] ) ) {
+            $inputs[$name]['value'] = $saved_values[$name];
+        }
+    }
+
+    if(is_array($superdocs)) {
+        $superdocs['general_settings'] = $inputs;
+    }
+
+    $superdocs = [
+        'general_settings' => $inputs
+    ];
+
+    return $inputs;
+}
