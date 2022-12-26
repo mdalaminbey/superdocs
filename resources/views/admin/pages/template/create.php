@@ -22,23 +22,23 @@ $dataKey = Common::generateRandomString();
 					<?php esc_html_e('Create Template', 'superdocs') ?>
 				</h2>
 			</div>
-			<div class="overflow-scroll p-5">
+			<div class="overflow-y-scroll p-5 h-screen mb-20">
 				<form action="" x-ref="templateForm">
 					<div>
 						<label class="block text-base"><?php esc_html_e('Template Name', 'superdocs') ?></label>
-						<input type="text" required name="template-name" class="mt-2 form-input w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary" />
+						<input type="text" required name="template-name" class="mt-2 form-input w-full rounded-lg border border-slate-300 bg-slate-100 px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary" />
 					</div>
 					<div class="mt-4">
 						<label class="block text-base"><?php esc_html_e('Editor', 'superdocs') ?></label>
-						<select name="edit_with" class="form-select mt-1.5 w-full max-w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary">
+						<select name="edit_with" class="form-select mt-1.5 w-full max-w-full rounded-lg border border-slate-300  bg-slate-100 px-3 py-2 hover:border-slate-400 focus:border-primary">
 							<option value="elementor" selected>Elementor</option>
 						</select>
 					</div>
 					<div class="mt-4">
 						<label class="block text-base font-semibold">Select Template</label>
-						<div class="mt-2 mb-24 grid grid-cols-3 gap-4">
+						<div class="mt-2 mb-1 grid grid-cols-3 gap-4">
 							<label class="relative group">
-								<input type="radio" name="template" value="blank" required checked class="peer absolute z-50 float-right top-2 right-2 form-checkbox is-basic h-5 w-5 rounded border-slate-400/70 before:invisible checked:border-primary checked:bg-primary hover:border-primary focus:border-primary">
+								<input type="radio" name="template" value="blank" required checked class="peer absolute z-50 float-right top-2 right-2 form-checkbox is-basic h-5 w-5 rounded bg-slate-100 border-slate-400/70 before:invisible checked:border-primary checked:bg-primary hover:border-primary focus:border-primary">
 								<div class="border h-72 overflow-hidden bg-white group-hover:border-primary/50 peer-checked:border-primary/50">
 								</div>
 								<div class="relative w-full h-12 border-x border-b group-hover:border-primary/50 peer-checked:border-primary/50 bg-white">
@@ -53,7 +53,7 @@ $dataKey = Common::generateRandomString();
 								
 								?>
 								<label class="relative group">
-								<input type="radio" name="template" value="<?php wp_commander_render($key)?>" required checked class="peer absolute z-50 float-right top-2 right-2 form-checkbox is-basic h-5 w-5 rounded border-slate-400/70 before:invisible checked:border-primary checked:bg-primary hover:border-primary focus:border-primary">
+								<input type="radio" name="template" value="<?php wp_commander_render($key)?>" required checked class="peer absolute z-50 float-right top-2 right-2 form-checkbox is-basic h-5 w-5 rounded bg-slate-100 border-slate-400/70 before:invisible checked:border-primary checked:bg-primary hover:border-primary focus:border-primary">
 								<div class="border h-72 overflow-hidden bg-white group-hover:border-primary/50 peer-checked:border-primary/50">
 									<img src="<?php wp_commander_render($screenshotUrl)?>">
 								</div>
@@ -67,7 +67,7 @@ $dataKey = Common::generateRandomString();
 				</form>
 			</div>
 			<div class="absolute bg-white inline-flex grid-rows-2 grid-flow-col gap-4 border-t bottom-0 right-0 w-full py-4 px-6">
-				<button x-on:click="insertAndRedirect()" class="w-1/2 cursor-pointer font-semibold px-7 py-3 items-center border border-indigo-200 hover:bg-indigo-50 text-primary">
+				<button x-on:click="insertAndRedirect()" class="w-1/2 cursor-pointer font-semibold px-7 py-3 items-center border border-indigo-200 hover:bg-slate-100 text-primary">
 					<div class="float-left mt-1 pr-3 pl-6">
 						<div class="w-4 h-5">
 							<div class="w-3/12 float-left h-full bg-primary"></div>
