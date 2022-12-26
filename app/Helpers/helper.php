@@ -78,12 +78,6 @@ function superdocs_general_settings()
             'value'    => 'docs',
             'required' => true
         ],
-        'breadcrumb_home_url'       => [
-            'title'    => esc_html__( 'Breadcrumb Home Url', 'superdocs' ),
-            'type'     => 'text',
-            'value'    => '',
-            'required' => true
-        ],
         'toc_supported_heading_tag' => [
             'title'    => esc_html__( 'TOC Supported Heading Tag', 'superdocs' ),
             'type'     => 'checkbox',

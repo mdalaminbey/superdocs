@@ -32,11 +32,12 @@ class DocContent extends Widget_Base {
 		if( $elementor->editor->is_edit_mode() || is_preview() || (isset($post->post_type) && superdocs_template_post_type() === $post->post_type)) {
 			?>
 
-            <h1>Here we will push your docs content</h1>
+            <h1>SuperDocs Content Area</h1>
+			<h3>This is where your single documentation content will appear</h3>
 
             <?php
 		} else { ?>
-			{{ SuperDocs Doc Content }}
+			{{ SuperDocs Content Area }}
 		<?php }
 	}
 }
