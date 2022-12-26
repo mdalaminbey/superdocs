@@ -67,23 +67,38 @@ $dataKey = Common::generateRandomString();
 				</form>
 			</div>
 			<div class="absolute bg-white inline-flex grid-rows-2 grid-flow-col gap-4 border-t bottom-0 right-0 w-full py-4 px-6">
-				<button x-on:click="insertAndRedirect()" class="w-1/2 cursor-pointer font-semibold px-7 py-3 items-center border border-indigo-200 hover:bg-slate-100 text-primary">
-					<div class="float-left mt-1 pr-3 pl-6">
-						<div class="w-4 h-5">
-							<div class="w-3/12 float-left h-full bg-primary"></div>
-							<div class="w-2/12 float-left h-full"></div>
-							<div class="w-7/12 float-left h-full grid grid-rows-3 gap-1">
-								<div class="bg-primary h-full"></div>
-								<div class="bg-primary h-full"></div>
-								<div class="bg-primary h-full"></div>
+				<button x-on:click="insertAndRedirect()" :class="(submitCreateTemplateRequest ? 'pointer-events-none' : '')" class="w-1/2 cursor-pointer font-semibold px-7 py-3 items-center border border-indigo-200 hover:bg-slate-100 text-primary">
+					<div class="pl-6">
+						<div class="float-left pt-1" x-show="insertAndRedirectStatus">
+							<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+								<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+								<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+							</svg>
+						</div>
+						<div class="float-left mt-1 pr-3">
+							<div class="w-4 h-5">
+								<div class="w-3/12 float-left h-full bg-primary"></div>
+								<div class="w-2/12 float-left h-full"></div>
+								<div class="w-7/12 float-left h-full grid grid-rows-3 gap-1">
+									<div class="bg-primary h-full"></div>
+									<div class="bg-primary h-full"></div>
+									<div class="bg-primary h-full"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="float-left text-base">
-						Edit With Elementor
+						<div class="float-left text-base">
+							Edit With Elementor
+						</div>
 					</div>
 				</button>
-				<button x-on:click="insertAndReload()" class="w-1/2 cursor-pointer text-base font-semibold px-7 py-3 text-white items-center bg-primary hover:bg-primary-hover">
+				<button 
+					x-on:click="insertAndReload()" 
+					:class="(submitCreateTemplateRequest ? 'pointer-events-none' : '')" 
+					class="w-1/2 inline-flex cursor-pointer text-base font-semibold pl-24 py-3 text-white items-center bg-primary hover:bg-primary-hover">
+					<svg x-show="insertAndReloadStatus" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+						<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+						<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+					</svg>
 					<?php esc_html_e('Save Changes', 'superdocs') ?>
 				</button>
 			</div>
@@ -92,18 +107,24 @@ $dataKey = Common::generateRandomString();
 </div>
 <script>
 	Alpine.data("<?php wp_commander_render($dataKey) ?>", () => ({
+		submitCreateTemplateRequest: false,
+		insertAndReloadStatus: false,
+		insertAndRedirectStatus: false,
 		insertAndReload() {
+			this.insertAndReloadStatus = true;
 			this.insert({
 				'reload': true
 			});
 		},
 		insertAndRedirect() {
+			this.insertAndRedirectStatus = true;
 			this.insert({
 				'reload': false
 			});
 		},
 		insert(options) {
 			let form = this.$refs.templateForm;
+			this.submitCreateTemplateRequest = true;
 			jQuery.ajax({
 				url: "<?php wp_commander_render(get_rest_url(null, 'superdocs/template/create')) ?>",
 				method: 'POST',
@@ -114,6 +135,9 @@ $dataKey = Common::generateRandomString();
 				success: function(data) {
 					var drawer = Alpine.store('DoatKolomUiDrawer');
 					drawer.changeStatus();
+					this.insertAndReloadStatus = false;
+					this.submitCreateTemplateRequest = false;
+					this.insertAndRedirectStatus = false;
 					if (options.reload) {
 						location.reload();
 					} else {
