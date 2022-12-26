@@ -1,6 +1,7 @@
 <?php
 
 use DoatKolom\Ui\Components\Modal;
+use DoatKolom\Ui\Components\Notification;
 use DoatKolom\Ui\Components\Tab;
 
 $tabs = [];
@@ -59,5 +60,8 @@ foreach ( $products as $product ) {
         $modal->start(['af'], []);
         $modal->content();
         $modal->end();
+        
+        $notification = new Notification;
+        $notification->render();
     ?>
 </div>

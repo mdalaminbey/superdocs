@@ -36,7 +36,18 @@ jQuery( function($) {
 				beforeSend: function(xhr) {
 					xhr.setRequestHeader( 'X-WP-Nonce', "<?php wp_commander_render( wp_create_nonce( 'wp_rest' ) )?>" );
 				},
-				data: {categories, draggedDocs, productId: '<?php wp_commander_render($productId) ?>' }
+				data: { categories, draggedDocs, productId: '<?php wp_commander_render($productId) ?>' },
+				success(data) {
+					document.getElementById('notifications').dispatchEvent(
+						new CustomEvent('notify', {
+							detail: { 
+								content: data.message, 
+								type: 'success' 
+							},
+							bubbles: true
+						})
+					);
+				}
 			})
 		}
 	}

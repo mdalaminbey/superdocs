@@ -3,6 +3,7 @@
 namespace SuperDocs\App\Providers;
 
 use DoatKolom\Ui\Components\Drawer;
+use DoatKolom\Ui\Components\Notification;
 use WpCommander\Contracts\ServiceProvider;
 use SuperDocs\Bootstrap\View;
 
@@ -22,9 +23,12 @@ class TemplateServiceProvider extends ServiceProvider
     public function action_admin_footer(): void
     {
         ?>
-            <div class="superdocs">
+            <div class="superdocs doatkolom-ui">
                 <?php $drawer = new Drawer;
-                $drawer->render( ['width' => '700px'] );?>
+                $drawer->render( ['width' => '700px'] );
+                $notification = new Notification;
+                $notification->render();
+                ?>
             </div>
         <?php
     }

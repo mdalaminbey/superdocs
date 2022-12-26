@@ -1,5 +1,6 @@
 <?php
 
+use DoatKolom\Ui\Components\Notification;
 use DoatKolom\Ui\Components\Tab;
 ?>
 
@@ -41,4 +42,9 @@ use DoatKolom\Ui\Components\Tab;
 			</div>
 		</div>
 	</div>
+	<?php
+	$notification = new Notification;
+	$notification->render();
+	?>
 </div>
+

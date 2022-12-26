@@ -90,6 +90,7 @@ $dataKey = Common::generateRandomString();
 					},
 					data: $(alpineData.$el).serialize(),
 					success: function(data) {
+						alpineData.$dispatch('notify', { content: data.message, type: 'success' })
 						alpineData.submitGeneralSettingRequest = false;
 					},
 					complete: function() {}

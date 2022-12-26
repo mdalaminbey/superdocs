@@ -184,6 +184,12 @@
 .superdocs .mt-7 {
   margin-top: 1.75rem;
 }
+.superdocs .-ml-1 {
+  margin-left: -0.25rem;
+}
+.superdocs .mr-3 {
+  margin-right: 0.75rem;
+}
 .superdocs .mt-6 {
   margin-top: 1.5rem;
 }
@@ -192,12 +198,6 @@
 }
 .superdocs .mb-1 {
   margin-bottom: 0.25rem;
-}
-.superdocs .-ml-1 {
-  margin-left: -0.25rem;
-}
-.superdocs .mr-3 {
-  margin-right: 0.75rem;
 }
 .superdocs .block {
   display: block;

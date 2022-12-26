@@ -35,9 +35,10 @@ class TemplateController
             wp_commander_import_elementor_demo( $json_path, $templateId );
         }
 
-        wp_send_json_success( [
+        wp_send_json( [
+            'message'    => esc_html__('Template create successfully!', 'superdocs'),
             'templateId' => $templateId
-        ] );
+        ], 200 );
     }
 
     public function create_page()

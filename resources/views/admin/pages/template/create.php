@@ -123,8 +123,9 @@ $dataKey = Common::generateRandomString();
 			});
 		},
 		insert(options) {
-			let form = this.$refs.templateForm;
-			this.submitCreateTemplateRequest = true;
+			let alpineData = this;
+			let form = alpineData.$refs.templateForm;
+			alpineData.submitCreateTemplateRequest = true;
 			jQuery.ajax({
 				url: "<?php wp_commander_render(get_rest_url(null, 'superdocs/template/create')) ?>",
 				method: 'POST',
@@ -135,13 +136,11 @@ $dataKey = Common::generateRandomString();
 				success: function(data) {
 					var drawer = Alpine.store('DoatKolomUiDrawer');
 					drawer.changeStatus();
-					this.insertAndReloadStatus = false;
-					this.submitCreateTemplateRequest = false;
-					this.insertAndRedirectStatus = false;
+					alpineData.$dispatch('notify', { content: data.message, type: 'success' })
 					if (options.reload) {
 						location.reload();
 					} else {
-						let editUrl = window.location.origin + '/wp-admin/post.php?action=elementor&post=' + data.data.templateId;
+						let editUrl = window.location.origin + '/wp-admin/post.php?action=elementor&post=' + data.templateId;
 						location.href = editUrl;
 					}
 				},
