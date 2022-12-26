@@ -22,7 +22,7 @@ class TemplateServiceProvider extends ServiceProvider
      */
     public function action_admin_footer(): void
     {
-        ?>
+        if(wp_commander_is_admin_page('edit', ['post_type' => superdocs_template_post_type()])) : ?>
             <div class="superdocs doatkolom-ui">
                 <?php $drawer = new Drawer;
                 $drawer->render( ['width' => '700px'] );
@@ -31,6 +31,7 @@ class TemplateServiceProvider extends ServiceProvider
                 ?>
             </div>
         <?php
+        endif;
     }
 
     /**
