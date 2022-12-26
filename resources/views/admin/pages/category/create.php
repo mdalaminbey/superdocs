@@ -37,6 +37,7 @@ $dataKey = Common::generateRandomString(10);
 		sendCategoryCreateRequest($data) {
 			this.sendCategoryCreateRequestStatus = true;
 			var modal = Alpine.store('DoatKolomUiModal');
+			modal.lock();
 			var alpineData = this;
 			var form = alpineData.$el;
 			var jqueryForm = jQuery(form);
@@ -56,7 +57,7 @@ $dataKey = Common::generateRandomString(10);
 				},
 				complete: function() {
 					alpineData.sendCategoryCreateRequestStatus = false;
-					modal.changeStatus();
+					modal.changeStatus(true);
 					formSubmitButton.disabled = false;
 					formSubmitButton.classList.add('cursor-pointer');
 					jqueryForm[0].reset();

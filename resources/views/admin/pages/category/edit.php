@@ -38,6 +38,7 @@ $categoryParentClass = 'superdocs_product_' . $productId;
 		updateCategory($data) {
 			this.sendCategoryUpdateRequestStatus = true;
 			var modal = Alpine.store('DoatKolomUiModal');
+			modal.lock();
 			let alpineData = this;
 			var form = alpineData.$el;
 			var jqueryForm = jQuery(form);
@@ -62,7 +63,7 @@ $categoryParentClass = 'superdocs_product_' . $productId;
 					alpineData.sendCategoryUpdateRequestStatus = false;
 				},
 				complete: function() {
-					modal.changeStatus()
+					modal.changeStatus(true)
 				}
 			})
 		}

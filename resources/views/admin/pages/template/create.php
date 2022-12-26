@@ -126,6 +126,8 @@ $dataKey = Common::generateRandomString();
 			let alpineData = this;
 			let form = alpineData.$refs.templateForm;
 			alpineData.submitCreateTemplateRequest = true;
+			var drawer = Alpine.store('DoatKolomUiDrawer');
+			drawer.lock();
 			jQuery.ajax({
 				url: "<?php wp_commander_render(get_rest_url(null, 'superdocs/template/create')) ?>",
 				method: 'POST',
@@ -134,9 +136,8 @@ $dataKey = Common::generateRandomString();
 				},
 				data: jQuery(form).serialize(),
 				success: function(data) {
-					var drawer = Alpine.store('DoatKolomUiDrawer');
-					drawer.changeStatus();
 					alpineData.$dispatch('notify', { content: data.message, type: 'success' })
+					drawer.changeStatus(true);
 					if (options.reload) {
 						location.reload();
 					} else {

@@ -38,6 +38,7 @@ $categoryParentClass = 'superdocs_product_' . $productId;
         deleteCategory() {
             this.sendCategoryDeleteRequestStatus = true;
             var modal = Alpine.store('DoatKolomUiModal');
+            modal.lock();
             let docs = [];
             let categoryContent = document.querySelector('[data-category="<?php wp_commander_render($categoryPostId) ?>"]');
             for (let doc of categoryContent.children) {
@@ -62,7 +63,7 @@ $categoryParentClass = 'superdocs_product_' . $productId;
                         content: data.message,
                         type: 'success'
                     })
-                    modal.changeStatus()
+                    modal.changeStatus(true)
                 }
             })
         },
