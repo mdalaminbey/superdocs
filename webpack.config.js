@@ -9,7 +9,6 @@ const js = {
 		'admin/docs': './resources/js/admin/docs.js',
 		'admin/template': './resources/js/admin/template.js',
 	},
-	target: 'web',
 	output: {
 		path: path.resolve(__dirname, './assets/js/'),
 		filename: '[name].js',
@@ -27,7 +26,6 @@ const scss = {
 		path: path.resolve(__dirname, './assets/css/'),
 		clean: false
 	},
-	target: 'web',
 	module: {
 		...defaultConfig.module,
 		rules: [
