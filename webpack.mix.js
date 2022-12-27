@@ -17,3 +17,8 @@ mix.sass('resources/sass/app.scss', 'assets/css', {}, [{
 		return root;
 	}
 }]).tailwind();
+
+mix.sass('resources/sass/widgets.scss', 'assets/css');
+mix.js('resources/js/widgets.js', 'assets/js');
+mix.js('resources/js/admin/docs.js', 'assets/js/admin');
+mix.js('resources/js/admin/template.js', 'assets/js/admin');

@@ -1,4 +1,3 @@
-
 (function ($, elementor) {
 	var elementor = window.elementorFrontend;
 	var SuperDocsUtils = {

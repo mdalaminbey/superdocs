@@ -80,8 +80,8 @@ class Doc
             case 'template':
                 $template_id   = get_post_meta( $post_id, 'superdocs-template', true );
                 if(0 == $template_id) {
-                    echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => '0', 'title' => esc_html__( 'Product Default', 'wp-guide' )] ) . "'>";
-                    esc_html_e( 'Product Default', 'wp-guide' );
+                    echo "<div class='superdocs-template' data-template='" . wp_json_encode( ['id' => '0', 'title' => esc_html__( 'Product Default', 'superdocs' )] ) . "'>";
+                    esc_html_e( 'Product Default', 'superdocs' );
                     echo "</div>";
                 } else {
                     $template_post = get_post( $template_id );

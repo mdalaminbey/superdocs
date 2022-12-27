@@ -59,8 +59,8 @@ class Breadcrumb extends Widget_Base
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'home',
 				'options'    => [
-					'home' => esc_html__('Home', 'wp-guide'),
-					'custom' => esc_html__('Custom', 'wp-guide')
+					'home' => esc_html__('Home', 'superdocs'),
+					'custom' => esc_html__('Custom', 'superdocs')
 				]
 			]
 		);
@@ -104,7 +104,7 @@ class Breadcrumb extends Widget_Base
 				'default'   => 'docs',
 				'options'    => [
 					'docs' => '/docs',
-					'custom' => esc_html__('Custom', 'wp-guide')
+					'custom' => esc_html__('Custom', 'superdocs')
 				]
 			]
 		);
@@ -286,25 +286,6 @@ class Breadcrumb extends Widget_Base
 		}
 
 		?>
-		<style>
-			.breadcrumb-item {
-				position: relative;
-			}
-			.breadcrumb-icon { 
-				position: relative;
-				display: flex;
-			}
-
-			.breadcrumbs {
-				display: flex;
-				align-items: center;
-				flex-flow: row wrap;
-			}
-
-			.breadcrumb-item a {
-				text-decoration: none !important;
-			}
-		</style>
 		<nav class="superdocs">
 			<ul class="breadcrumbs">
 				<li class="breadcrumb-item">

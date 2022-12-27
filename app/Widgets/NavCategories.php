@@ -645,25 +645,6 @@ class NavCategories extends Widget_Base
 			$categories = [];
 		}
 		?>
-		<style>
-			ul {
-				list-style: none !important;
-				margin: 0 !important;
-				padding: 0;
-			}
-
-			.superdocs-doc-categories .submenu .submenu-link {
-				display: block;
-				text-decoration: none;
-			}
-			.superdocs-doc-categories .submenu .submenu-link .action_icon {
-				float: right;
-			}
-			.superdocs-doc-categories .submenu .documents ul {
-				display: flex;
-				flex-direction: column;
-			}
-		</style>
 		<div class="superdocs-doc-categories">
 			<ul>
 				<?php foreach($categories as $category):

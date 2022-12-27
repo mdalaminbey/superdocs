@@ -870,76 +870,12 @@ class Search extends Widget_Base
 			]
 		]);
 		?>
-			<style>
-				.search-inputs {
-					display: inline-flex;
-					width: 100%;
-				}
-
-				.search-inputs .product select {
-					width: 100%;
-					height: 100%;
-				}
-
-				.search-inputs button {
-					border-radius: 0;
-				}
-
-				.search-input {
-					width: 100%;
-					height: 100%;
-					position: relative;
-				}
-
-				.search-input input {
-					border-radius: 0;
-				}
-
-				.loader-body {
-					position: absolute;
-					top: 0;
-					right: 0;
-					display: none;
-				}
-
-				.superdocs-search .search-results {
-					width: 100%;
-					position: relative;
-				}
-
-                .superdocs-search .search-results a {
-                    display: inline-flex;
-                    width: 100%;
-                }
-
-				.loader {
-					border: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_background_color'])?>;
-					border-radius: 50%;
-					border-top: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_color'])?>;
-					-webkit-animation: spin 1s linear infinite; /* Safari */
-					animation: spin 1s linear infinite;
-				}
-                .result-body {
-                    position: absolute;
-                    z-index: 9999;
-		width: 100%;
-                }
-                .superdocs-search-results ul {
-		display: flex;
-		flex-direction: column;
-	}
-
-				/* Safari */
-				@-webkit-keyframes spin {
-					0% { -webkit-transform: rotate(0deg); }
-					100% { -webkit-transform: rotate(360deg); }
-				}
-
-				@keyframes spin {
-					0% { transform: rotate(0deg); }
-					100% { transform: rotate(360deg); }
-				}
-			</style>
+        <style>
+            .loader {
+                border: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_background_color'])?>;
+                border-top: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_color'])?>;
+            }
+        </style>
 			<div class="superdocs-search">
 				<form action="" class="normal-search-form">
                     <input type="hidden" name="not_found_text" value="<?php wp_commander_render($settings['doc_search_not_found_text'])?>">

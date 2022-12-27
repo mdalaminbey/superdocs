@@ -1,0 +1,71 @@
+.superdocs-search {
+	.search-inputs {
+		display: inline-flex;
+		width: 100%;
+
+		#product {
+			width: 100%;
+			height: 100%;
+		}
+
+		.search-input-body {
+			.search-input {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+
+			.loader-body {
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: none;
+
+				.loader {
+					border-radius: 50%;
+					animation: superdocs_search_spin 1s linear infinite;
+				}
+			}
+
+			.search-results {
+				width: 100%;
+				position: relative;
+
+				.result-body {
+					position: absolute;
+					z-index: 9999;
+					width: 100%;
+
+					ul {
+						display: flex;
+						flex-direction: column;
+
+						a {
+							display: inline-flex;
+							width: 100%;
+						}
+					}
+				}
+			}
+
+		}
+
+		button {
+			border-radius: 0;
+		}
+
+		input {
+			border-radius: 0;
+		}
+	}
+}
+
+@keyframes superdocs_search_spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

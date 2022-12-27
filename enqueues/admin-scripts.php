@@ -6,7 +6,7 @@ use SuperDocs\Bootstrap\Application;
  * @var Application $application
  */
 if ( wp_commander_is_admin_page( 'edit', ['post_type' => superdocs_post_type()] ) ) {
-    wp_enqueue_script( 'superdocs-docs', $application->get_root_url() . '/resources/js/docs.js', [], superdocs_version() );
+    wp_enqueue_script( 'superdocs-docs', $application->get_root_url() . '/assets/js/admin/docs.js', [], superdocs_version() );
 }
 
 wp_enqueue_script( 'jquery-ui-sortable' );

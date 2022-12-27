@@ -533,44 +533,6 @@ class NextPrev extends Widget_Base
         $orderCss .= '</style>';
         wp_commander_render($orderCss);
         ?>
-        <style>
-            .superdocs-next-prev {
-                display: grid;
-                
-            }
-            
-            .superdocs-next-prev .link {
-                display: inline-flex;
-                -webkit-transition: background-color 1s ease-out;
-                -moz-transition: background-color 1s ease-out;
-                -o-transition: background-color 1s ease-out;
-                transition: background-color 1s ease-out;
-            }
-
-            .superdocs-next-prev .title {
-                float: left;
-            }
-            .superdocs-next-prev .title .direction_title {
-                -webkit-transition: color 500ms ease-out;
-                -moz-transition: color 500ms ease-out;
-                -o-transition: color 500ms ease-out;
-                transition: color 500ms ease-out;
-            }
-            .superdocs-next-prev .title .doc_title{
-                -webkit-transition: color 500ms ease-out;
-                -moz-transition: color 500ms ease-out;
-                -o-transition: color 500ms ease-out;
-                transition: color 500ms ease-out;
-            }
-    
-            .superdocs-next-prev .icon {
-                float: left;
-                -webkit-transition: color 500ms ease-out;
-                -moz-transition: color 500ms ease-out;
-                -o-transition: color 500ms ease-out;
-                transition: color 500ms ease-out;
-            }
-        </style>
         <div class="superdocs-next-prev">
         <?php
         
