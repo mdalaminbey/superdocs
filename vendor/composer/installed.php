@@ -3,7 +3,7 @@
         'name' => 'doatkolom/superdocs',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2e31eeb3787b4b4c2c91085375201b05bc34c98b',
+        'reference' => '48faed8d4758611855841bba0b7d4ede8117fb85',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'doatkolom/superdocs' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2e31eeb3787b4b4c2c91085375201b05bc34c98b',
+            'reference' => '48faed8d4758611855841bba0b7d4ede8117fb85',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -25,9 +25,7 @@
             'reference' => 'af06eda597b5fc6fe74838ca3ae4eda4dd4b9b92',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doatkolom/ui',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'doatkolom/wp-commander' => array(
@@ -36,9 +34,7 @@
             'reference' => 'f37e0d018de8e4ad557633339f7b1bc2afcebef2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doatkolom/wp-commander',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
     ),
