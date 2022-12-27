@@ -8,16 +8,16 @@ use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
 
-class DocCategories extends Widget_Base
+class NavCategories extends Widget_Base
 {
     public function get_name()
     {
-        return 'superdocs-doc-categories';
+        return 'superdocs-nav-categories';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Categories', 'superdocs' );
+        return esc_html__( 'Nav Categories', 'superdocs' );
     }
 
     public function get_icon()
@@ -27,7 +27,7 @@ class DocCategories extends Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['superdocs'];
     }
 
     public function get_keywords()

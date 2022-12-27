@@ -76,7 +76,12 @@ class TemplateServiceProvider extends ServiceProvider
                             ob_start();
                             the_content();
                             $content = ob_get_clean();
-                            wp_commander_render( str_replace( "{{ SuperDocs Doc Content }}", $content, $layout ) );
+
+                            if(strpos($layout, '{{ SuperDocs Content Area }}')) {
+                                wp_commander_render( str_replace( "{{ SuperDocs Content Area }}", $content, $layout ) );
+                            } else {
+                                wp_commander_render($content);
+                            }
                         } );
                         return View::get_path( 'frontend/elementor-header-footer' );
                     }

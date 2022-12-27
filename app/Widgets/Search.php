@@ -7,16 +7,16 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 
-class DocSearch extends Widget_Base
+class Search extends Widget_Base
 {
     public function get_name()
     {
-        return 'superdocs-doc-search';
+        return 'superdocs-search';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Search', 'superdocs' );
+        return esc_html__( 'Search', 'superdocs' );
     }
 
     public function get_icon()
@@ -26,7 +26,7 @@ class DocSearch extends Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['superdocs'];
     }
 
     public function get_keywords()
@@ -454,7 +454,7 @@ class DocSearch extends Widget_Base
                     'size' => 30
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .superdocs-doc-search .loader' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-search .loader' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -494,7 +494,7 @@ class DocSearch extends Widget_Base
                     'isLinked' => false
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .superdocs-doc-search .loader-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-search .loader-body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -902,12 +902,12 @@ class DocSearch extends Widget_Base
 					display: none;
 				}
 
-				.superdocs-doc-search .search-results {
+				.superdocs-search .search-results {
 					width: 100%;
 					position: relative;
 				}
 
-                .superdocs-doc-search .search-results a {
+                .superdocs-search .search-results a {
                     display: inline-flex;
                     width: 100%;
                 }
@@ -940,7 +940,7 @@ class DocSearch extends Widget_Base
 					100% { transform: rotate(360deg); }
 				}
 			</style>
-			<div class="superdocs-doc-search">
+			<div class="superdocs-search">
 				<form action="" class="normal-search-form">
                     <input type="hidden" name="not_found_text" value="<?php wp_commander_render($settings['doc_search_not_found_text'])?>">
 					<div class="search-inputs">

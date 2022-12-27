@@ -4,14 +4,14 @@ namespace SuperDocs\App\Widgets;
 
 use Elementor\Widget_Base;
 
-class DocContent extends Widget_Base {
+class ContentArea extends Widget_Base {
 
 	public function get_name() {
-		return 'superdocs-doc-content';
+		return 'superdocs-content';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Doc Content', 'superdocs' );
+		return esc_html__( 'Content Area', 'superdocs' );
 	}
 
 	public function get_icon() {
@@ -19,7 +19,7 @@ class DocContent extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'basic' ];
+		return [ 'superdocs' ];
 	}
 
 	public function get_keywords() {

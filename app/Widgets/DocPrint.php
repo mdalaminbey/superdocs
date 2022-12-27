@@ -10,12 +10,12 @@ class DocPrint extends Widget_Base
 {
     public function get_name()
     {
-        return 'superdocs-doc-print';
+        return 'superdocs-print';
     }
 
     public function get_title()
     {
-        return esc_html__( 'Doc Print', 'superdocs' );
+        return esc_html__( 'Print', 'superdocs' );
     }
 
     public function get_icon()
@@ -25,7 +25,7 @@ class DocPrint extends Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['superdocs'];
     }
 
     public function get_keywords()

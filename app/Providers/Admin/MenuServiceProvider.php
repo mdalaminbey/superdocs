@@ -29,7 +29,7 @@ class MenuServiceProvider extends ServiceProvider
             } elseif ( 'product' === $type ) {
                 ( new Product )->boot();
             }
-        } elseif ( wp_commander_is_admin_page( 'admin', ['page' => 'superdocs-sidebar-category'] ) ) {
+        } elseif ( wp_commander_is_admin_page( 'admin', ['page' => 'superdocs-categories'] ) ) {
             ( new Sidebar )->boot();
         }
     }
@@ -40,7 +40,7 @@ class MenuServiceProvider extends ServiceProvider
 
         if(isset($_SERVER['HTTP_REFERER'])) {
             //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-            if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=superdocs-sidebar-category' ) ) ) {
+            if ( is_int( strpos( $_SERVER['HTTP_REFERER'], 'product=true' ) ) || is_int( strpos( $_SERVER['HTTP_REFERER'], 'page=superdocs-categories' ) ) ) {
                 $type = 'product';
                 add_post_meta( $post_ID, 'superdocs_product', true );
             } else {
@@ -83,8 +83,8 @@ class MenuServiceProvider extends ServiceProvider
         add_menu_page( esc_html__( 'SuperDocs', 'superdocs' ), esc_html__( 'SuperDocs', 'superdocs' ), 'manage_options', 'superdocs-menu', function () {}, 'dashicons-media-document', 5 );
         add_submenu_page( 'superdocs-menu', esc_html__( 'All Docs', 'superdocs' ), esc_html__( 'All Docs', 'superdocs' ), 'manage_options', 'edit.php?post_type=' . superdocs_post_type() );
         add_submenu_page( 'superdocs-menu', esc_html__( 'Products', 'superdocs' ), esc_html__( 'Products', 'superdocs' ), 'manage_options', 'edit.php?product=true&post_type=' . superdocs_post_type() );
+        add_submenu_page( 'superdocs-menu', esc_html__( 'Categories', 'superdocs' ), esc_html__( 'Categories', 'superdocs' ), 'manage_options', 'superdocs-categories', [$this, 'sidebar_category'] );
         add_submenu_page( 'superdocs-menu', esc_html__( 'Templates', 'superdocs' ), esc_html__( 'Templates', 'superdocs' ), 'manage_options', 'edit.php?post_type=' . superdocs_template_post_type() );
-        add_submenu_page( 'superdocs-menu', esc_html__( 'Sidebar Category', 'superdocs' ), esc_html__( 'Sidebar Category', 'superdocs' ), 'manage_options', 'superdocs-sidebar-category', [$this, 'sidebar_category'] );
         add_submenu_page( 'superdocs-menu', esc_html__( 'Settings', 'superdocs' ), esc_html__( 'Settings', 'superdocs' ), 'manage_options', 'superdocs-settings', [$this, 'settings'] );
         remove_submenu_page( 'superdocs-menu', 'superdocs-menu' );
     }

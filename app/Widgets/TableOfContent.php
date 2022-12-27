@@ -25,7 +25,7 @@ class TableOfContent extends Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['superdocs'];
     }
 
     public function get_keywords()

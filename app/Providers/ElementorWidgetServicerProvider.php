@@ -2,25 +2,38 @@
 
 namespace SuperDocs\App\Providers;
 
+use ftp;
 use WpCommander\Contracts\ServiceProvider;
 use SuperDocs\App\Widgets\Breadcrumb;
-use SuperDocs\App\Widgets\DocCategories;
-use SuperDocs\App\Widgets\DocContent;
+use SuperDocs\App\Widgets\NavCategories;
+use SuperDocs\App\Widgets\ContentArea;
 use SuperDocs\App\Widgets\DocPrint;
-use SuperDocs\App\Widgets\DocSearch;
+use SuperDocs\App\Widgets\Search;
+use SuperDocs\App\Widgets\NextPrev;
 use SuperDocs\App\Widgets\TableOfContent;
 
 class ElementorWidgetServicerProvider extends ServiceProvider
 {
     public function boot()
     {
-        add_action( 'init', [$this, 'init'] );
+        add_action( 'elementor/init', [$this, 'action_elementor_init'] );
     }
 
-    public function init()
+    public function action_elementor_init()
     {
         add_action( 'elementor/widgets/register', [$this, 'action_register_widget'] );
         add_action( 'elementor/frontend/before_enqueue_scripts', [$this, 'action_after_enqueue_scripts'] );
+        add_action( 'elementor/elements/categories_registered', [$this, 'action_categories_register'] );
+    }
+
+    public function action_categories_register($elements_manager)
+    {
+        $elements_manager->add_category(
+            'superdocs', [
+                'title'  => 'SuperDocs',
+                'icon' => 'fa fa-plug'
+            ]
+        );
     }
 
     /**
@@ -52,12 +65,13 @@ class ElementorWidgetServicerProvider extends ServiceProvider
     public function widgets()
     {
         return [
-            DocContent::class,
-            DocCategories::class,
+            ContentArea::class,
+            NavCategories::class,
             TableOfContent::class,
             Breadcrumb::class,
             DocPrint::class,
-            DocSearch::class
+            Search::class,
+            NextPrev::class
         ];
     }
 }

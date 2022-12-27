@@ -118,13 +118,42 @@ function superdocs_general_settings()
         }
     }
 
-    if(is_array($superdocs)) {
+    if ( is_array( $superdocs ) ) {
         $superdocs['general_settings'] = $inputs;
+    } else {
+        $superdocs = [
+            'general_settings' => $inputs
+        ];
     }
 
-    $superdocs = [
-        'general_settings' => $inputs
-    ];
-
     return $inputs;
+}
+
+function superdocs_get_ordered_category_list( $productId )
+{
+    global $superdocs;
+
+    if ( isset( $superdocs['categories'][$productId] ) ) {
+        return $superdocs['categories'][$productId];
+    }
+
+    $categories = get_post_meta( $productId, 'categories', true );
+
+    if ( $categories ) {
+        $categories = unserialize( $categories );
+    } else {
+        $categories = [];
+    }
+
+    if ( is_array( $superdocs ) ) {
+        $superdocs['categories'][$productId] = $categories;
+    } else {
+        $superdocs = [
+            'categories' => [
+                $productId => $categories
+            ]
+        ];
+    }
+
+    return $categories;
 }

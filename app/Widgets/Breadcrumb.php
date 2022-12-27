@@ -25,7 +25,7 @@ class Breadcrumb extends Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['superdocs'];
     }
 
     public function get_keywords()
@@ -44,7 +44,7 @@ class Breadcrumb extends Widget_Base
         );
 
 		$this->add_control(
-			'superdocs_breadcrumb_home_text',
+			'superdocs_home_text',
 			[
 				'label'     => esc_html__( 'Text', 'superdocs' ),
 				'type'      => Controls_Manager::TEXT,
@@ -53,7 +53,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_home_url',
+			'superdocs_home_url',
 			[
 				'label'     => esc_html__( 'Url', 'superdocs' ),
 				'type'      => Controls_Manager::SELECT,
@@ -66,13 +66,13 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_home_custom_url',
+			'superdocs_home_custom_url',
 			[
 				'label'       => esc_html__( 'Custom Url', 'superdocs' ),
 				'type'        => Controls_Manager::URL,
 				'options'     => false,
 				'condition'   => [
-					'superdocs_breadcrumb_home_url' => 'custom'
+					'superdocs_home_url' => 'custom'
 				]
 			]
 		);
@@ -88,7 +88,7 @@ class Breadcrumb extends Widget_Base
         );
 
 		$this->add_control(
-			'superdocs_breadcrumb_docs_text',
+			'superdocs_docs_text',
 			[
 				'label'     => esc_html__( 'Text', 'superdocs' ),
 				'type'      => Controls_Manager::TEXT,
@@ -97,7 +97,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_docs_url',
+			'superdocs_docs_url',
 			[
 				'label'     => esc_html__( 'Url', 'superdocs' ),
 				'type'      => Controls_Manager::SELECT,
@@ -110,13 +110,13 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_docs_custom_url',
+			'superdocs_docs_custom_url',
 			[
 				'label'       => esc_html__( 'Custom Url', 'superdocs' ),
 				'type'        => Controls_Manager::URL,
 				'options'     => false,
 				'condition'   => [
-					'superdocs_breadcrumb_docs_url' => 'custom'
+					'superdocs_docs_url' => 'custom'
 				]
 			]
 		);
@@ -132,7 +132,7 @@ class Breadcrumb extends Widget_Base
         );
 
 		$this->add_control(
-			'superdocs_breadcrumb_color',
+			'superdocs_color',
 			[
 				'label'     => esc_html__( 'Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
@@ -145,7 +145,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_active_color',
+			'superdocs_active_color',
 			[
 				'label'     => esc_html__( 'Active Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
@@ -158,7 +158,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_arrow_color',
+			'superdocs_arrow_color',
 			[
 				'label'     => esc_html__( 'Arrow Color', 'superdocs' ),
 				'type'      => Controls_Manager::COLOR,
@@ -171,7 +171,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_gap',
+			'superdocs_gap',
 			[
 				'label'      => esc_html__( 'Gap between', 'superdocs' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -194,7 +194,7 @@ class Breadcrumb extends Widget_Base
 		);
 
 		$this->add_control(
-			'superdocs_breadcrumb_arrow_width',
+			'superdocs_arrow_width',
 			[
 				'label'      => esc_html__( 'Width', 'superdocs' ),
 				'type'       => Controls_Manager::SLIDER,
@@ -219,7 +219,7 @@ class Breadcrumb extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'           => 'superdocs_breadcrumb_typography',
+				'name'           => 'superdocs_typography',
 				'label'          => esc_html__( 'Typography', 'superdocs' ),
 				'selectors'      => [
 					'{{WRAPPER}} .superdocs .breadcrumbs .breadcrumb-item',
@@ -273,16 +273,16 @@ class Breadcrumb extends Widget_Base
 			$productLink  = get_post_permalink($product);
 		}
 
-		if( 'home' === $settings['superdocs_breadcrumb_home_url'] ) {
+		if( 'home' === $settings['superdocs_home_url'] ) {
 			$homeUrl = get_site_url();
 		} else {
-			$homeUrl = $settings['superdocs_breadcrumb_home_custom_url']['url'];
+			$homeUrl = $settings['superdocs_home_custom_url']['url'];
 		}
 
-		if( 'docs' === $settings['superdocs_breadcrumb_docs_url'] ) {
+		if( 'docs' === $settings['superdocs_docs_url'] ) {
 			$docsUrl = get_site_url(null, 'docs');
 		} else {
-			$docsUrl = $settings['superdocs_breadcrumb_docs_custom_url']['url'];
+			$docsUrl = $settings['superdocs_docs_custom_url']['url'];
 		}
 
 		?>
@@ -309,7 +309,7 @@ class Breadcrumb extends Widget_Base
 			<ul class="breadcrumbs">
 				<li class="breadcrumb-item">
 					<a href="<?php wp_commander_render( $homeUrl )?>">
-						<?php wp_commander_render($settings['superdocs_breadcrumb_home_text'])?>
+						<?php wp_commander_render($settings['superdocs_home_text'])?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">
@@ -317,7 +317,7 @@ class Breadcrumb extends Widget_Base
 				</li>
 				<li class="breadcrumb-item">
 					<a href="<?php wp_commander_render( $docsUrl )?>">
-						<?php wp_commander_render($settings['superdocs_breadcrumb_docs_text'])?>
+						<?php wp_commander_render($settings['superdocs_docs_text'])?>
 					</a>
 				</li>
 				<li class="breadcrumb-item">

@@ -16,9 +16,9 @@
 	var SuperDocs = {
 		init: function () {
 			var widgets = {
-				'superdocs-doc-search.default': SuperDocs.docSearch,
-				'superdocs-doc-print.default': SuperDocs.docPrint,
-				'superdocs-doc-categories.default': SuperDocs.categories,
+				'superdocs-search.default': SuperDocs.Search,
+				'superdocs-print.default': SuperDocs.docPrint,
+				'superdocs-categories.default': SuperDocs.categories,
 			}
 			$.each(widgets, function (widget, callback) {
 				elementor.hooks.addAction('frontend/element_ready/' + widget, callback);
@@ -40,7 +40,7 @@
 				$docs.slideToggle(250);
 			});
 		},
-		docSearch($scope) {
+		Search($scope) {
 			let resultArea = $scope.find('.result-body');
 			let search = function (s) {
 				let formData = $scope.find('form').serialize();
@@ -69,7 +69,7 @@
 			});
 
 			$(document).on('click', '.superdocs-search-open', function (e) {
-				if ($(e.target).parents('.superdocs-doc-search').length > 0) {
+				if ($(e.target).parents('.superdocs-search').length > 0) {
 					return;
 				}
 				resultArea.slideToggle(250);
