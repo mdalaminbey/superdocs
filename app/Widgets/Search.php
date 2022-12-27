@@ -876,6 +876,7 @@ class Search extends Widget_Base
                 border-top: <?php wp_commander_render($preloaderThickness) ?> solid <?php wp_commander_render($settings['doc_search_preloader_color'])?>;
             }
         </style>
+        <div class="superdocs">
 			<div class="superdocs-search">
 				<form action="" class="normal-search-form">
                     <input type="hidden" name="not_found_text" value="<?php wp_commander_render($settings['doc_search_not_found_text'])?>">
@@ -907,6 +908,7 @@ class Search extends Widget_Base
 					</div>
 				</form>
 			</div>
+        </div>
 		<?php
     }
 }

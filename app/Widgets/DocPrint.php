@@ -151,9 +151,11 @@ class DocPrint extends Widget_Base
     {
 		$settings = $this->get_settings_for_display();
 		?>
-		<div class="superdocs-print" style="cursor: pointer;">
-			<?php Icons_Manager::render_icon($settings['doc_print_icon'])?>
-		</div>
+        <div class="superdocs">
+            <div class="superdocs-print" style="cursor: pointer;">
+                <?php Icons_Manager::render_icon($settings['doc_print_icon'])?>
+            </div>
+        </div>
 		<?php
     }
 }

@@ -37,6 +37,7 @@ module.exports = grunt => {
 						'!' + projectConfig.srcDir + '**/*-beta/**',
 						'!' + projectConfig.srcDir + '**/scss/**',
 						'!' + projectConfig.srcDir + '**/sass/**',
+						'!' + projectConfig.srcDir + '**/*.asset.php',
 						// '!' + projectConfig.srcDir + '**/src/**',
 						'!' + projectConfig.srcDir + '**/.*',
 						'!' + projectConfig.srcDir + '**/build/*.txt',
@@ -52,7 +53,9 @@ module.exports = grunt => {
 						'!' + projectConfig.srcDir + '**/*.mix.js',
 						'!' + projectConfig.srcDir + '**/phpcs.xml',
 						'!' + projectConfig.srcDir + '**/composer.json',
-						'!' + projectConfig.srcDir + '**/composer.lock'
+						'!' + projectConfig.srcDir + '**/composer.lock',
+						'!' + projectConfig.srcDir + '**/resources/js/**',
+						'!' + projectConfig.srcDir + '**/assets/css/*.js',
 					],
 					dest: projectConfig.distDir,
 				} ],

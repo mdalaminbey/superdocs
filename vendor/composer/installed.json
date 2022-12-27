@@ -4,21 +4,30 @@
             "name": "doatkolom/ui",
             "version": "dev-master",
             "version_normalized": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./../ui",
-                "reference": "3be384a572b9209be8262e94f8867d76444738f5"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doatkolom/ui.git",
+                "reference": "af06eda597b5fc6fe74838ca3ae4eda4dd4b9b92"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doatkolom/ui/zipball/af06eda597b5fc6fe74838ca3ae4eda4dd4b9b92",
+                "reference": "af06eda597b5fc6fe74838ca3ae4eda4dd4b9b92",
+                "shasum": ""
+            },
+            "time": "2022-12-26T11:55:25+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "psr-4": {
-                    "DoatKolom\\Ui\\": "src/"
-                },
                 "files": [
                     "src/Helpers/Helper.php"
-                ]
+                ],
+                "psr-4": {
+                    "DoatKolom\\Ui\\": "src/"
+                }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -28,8 +37,9 @@
                     "email": "mdalaminbey@gmail.com"
                 }
             ],
-            "transport-options": {
-                "relative": true
+            "support": {
+                "issues": "https://github.com/doatkolom/ui/issues",
+                "source": "https://github.com/doatkolom/ui/tree/master"
             },
             "install-path": "../doatkolom/ui"
         },
@@ -37,21 +47,30 @@
             "name": "doatkolom/wp-commander",
             "version": "dev-master",
             "version_normalized": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./../wp-commander",
-                "reference": "d44935f38a766a0d2806d82315b58a83d176de97"
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doatkolom/wp-commander.git",
+                "reference": "f37e0d018de8e4ad557633339f7b1bc2afcebef2"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doatkolom/wp-commander/zipball/f37e0d018de8e4ad557633339f7b1bc2afcebef2",
+                "reference": "f37e0d018de8e4ad557633339f7b1bc2afcebef2",
+                "shasum": ""
+            },
+            "time": "2022-12-27T12:57:58+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "psr-4": {
-                    "WpCommander\\": "src/"
-                },
                 "files": [
                     "src/Helpers/Helper.php"
-                ]
+                ],
+                "psr-4": {
+                    "WpCommander\\": "src/"
+                }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -61,8 +80,9 @@
                     "email": "mdalaminbey@gmail.com"
                 }
             ],
-            "transport-options": {
-                "relative": true
+            "support": {
+                "issues": "https://github.com/doatkolom/wp-commander/issues",
+                "source": "https://github.com/doatkolom/wp-commander/tree/master"
             },
             "install-path": "../doatkolom/wp-commander"
         }

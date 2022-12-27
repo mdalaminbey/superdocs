@@ -533,88 +533,90 @@ class NextPrev extends Widget_Base
         $orderCss .= '</style>';
         wp_commander_render($orderCss);
         ?>
-        <div class="superdocs-next-prev">
-        <?php
-        
-        if ( $elementor->editor->is_edit_mode() || is_preview()) {?>
-                <a class="link prev" href="">
-                    <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
-                        <div class="title">
-                            <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="direction">Previous</div>
-                            <?php endif; ?>
-                            <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="doc_title">Doc title</div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
-                        <div class="icon">
-                            <?php Icons_Manager::render_icon($settings['superdocs_previous_icon'])?>
-                        </div>
-                    <?php endif; ?>
-                </a>
-                <a class="link next" href="">
-                    <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
-                        <div class="title">
-                            <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="direction">Next</div>
-                            <?php endif; ?>
-                            <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="doc_title">Doc title</div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
-                        <div class="icon">
-                            <?php Icons_Manager::render_icon($settings['superdocs_next_icon'])?>
-                        </div>
-                    <?php endif; ?>
-                </a>
-        <?php } else { ?>
-            <?php if(is_object($links['prev'])): ?>
-                <a class="link prev" href="<?php echo get_the_permalink($links['prev'])?>">
-                    <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
-                        <div class="title">
-                            <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="direction">Previous</div>
-                            <?php endif; ?>
-                            <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="doc_title">
-                                    <?php wp_commander_render($links['prev']->post_title) ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
-                        <div class="icon">
-                            <?php Icons_Manager::render_icon($settings['superdocs_previous_icon'])?>
-                        </div>
-                    <?php endif; ?>
-                </a>
-            <?php endif; ?>
-            <?php if(is_object($links['next'])): ?>
-                <a class="link next" href="<?php echo get_the_permalink($links['next'])?>">
-                    <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
-                        <div class="title">
-                            <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="direction">Next</div>
-                            <?php endif; ?>
-                            <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
-                                <div class="doc_title">
-                                    <?php wp_commander_render($links['next']->post_title) ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
-                        <div class="icon">
-                            <?php Icons_Manager::render_icon($settings['superdocs_next_icon'])?>
-                        </div>
-                    <?php endif; ?>
-                </a>
-            <?php endif;
-            }?>
+        <div class="superdocs">
+            <div class="superdocs-next-prev">
+            <?php
+            
+            if ( $elementor->editor->is_edit_mode() || is_preview()) {?>
+                    <a class="link prev" href="">
+                        <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
+                            <div class="title">
+                                <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="direction">Previous</div>
+                                <?php endif; ?>
+                                <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="doc_title">Doc title</div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
+                            <div class="icon">
+                                <?php Icons_Manager::render_icon($settings['superdocs_previous_icon'])?>
+                            </div>
+                        <?php endif; ?>
+                    </a>
+                    <a class="link next" href="">
+                        <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
+                            <div class="title">
+                                <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="direction">Next</div>
+                                <?php endif; ?>
+                                <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="doc_title">Doc title</div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
+                            <div class="icon">
+                                <?php Icons_Manager::render_icon($settings['superdocs_next_icon'])?>
+                            </div>
+                        <?php endif; ?>
+                    </a>
+            <?php } else { ?>
+                <?php if(is_object($links['prev'])): ?>
+                    <a class="link prev" href="<?php echo get_the_permalink($links['prev'])?>">
+                        <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
+                            <div class="title">
+                                <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="direction">Previous</div>
+                                <?php endif; ?>
+                                <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="doc_title">
+                                        <?php wp_commander_render($links['prev']->post_title) ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
+                            <div class="icon">
+                                <?php Icons_Manager::render_icon($settings['superdocs_previous_icon'])?>
+                            </div>
+                        <?php endif; ?>
+                    </a>
+                <?php endif; ?>
+                <?php if(is_object($links['next'])): ?>
+                    <a class="link next" href="<?php echo get_the_permalink($links['next'])?>">
+                        <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
+                            <div class="title">
+                                <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="direction">Next</div>
+                                <?php endif; ?>
+                                <?php if(in_array('doc_title', $settings['superdocs_link_show_element'])): ?>
+                                    <div class="doc_title">
+                                        <?php wp_commander_render($links['next']->post_title) ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if(in_array('icon', $settings['superdocs_link_show_element'])): ?>
+                            <div class="icon">
+                                <?php Icons_Manager::render_icon($settings['superdocs_next_icon'])?>
+                            </div>
+                        <?php endif; ?>
+                    </a>
+                <?php endif;
+                }?>
+            </div>
         </div>
     <?php
     }

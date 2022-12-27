@@ -645,61 +645,63 @@ class NavCategories extends Widget_Base
 			$categories = [];
 		}
 		?>
-		<div class="superdocs-doc-categories">
-			<ul>
-				<?php foreach($categories as $category):
-                    if($category['categoryPostId'] == 0) { 
-                        continue;   
-                    } 
-					$docs            = [];
-					$activeCategory  = false;
-					if(!empty($category['docs'])) {
-						$docs = get_posts([
-							'post_type' => superdocs_post_type(),
-							'orderby'   => 'post__in',
-							'post__in'  => $category['docs']
-						]);
-						if(in_array($docId, $category['docs'])) {
-							$activeCategory = true;
-						}
-					}
-                    $categoryPost  = get_post($category['categoryPostId']);
-                    $categoryTitle = $categoryPost->post_title;
-					
-					?>
-						<li class="submenu">
-							<a href="javascript:void(0)" class="submenu-link <?php wp_commander_render($activeCategory ? 'active': '')?>">
-								<span class="icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['superdocs_category_icon'])?>
-								</span>
-								<span class="icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_icon'])?>
-								</span>
-								<span class="title">
-									<?php wp_commander_render($categoryTitle)?>
-								</span>
-								<span class="action_icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
-									<?php Icons_Manager::render_icon($settings['superdocs_category_action_icon'])?>
-								</span>
-								<span class="action_icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-									<?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_action_icon'])?>
-								</span>
-							</a>
-							<div class="documents" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
-								<ul>
-									<?php foreach($docs as $doc):?>
-										<li class="<?php wp_commander_render($doc->ID === $docId ? 'active-doc': '')?>">
-											<a href="<?php wp_commander_render( get_post_permalink( $doc ) )?>">
-												<?php wp_commander_render($doc->post_title)?>
-											</a>
-										</li>
-									<?php endforeach;?>
-								</ul>
-							</div>
-						</li>
-				<?php endforeach;?>
-			</ul>
-		</div>
+        <div class="superdocs">
+            <div class="superdocs-doc-categories">
+                <ul>
+                    <?php foreach($categories as $category):
+                        if($category['categoryPostId'] == 0) { 
+                            continue;   
+                        } 
+                        $docs            = [];
+                        $activeCategory  = false;
+                        if(!empty($category['docs'])) {
+                            $docs = get_posts([
+                                'post_type' => superdocs_post_type(),
+                                'orderby'   => 'post__in',
+                                'post__in'  => $category['docs']
+                            ]);
+                            if(in_array($docId, $category['docs'])) {
+                                $activeCategory = true;
+                            }
+                        }
+                        $categoryPost  = get_post($category['categoryPostId']);
+                        $categoryTitle = $categoryPost->post_title;
+                        
+                        ?>
+                            <li class="submenu">
+                                <a href="javascript:void(0)" class="submenu-link <?php wp_commander_render($activeCategory ? 'active': '')?>">
+                                    <span class="icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
+                                        <?php Icons_Manager::render_icon($settings['superdocs_category_icon'])?>
+                                    </span>
+                                    <span class="icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
+                                        <?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_icon'])?>
+                                    </span>
+                                    <span class="title">
+                                        <?php wp_commander_render($categoryTitle)?>
+                                    </span>
+                                    <span class="action_icon collapse" style="<?php wp_commander_render($activeCategory ? 'display: none;': '')?>">
+                                        <?php Icons_Manager::render_icon($settings['superdocs_category_action_icon'])?>
+                                    </span>
+                                    <span class="action_icon un_collapse" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
+                                        <?php Icons_Manager::render_icon($settings['superdocs_uncollapse_category_action_icon'])?>
+                                    </span>
+                                </a>
+                                <div class="documents" style="<?php wp_commander_render($activeCategory ? '': 'display: none;')?>">
+                                    <ul>
+                                        <?php foreach($docs as $doc):?>
+                                            <li class="<?php wp_commander_render($doc->ID === $docId ? 'active-doc': '')?>">
+                                                <a href="<?php wp_commander_render( get_post_permalink( $doc ) )?>">
+                                                    <?php wp_commander_render($doc->post_title)?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </li>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+        </div>
 	<?php
     }
 }

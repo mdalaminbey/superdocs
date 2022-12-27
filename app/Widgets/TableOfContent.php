@@ -275,18 +275,20 @@ class TableOfContent extends Widget_Base
         $elementor        = \Elementor\Plugin::$instance;
         $general_settings = superdocs_general_settings();
         ?>
-        <div class="superdocs-table-of-content" data-allowed_heading="<?php wp_commander_render(wp_commander_json_encode_for_attr($general_settings['toc_supported_heading_tag']['value'])) ?>">
-            <h4><?php wp_commander_render( $settings['table_of_content_heading_title'] )?></h4>
-            <div class="content-list">
-        <?php if ( $elementor->editor->is_edit_mode() || is_preview() ) {?>
-                <ol style="margin: 0;">
-                    <li><a href="">Demo Content</a></li>
-                    <li><a href="">Demo Content</a></li>
-                    <li><a href="">Demo Content</a></li>
-                </ol>
-                <?php } else {?>
-                <ol style="margin: 0;"></ol>
-                <?php }?>
+        <div class="superdocs">
+            <div class="superdocs-table-of-content" data-allowed_heading="<?php wp_commander_render(wp_commander_json_encode_for_attr($general_settings['toc_supported_heading_tag']['value'])) ?>">
+                <h4><?php wp_commander_render( $settings['table_of_content_heading_title'] )?></h4>
+                <div class="content-list">
+            <?php if ( $elementor->editor->is_edit_mode() || is_preview() ) {?>
+                    <ol style="margin: 0;">
+                        <li><a href="">Demo Content</a></li>
+                        <li><a href="">Demo Content</a></li>
+                        <li><a href="">Demo Content</a></li>
+                    </ol>
+                    <?php } else {?>
+                    <ol style="margin: 0;"></ol>
+                    <?php }?>
+                </div>
             </div>
         </div>
         <?php

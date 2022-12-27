@@ -1,21 +1,19 @@
-.superdocs {
-	.breadcrumbs {
-		display: flex;
-		align-items: center;
-		flex-flow: row wrap;
-		list-style: none;
+.breadcrumbs {
+	display: flex;
+	align-items: center;
+	flex-flow: row wrap;
+	list-style: none;
 
-		.breadcrumb-item {
+	.breadcrumb-item {
+		position: relative;
+
+		a {
+			text-decoration: none !important;
+		}
+
+		.breadcrumb-icon {
 			position: relative;
-
-			a {
-				text-decoration: none !important;
-			}
-
-			.breadcrumb-icon {
-				position: relative;
-				display: flex;
-			}
+			display: flex;
 		}
 	}
 }
