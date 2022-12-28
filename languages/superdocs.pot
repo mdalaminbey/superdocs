@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SuperDocs 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/superdocs\n"
-"POT-Creation-Date: 2022-12-27 12:31:08+00:00\n"
+"POT-Creation-Date: 2022-12-28 11:34:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -226,15 +226,15 @@ msgid "Documentations"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:129 app/Widgets/DocPrint.php:104
-#: app/Widgets/NextPrev.php:166
+#: app/Widgets/NextPrev.php:167
 msgid "Style"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:137 app/Widgets/DocPrint.php:136
 #: app/Widgets/NavCategories.php:191 app/Widgets/NavCategories.php:252
 #: app/Widgets/NavCategories.php:484 app/Widgets/NavCategories.php:519
-#: app/Widgets/NextPrev.php:320 app/Widgets/NextPrev.php:418
-#: app/Widgets/NextPrev.php:471 app/Widgets/Search.php:149
+#: app/Widgets/NextPrev.php:300 app/Widgets/NextPrev.php:528
+#: app/Widgets/NextPrev.php:641 app/Widgets/Search.php:149
 #: app/Widgets/Search.php:315 app/Widgets/Search.php:475
 #: app/Widgets/Search.php:587 app/Widgets/Search.php:732
 #: app/Widgets/TableOfContent.php:82 app/Widgets/TableOfContent.php:197
@@ -250,32 +250,37 @@ msgid "Arrow Color"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:176 app/Widgets/NavCategories.php:363
-#: app/Widgets/NextPrev.php:190
+#: app/Widgets/NextPrev.php:191
 msgid "Gap between"
 msgstr ""
 
-#: app/Widgets/Breadcrumb.php:199 app/Widgets/Search.php:113
+#: app/Widgets/Breadcrumb.php:199 app/Widgets/NextPrev.php:337
+#: app/Widgets/NextPrev.php:410 app/Widgets/NextPrev.php:678
+#: app/Widgets/NextPrev.php:730 app/Widgets/Search.php:113
 #: app/Widgets/Search.php:279 app/Widgets/Search.php:442
 #: app/Widgets/Search.php:538
 msgid "Width"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:223 app/Widgets/NavCategories.php:317
-#: app/Widgets/NavCategories.php:567 app/Widgets/Search.php:210
+#: app/Widgets/NavCategories.php:567 app/Widgets/NextPrev.php:479
+#: app/Widgets/NextPrev.php:569 app/Widgets/Search.php:210
 #: app/Widgets/Search.php:376 app/Widgets/Search.php:627
 #: app/Widgets/TableOfContent.php:138 app/Widgets/TableOfContent.php:233
 msgid "Typography"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:233 app/Widgets/NavCategories.php:325
-#: app/Widgets/NavCategories.php:575 app/Widgets/Search.php:218
+#: app/Widgets/NavCategories.php:575 app/Widgets/NextPrev.php:487
+#: app/Widgets/NextPrev.php:577 app/Widgets/Search.php:218
 #: app/Widgets/Search.php:384 app/Widgets/Search.php:635
 #: app/Widgets/TableOfContent.php:146 app/Widgets/TableOfContent.php:241
 msgid "Font Size (px)"
 msgstr ""
 
 #: app/Widgets/Breadcrumb.php:247 app/Widgets/NavCategories.php:339
-#: app/Widgets/NavCategories.php:589 app/Widgets/Search.php:232
+#: app/Widgets/NavCategories.php:589 app/Widgets/NextPrev.php:501
+#: app/Widgets/NextPrev.php:591 app/Widgets/Search.php:232
 #: app/Widgets/Search.php:398 app/Widgets/Search.php:649
 #: app/Widgets/TableOfContent.php:160 app/Widgets/TableOfContent.php:255
 msgid "Line Height (px)"
@@ -289,7 +294,7 @@ msgstr ""
 msgid "Print"
 msgstr ""
 
-#: app/Widgets/DocPrint.php:41 app/Widgets/NextPrev.php:44
+#: app/Widgets/DocPrint.php:41 app/Widgets/NextPrev.php:45
 #: app/Widgets/Search.php:42 app/Widgets/TableOfContent.php:41
 msgid "Content"
 msgstr ""
@@ -303,25 +308,29 @@ msgid "Full Window"
 msgstr ""
 
 #: app/Widgets/DocPrint.php:63 app/Widgets/NavCategories.php:51
-#: app/Widgets/NavCategories.php:85 app/Widgets/NextPrev.php:60
-#: app/Widgets/NextPrev.php:120 app/Widgets/NextPrev.php:148
-#: app/Widgets/NextPrev.php:362
+#: app/Widgets/NavCategories.php:85 app/Widgets/NextPrev.php:61
+#: app/Widgets/NextPrev.php:117 app/Widgets/NextPrev.php:149
+#: app/Widgets/NextPrev.php:607
 msgid "Icon"
 msgstr ""
 
-#: app/Widgets/DocPrint.php:75
+#: app/Widgets/DocPrint.php:75 app/Widgets/NextPrev.php:360
+#: app/Widgets/NextPrev.php:433
 msgid "Alignment"
 msgstr ""
 
-#: app/Widgets/DocPrint.php:79
+#: app/Widgets/DocPrint.php:79 app/Widgets/NextPrev.php:364
+#: app/Widgets/NextPrev.php:438
 msgid "Left"
 msgstr ""
 
-#: app/Widgets/DocPrint.php:83
+#: app/Widgets/DocPrint.php:83 app/Widgets/NextPrev.php:368
+#: app/Widgets/NextPrev.php:442
 msgid "Center"
 msgstr ""
 
-#: app/Widgets/DocPrint.php:87
+#: app/Widgets/DocPrint.php:87 app/Widgets/NextPrev.php:372
+#: app/Widgets/NextPrev.php:446
 msgid "Right"
 msgstr ""
 
@@ -385,9 +394,10 @@ msgstr ""
 msgid "Documents"
 msgstr ""
 
-#: app/Widgets/NavCategories.php:399 app/Widgets/NextPrev.php:239
-#: app/Widgets/NextPrev.php:346 app/Widgets/NextPrev.php:444
-#: app/Widgets/NextPrev.php:497
+#: app/Widgets/NavCategories.php:399 app/Widgets/NextPrev.php:240
+#: app/Widgets/NextPrev.php:387 app/Widgets/NextPrev.php:460
+#: app/Widgets/NextPrev.php:554 app/Widgets/NextPrev.php:701
+#: app/Widgets/NextPrev.php:753
 msgid "Padding"
 msgstr ""
 
@@ -399,81 +409,79 @@ msgstr ""
 msgid "Document"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:21
+#: app/Widgets/NextPrev.php:22
 msgid "Next Prev"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:52
+#: app/Widgets/NextPrev.php:53
 msgid "Show element"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:58 app/Widgets/NextPrev.php:263
+#: app/Widgets/NextPrev.php:59 app/Widgets/NextPrev.php:289
 msgid "Doc Title"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:59
+#: app/Widgets/NextPrev.php:60
 msgid "Direction Title"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:68
+#: app/Widgets/NextPrev.php:69
 msgid "Previous Icon"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:83
+#: app/Widgets/NextPrev.php:84
 msgid "Next Icon"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:100
+#: app/Widgets/NextPrev.php:101
 msgid "Order"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:110
+#: app/Widgets/NextPrev.php:111 app/Widgets/NextPrev.php:330
+#: app/Widgets/NextPrev.php:671
 msgid "Previous"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:116 app/Widgets/NextPrev.php:144
+#: app/Widgets/NextPrev.php:121 app/Widgets/NextPrev.php:145
 msgid "Title"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:138
+#: app/Widgets/NextPrev.php:139 app/Widgets/NextPrev.php:403
+#: app/Widgets/NextPrev.php:723
 msgid "Next"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:174
+#: app/Widgets/NextPrev.php:175
 msgid "Row Item"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:178
+#: app/Widgets/NextPrev.php:179
 msgid "Single"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:179
+#: app/Widgets/NextPrev.php:180
 msgid "Both"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:213
+#: app/Widgets/NextPrev.php:214
 msgid "Background Color "
 msgstr ""
 
-#: app/Widgets/NextPrev.php:226
+#: app/Widgets/NextPrev.php:227
 msgid "Background Color Hover"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:274 app/Widgets/NextPrev.php:373
-msgid "Previous Width"
-msgstr ""
-
-#: app/Widgets/NextPrev.php:297 app/Widgets/NextPrev.php:395
-msgid "Next Width"
-msgstr ""
-
-#: app/Widgets/NextPrev.php:333 app/Widgets/NextPrev.php:431
-#: app/Widgets/NextPrev.php:484
+#: app/Widgets/NextPrev.php:313 app/Widgets/NextPrev.php:541
+#: app/Widgets/NextPrev.php:654
 msgid "Hover Color"
 msgstr ""
 
-#: app/Widgets/NextPrev.php:460
+#: app/Widgets/NextPrev.php:517
 msgid "Direction Text"
+msgstr ""
+
+#: app/Widgets/NextPrev.php:618
+msgid "Size"
 msgstr ""
 
 #: app/Widgets/Search.php:19 app/Widgets/Search.php:248

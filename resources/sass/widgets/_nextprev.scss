@@ -3,17 +3,8 @@
 
 	.link {
 		display: inline-flex;
-		transition: background-color 1s ease-out;
-
 		.title {
 			float: left;
-
-			.direction_title,
-			.doc_title,
-			.icon {
-				transition: color 500ms ease-out;
-			}
-
 			.icon {
 				float: left;
 			}

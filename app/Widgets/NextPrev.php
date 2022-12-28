@@ -4,6 +4,7 @@ namespace SuperDocs\App\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Widget_Base;
@@ -112,12 +113,12 @@ class NextPrev extends Widget_Base
                 'fields'       => $previous_repeater->get_controls(),
                 'default'      => [
                     [
-                        'list_key'   => 'title',
-                        'list_title' => esc_html__( 'Title', 'superdocs' )
-                    ],
-                    [
                         'list_key'   => 'icon',
                         'list_title' => esc_html__( 'Icon', 'superdocs' )
+                    ],
+                    [
+                        'list_key'   => 'title',
+                        'list_title' => esc_html__( 'Title', 'superdocs' )
                     ]
                 ],
                 'title_field'  => '{{{ list_title }}}',
@@ -199,7 +200,7 @@ class NextPrev extends Widget_Base
                 ],
                 'default'    => [
                     'unit' => 'px',
-                    'size' => 5
+                    'size' => 20
                 ],
                 'selectors'  => [
                     '{{WRAPPER}} .superdocs-next-prev' => 'gap: {{SIZE}}{{UNIT}};'
@@ -213,7 +214,7 @@ class NextPrev extends Widget_Base
                 'label'     => esc_html__( 'Background Color ', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
-                'default'   => '#F1F0F3',
+                'default'   => '#F4F4F6',
                 'selectors' => [
                     '{{WRAPPER}} .superdocs-next-prev a' => 'background-color: {{VALUE}};'
                 ]
@@ -226,7 +227,7 @@ class NextPrev extends Widget_Base
                 'label'     => esc_html__( 'Background Color Hover', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
-                'default'   => '#F1F0F3',
+                'default'   => '#F2F3FF',
                 'selectors' => [
                     '{{WRAPPER}} .superdocs-next-prev a:hover' => 'background-color: {{VALUE}};'
                 ]
@@ -239,6 +240,14 @@ class NextPrev extends Widget_Base
                 'label'      => esc_html__( 'Padding', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '5',
+                    'right'    => '12',
+                    'bottom'   => '5',
+                    'left'     => '12',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
                 'selectors'  => [
                     '{{WRAPPER}} .superdocs-next-prev a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
@@ -249,9 +258,26 @@ class NextPrev extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name'       => 'superdocs_link_border',
-                'selector'   => '{{WRAPPER}} .superdocs-next-prev a',
-                'size_units' => ['px']
+                'name'           => 'superdocs_link_border',
+                'selector'       => '{{WRAPPER}} .superdocs-next-prev a',
+                'size_units'     => ['px'],
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid'
+                    ],
+                    'width'  => [
+                        'default' => [
+                            'top'      => '1',
+                            'right'    => '1',
+                            'bottom'   => '1',
+                            'left'     => '1',
+                            'isLinked' => true
+                        ]
+                    ],
+                    'color'  => [
+                        'default' => '#C6BDBD'
+                    ]
+                ]
             ]
         );
 
@@ -268,10 +294,47 @@ class NextPrev extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'superdocs_doc_title_color',
+            [
+                'label'     => esc_html__( 'Color', 'superdocs' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#19181A',
+                'selectors' => [
+                    '{{WRAPPER}} .superdocs-next-prev .doc_title' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'superdocs_doc_title_hover_color',
+            [
+                'label'     => esc_html__( 'Hover Color', 'superdocs' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#5E0DFF',
+                'selectors' => [
+                    '{{WRAPPER}} .superdocs-next-prev a:hover .doc_title' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->start_controls_tabs(
+            'superdocs_link_title_tabs'
+        );
+
+        $this->start_controls_tab(
+            'superdocs_link_title_previous_tab',
+            [
+                'label' => esc_html__( 'Previous', 'superdocs' )
+            ]
+        );
+
         $this->add_responsive_control(
             'superdocs_prev_link_title_width',
             [
-                'label'      => esc_html__( 'Previous Width', 'superdocs' ),
+                'label'      => esc_html__( 'Width', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -291,10 +354,60 @@ class NextPrev extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'superdocs_link_doc_prev_title_alignment',
+            [
+                'label'     => esc_html__( 'Alignment', 'superdocs' ),
+                'type'      => Controls_Manager::CHOOSE,
+                'options'   => [
+                    'left'   => [
+                        'title' => esc_html__( 'Left', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-left'
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-center'
+                    ],
+                    'right'  => [
+                        'title' => esc_html__( 'Right', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-right'
+                    ]
+                ],
+                'default'   => 'right',
+                'toggle'    => true,
+                'selectors' => [
+                    '{{WRAPPER}} .superdocs-next-prev .prev .title' => 'text-align: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_link_doc_prev_title_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'superdocs' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .prev .doc_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ],
+                'separator'  => 'after'
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'superdocs_link_title_next_tab',
+            [
+                'label' => esc_html__( 'Next', 'superdocs' )
+            ]
+        );
+
         $this->add_responsive_control(
             'superdocs_next_link_title_width',
             [
-                'label'      => esc_html__( 'Next Width', 'superdocs' ),
+                'label'      => esc_html__( 'Width', 'superdocs' ),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range'      => [
@@ -315,140 +428,84 @@ class NextPrev extends Widget_Base
         );
 
         $this->add_control(
-            'superdocs_doc_title_color',
+            'superdocs_link_doc_next_title_alignment',
             [
-                'label'     => esc_html__( 'Color', 'superdocs' ),
-                'type'      => Controls_Manager::COLOR,
-                'alpha'     => false,
-                'default'   => '#5E0DFF',
+                'label'     => esc_html__( 'Alignment', 'superdocs' ),
+                'type'      => Controls_Manager::CHOOSE,
+                'default'   => 'left',
+                'options'   => [
+                    'left'   => [
+                        'title' => esc_html__( 'Left', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-left'
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-center'
+                    ],
+                    'right'  => [
+                        'title' => esc_html__( 'Right', 'superdocs' ),
+                        'icon'  => 'eicon-text-align-right'
+                    ]
+                ],
+                'toggle'    => true,
                 'selectors' => [
-                    '{{WRAPPER}} .superdocs-next-prev .doc_title' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'superdocs_doc_title_hover_color',
-            [
-                'label'     => esc_html__( 'Hover Color', 'superdocs' ),
-                'type'      => Controls_Manager::COLOR,
-                'alpha'     => false,
-                'default'   => '#5E0DFF',
-                'selectors' => [
-                    '{{WRAPPER}} .superdocs-next-prev a:hover .doc_title' => 'color: {{VALUE}};'
+                    '{{WRAPPER}} .superdocs-next-prev .next .title' => 'text-align: {{VALUE}};'
                 ]
             ]
         );
 
         $this->add_responsive_control(
-            'superdocs_link_doc_title_padding',
+            'superdocs_link_doc_next_title_padding',
             [
                 'label'      => esc_html__( 'Padding', 'superdocs' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px'],
                 'default'    => [],
                 'selectors'  => [
-                    '{{WRAPPER}} .superdocs-next-prev .doc_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    '{{WRAPPER}} .superdocs-next-prev .next .doc_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
-                'separator'  => 'before'
+                'separator'  => 'after'
             ]
         );
 
-        $this->end_controls_section();
+        $this->end_controls_tab();
 
-        $this->start_controls_section(
-            'section_icon',
-            [
-                'label'     => esc_html__( 'Icon', 'superdocs' ),
-                'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'superdocs_link_show_element' => 'icon'
-                ]
-            ]
-        );
+        $this->end_controls_tabs();
 
-        $this->add_responsive_control(
-            'superdocs_prev_link_icon_width',
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
             [
-                'label'      => esc_html__( 'Previous Width', 'superdocs' ),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range'      => [
-                    'px' => [
-                        'min'  => 0,
-                        'max'  => 1000,
-                        'step' => 1
+                'name'           => 'doc_title_typography',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-next-prev .doc_title',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
+                        'default'    => [
+                            'size' => '14',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'capitalize'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
                     ]
-                ],
-                'default'    => [
-                    'unit' => '%',
-                    'size' => 10
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}} .superdocs-next-prev .prev .icon' => 'width: {{SIZE}}{{UNIT}};'
                 ]
-            ]
-        );
-        $this->add_responsive_control(
-            'superdocs_next_link_icon_width',
-            [
-                'label'      => esc_html__( 'Next Width', 'superdocs' ),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range'      => [
-                    'px' => [
-                        'min'  => 0,
-                        'max'  => 1000,
-                        'step' => 1
-                    ]
-                ],
-                'default'    => [
-                    'unit' => '%',
-                    'size' => 10
-                ],
-                'selectors'  => [
-                    '{{WRAPPER}} .superdocs-next-prev .next .icon' => 'width: {{SIZE}}{{UNIT}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'superdocs_icon_color',
-            [
-                'label'     => esc_html__( 'Color', 'superdocs' ),
-                'type'      => Controls_Manager::COLOR,
-                'alpha'     => false,
-                'default'   => '#5E0DFF',
-                'selectors' => [
-                    '{{WRAPPER}} .superdocs-next-prev .icon' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'superdocs_icon_hover_color',
-            [
-                'label'     => esc_html__( 'Hover Color', 'superdocs' ),
-                'type'      => Controls_Manager::COLOR,
-                'alpha'     => false,
-                'default'   => '#5E0DFF',
-                'selectors' => [
-                    '{{WRAPPER}} .superdocs-next-prev a:hover .icon' => 'color: {{VALUE}};'
-                ]
-            ]
-        );
-
-        $this->add_responsive_control(
-            'superdocs_link_icon_padding',
-            [
-                'label'      => esc_html__( 'Padding', 'superdocs' ),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px'],
-                'default'    => [],
-                'selectors'  => [
-                    '{{WRAPPER}} .superdocs-next-prev .icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
-                ],
-                'separator'  => 'before'
             ]
         );
 
@@ -471,7 +528,7 @@ class NextPrev extends Widget_Base
                 'label'     => esc_html__( 'Color', 'superdocs' ),
                 'type'      => Controls_Manager::COLOR,
                 'alpha'     => false,
-                'default'   => '#5E0DFF',
+                'default'   => '#515151',
                 'selectors' => [
                     '{{WRAPPER}} .superdocs-next-prev .direction' => 'color: {{VALUE}};'
                 ]
@@ -505,8 +562,216 @@ class NextPrev extends Widget_Base
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'           => 'direction_text_typography',
+                'label'          => esc_html__( 'Typography', 'superdocs' ),
+                'selector'       => '{{WRAPPER}} .superdocs-next-prev .direction',
+                'exclude'        => ['font_style', 'letter_spacing'],
+                'fields_options' => [
+                    'typography'     => [
+                        'default' => 'custom'
+                    ],
+                    'font_size'      => [
+                        'label'      => esc_html__( 'Font Size (px)', 'superdocs' ),
+                        'default'    => [
+                            'size' => '9',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ],
+                    'text_transform' => [
+                        'default' => 'uppercase'
+                    ],
+                    'font_weight'    => [
+                        'default' => '600'
+                    ],
+                    'line_height'    => [
+                        'label'      => esc_html__( 'Line Height (px)', 'superdocs' ),
+                        'default'    => [
+                            'size' => '17',
+                            'unit' => 'px'
+                        ],
+                        'size_units' => ['px']
+                    ]
+                ]
+            ]
+        );
+
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_icon',
+            [
+                'label'     => esc_html__( 'Icon', 'superdocs' ),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'superdocs_link_show_element' => 'icon'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_next_link_icon_size',
+            [
+                'label'      => esc_html__( 'Size', 'superdocs' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 200,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 14
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .icon i' => 'font-size: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'superdocs_icon_color',
+            [
+                'label'     => esc_html__( 'Color', 'superdocs' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#040405',
+                'selectors' => [
+                    '{{WRAPPER}} .superdocs-next-prev .icon' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'superdocs_icon_hover_color',
+            [
+                'label'     => esc_html__( 'Hover Color', 'superdocs' ),
+                'type'      => Controls_Manager::COLOR,
+                'alpha'     => false,
+                'default'   => '#5E0DFF',
+                'selectors' => [
+                    '{{WRAPPER}} .superdocs-next-prev a:hover .icon' => 'color: {{VALUE}};'
+                ]
+            ]
+        );
+
+        $this->start_controls_tabs(
+            'superdocs_link_icon_tabs'
+        );
+
+        $this->start_controls_tab(
+            'superdocs_link_icon_previous_tab',
+            [
+                'label' => esc_html__( 'Previous', 'superdocs' )
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_prev_link_icon_width',
+            [
+                'label'      => esc_html__( 'Width', 'superdocs' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 1000,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => 10
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .prev .icon' => 'width: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_link_prev_icon_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'superdocs' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '3',
+                    'right'    => '3',
+                    'bottom'   => '3',
+                    'left'     => '3',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .prev .icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'superdocs_link_icon_next_tab',
+            [
+                'label' => esc_html__( 'Next', 'superdocs' )
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_next_link_icon_width',
+            [
+                'label'      => esc_html__( 'Width', 'superdocs' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 1000,
+                        'step' => 1
+                    ]
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => 10
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .next .icon' => 'width: {{SIZE}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'superdocs_link_next_icon_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'superdocs' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'default'    => [
+                    'top'      => '3',
+                    'right'    => '3',
+                    'bottom'   => '3',
+                    'left'     => '15',
+                    'unit'     => 'px',
+                    'isLinked' => false
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .superdocs-next-prev .next .icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
     }
 
     protected function render()
