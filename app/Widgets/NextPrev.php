@@ -839,7 +839,7 @@ class NextPrev extends Widget_Base
                     </a>
             <?php } else { ?>
                 <?php if(is_object($links['prev'])): ?>
-                    <a class="link prev" href="<?php echo get_the_permalink($links['prev'])?>">
+                    <a class="link prev" href="<?php wp_commander_render(get_the_permalink($links['prev']))?>">
                         <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
                             <div class="title">
                                 <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>
@@ -860,7 +860,7 @@ class NextPrev extends Widget_Base
                     </a>
                 <?php endif; ?>
                 <?php if(is_object($links['next'])): ?>
-                    <a class="link next" href="<?php echo get_the_permalink($links['next'])?>">
+                    <a class="link next" href="<?php wp_commander_render(get_the_permalink($links['next']))?>">
                         <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
                             <div class="title">
                                 <?php if(in_array('direction_title', $settings['superdocs_link_show_element'])): ?>

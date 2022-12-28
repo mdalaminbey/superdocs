@@ -120,10 +120,17 @@
 		}
 		let orderList = tableOfContent.find('ol');
 		orderList.html('');
-		$('.elementor-heading-title').each(function () {
+
+		$('.elementor-widget-superdocs-content').find(tags.join(", ")).each(function() {
 			let tag = $(this);
-			if (tags.includes(tag.prop("tagName"))) {
-				orderList.append('<li>' + tag.html() + '</li>');
+			let id  = tag.attr('id');
+			if(id !== undefined) {
+				orderList.append('<li><a href="#'+id+'">' + $(this).html() + '</a></li>');
+			} else {
+				id = tag.closest('.elementor-widget-heading').attr('id');
+				if(id !== undefined) {
+					orderList.append('<li><a href="#'+id+'">' + $(this).html() + '</a></li>');
+				}
 			}
 		})
 	});
