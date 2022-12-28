@@ -63,13 +63,7 @@ function superdocs_general_settings()
         return $superdocs['general_settings'];
     }
 
-    $saved_values = get_option( 'superdocs-general-settings', true );
-
-    if ( $saved_values ) {
-        $saved_values = unserialize( $saved_values );
-    } else {
-        $saved_values = [];
-    }
+    $saved_values = superdocs_get_option_unserialize( 'superdocs-general-settings' );
 
     $inputs = [
         'single_docs_slug'          => [
@@ -82,7 +76,7 @@ function superdocs_general_settings()
             'title'    => esc_html__( 'TOC Supported Heading Tag', 'superdocs' ),
             'type'     => 'checkbox',
             'required' => false,
-            'value'    => [],
+            'value'    => ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
             'options'  => [
                 [
                     'title' => 'H1',
@@ -137,13 +131,7 @@ function superdocs_get_ordered_category_list( $productId )
         return $superdocs['categories'][$productId];
     }
 
-    $categories = get_post_meta( $productId, 'categories', true );
-
-    if ( $categories ) {
-        $categories = unserialize( $categories );
-    } else {
-        $categories = [];
-    }
+    $categories = superdocs_get_post_meta_unserialize( $productId, 'categories' );
 
     if ( is_array( $superdocs ) ) {
         $superdocs['categories'][$productId] = $categories;
@@ -156,4 +144,24 @@ function superdocs_get_ordered_category_list( $productId )
     }
 
     return $categories;
+}
+
+function superdocs_get_option_unserialize( $key )
+{
+    $value = get_option( $key );
+
+    if ( $value ) {
+        return unserialize( $value );
+    }
+    return [];
+}
+
+function superdocs_get_post_meta_unserialize( $post_id, $meta_key )
+{
+    $value = get_post_meta( $post_id, $meta_key, true );
+
+    if ( $value ) {
+        return unserialize( $value );
+    }
+    return [];
 }

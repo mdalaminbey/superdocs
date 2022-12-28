@@ -10,6 +10,12 @@ class TemplateController
 {
     public function create( WP_REST_Request $wpRestRequest )
     {
+        if ( !did_action( 'elementor/loaded' ) ) {
+            wp_send_json( [
+                'message'    => esc_html__('Please activate elementor plugin', 'superdocs'),
+            ], 404 );
+        }
+    
         $template_name = $wpRestRequest->get_param( 'template-name' );
 
         if ( empty( $template_name ) ) {

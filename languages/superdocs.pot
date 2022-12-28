@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SuperDocs 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/superdocs\n"
-"POT-Creation-Date: 2022-12-28 11:34:00+00:00\n"
+"POT-Creation-Date: 2022-12-28 15:06:18+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,11 +29,11 @@ msgstr ""
 msgid "Product Default"
 msgstr ""
 
-#: app/Helpers/helper.php:76
+#: app/Helpers/helper.php:70
 msgid "Single Docs Permalink"
 msgstr ""
 
-#: app/Helpers/helper.php:82
+#: app/Helpers/helper.php:76
 msgid "TOC Supported Heading Tag"
 msgstr ""
 
@@ -45,25 +45,25 @@ msgstr ""
 msgid "Category deleted successfully!"
 msgstr ""
 
-#: app/Https/Controllers/CategoryController.php:105
+#: app/Https/Controllers/CategoryController.php:104
 msgid "Order complete successfully!"
 msgstr ""
 
-#: app/Https/Controllers/CategoryController.php:138
+#: app/Https/Controllers/CategoryController.php:136
 msgid "Category created successfully!"
 msgstr ""
 
-#: app/Https/Controllers/CategoryController.php:150
+#: app/Https/Controllers/CategoryController.php:148
 #: resources/views/admin/pages/category/doc-head.php:3
-#: resources/views/admin/pages/category/order-page.php:46
-#: resources/views/admin/pages/category/order-page.php:64
+#: resources/views/admin/pages/category/order-page.php:44
+#: resources/views/admin/pages/category/order-page.php:62
 msgid "Edit"
 msgstr ""
 
-#: app/Https/Controllers/CategoryController.php:153
+#: app/Https/Controllers/CategoryController.php:151
 #: resources/views/admin/pages/category/delete.php:28
 #: resources/views/admin/pages/category/doc-head.php:6
-#: resources/views/admin/pages/category/order-page.php:67
+#: resources/views/admin/pages/category/order-page.php:65
 msgid "Delete"
 msgstr ""
 
@@ -71,7 +71,11 @@ msgstr ""
 msgid "Settings saved successfully!"
 msgstr ""
 
-#: app/Https/Controllers/TemplateController.php:39
+#: app/Https/Controllers/TemplateController.php:15
+msgid "Please activate elementor plugin"
+msgstr ""
+
+#: app/Https/Controllers/TemplateController.php:45
 msgid "Template create successfully!"
 msgstr ""
 
@@ -587,19 +591,19 @@ msgstr ""
 msgid "Add Product"
 msgstr ""
 
-#: resources/views/admin/pages/category/order-page.php:43
+#: resources/views/admin/pages/category/order-page.php:41
 msgid "View"
 msgstr ""
 
-#: resources/views/admin/pages/category/order-page.php:87
+#: resources/views/admin/pages/category/order-page.php:85
 msgid "Uncategorized"
 msgstr ""
 
-#: resources/views/admin/pages/category/order-page.php:144
+#: resources/views/admin/pages/category/order-page.php:142
 msgid "Category List"
 msgstr ""
 
-#: resources/views/admin/pages/category/order-page.php:147
+#: resources/views/admin/pages/category/order-page.php:145
 msgid "Add Category"
 msgstr ""
 

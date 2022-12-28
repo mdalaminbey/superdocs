@@ -13,12 +13,10 @@ $headers = [
 
 $categoryActionKey     = 'superdocs_category_action_' . $productId;
 $categoryDataKey       = Common::generateRandomString( 10 );
-$categoriesSortList    = get_post_meta($productId, 'categories', true);
+$categoriesSortList    = superdocs_get_post_meta_unserialize($productId, 'categories');
 
-if($categoriesSortList) {
-	$categoriesSortList = unserialize($categoriesSortList);
-} else {
-	$categoriesSortList = [['categoryPostId' => 0]];
+if( empty( $categoriesSortList ) ) {
+	$categoriesSortList[] = ['categoryPostId' => 0];
 }
 
 $items = [];

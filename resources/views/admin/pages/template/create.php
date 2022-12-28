@@ -145,6 +145,13 @@ $dataKey = Common::generateRandomString();
 						location.href = editUrl;
 					}
 				},
+				error: function(data) {
+					alpineData.$dispatch('notify', { content: data.responseJSON.message, type: 'error' });
+					alpineData.submitCreateTemplateRequest = false;
+					alpineData.insertAndReloadStatus = false;
+					alpineData.insertAndRedirectStatus = false;
+					drawer.unLock();
+				},
 				complete: function() {}
 			})
 		}

@@ -62,9 +62,9 @@ class CategoryController
 
     public static function removeCategoryFormCategories( $productId, $categoryPostId )
     {
-        $categoriesSortList = get_post_meta( $productId, 'categories', true );
-        $categoriesSortList = unserialize( $categoriesSortList );
+        $categoriesSortList = superdocs_get_post_meta_unserialize( $productId, 'categories' );
         $key                = array_search( $categoryPostId, array_column( $categoriesSortList, 'categoryPostId' ) );
+
         if ( is_int( $key ) ) {
             unset( $categoriesSortList[$key] );
             $categoriesSortList = array_values( $categoriesSortList );
@@ -74,8 +74,7 @@ class CategoryController
 
     public static function removeProductFormCategories( $docsId, $categoryPostId, $productId )
     {
-        $categoriesSortList = get_post_meta( $productId, 'categories', true );
-        $categoriesSortList = unserialize( $categoriesSortList );
+        $categoriesSortList = superdocs_get_post_meta_unserialize( $productId, 'categories' );
         $categoryKey        = array_search( $categoryPostId, array_column( $categoriesSortList, 'categoryPostId' ) );
         if ( is_int( $categoryKey ) && !empty( $categoriesSortList[$categoryKey]['docs'] ) ) {
             $docKey = array_search( $docsId, $categoriesSortList[$categoryKey]['docs'] );
@@ -119,23 +118,22 @@ class CategoryController
         add_post_meta( $categoryPost, 'superdocs_category', true );
         add_post_meta( $categoryPost, 'productId', $wpRestRequest->get_param( 'productId' ) );
 
-        $categoriesSortList = get_post_meta( $wpRestRequest->get_param( 'productId' ), 'categories', true );
+        $categoriesSortList = superdocs_get_post_meta_unserialize( $wpRestRequest->get_param( 'productId' ), 'categories' );
 
-        if ( $categoriesSortList ) {
-            $categoriesSortList   = unserialize( $categoriesSortList );
-            $categoriesSortList[] = ['categoryPostId' => $categoryPost];
-        } else {
+        if ( empty( $categoriesSortList ) ) {
             $categoriesSortList = [
                 ['categoryPostId' => 0],
                 ['categoryPostId' => $categoryPost]
             ];
+        } else {
+            $categoriesSortList[] = ['categoryPostId' => $categoryPost];
         }
 
         $productId = $wpRestRequest->get_param( 'productId' );
         update_post_meta( $productId, 'categories', serialize( $categoriesSortList ) );
 
         wp_send_json( [
-            'message' => esc_html__('Category created successfully!', 'superdocs'),
+            'message' => esc_html__( 'Category created successfully!', 'superdocs' ),
             'title'   => $wpRestRequest->get_param( 'categoryName' ),
             'head'    => self::getDocHeadContent( 'superdocs_category_action_' . $productId, $categoryPost ),
             'content' => '<div class="px-6 py-4 grid gap-3 grid-cols-1 superdocs_product_content_' . $wpRestRequest->get_param( 'productId' ) . ' ui-sortable" data-category="' . $categoryPost . '">',

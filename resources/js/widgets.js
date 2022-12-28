@@ -17,7 +17,7 @@
 			var widgets = {
 				'superdocs-search.default': SuperDocs.Search,
 				'superdocs-print.default': SuperDocs.docPrint,
-				'superdocs-categories.default': SuperDocs.categories,
+				'superdocs-nav-categories.default': SuperDocs.categories,
 			}
 			$.each(widgets, function (widget, callback) {
 				elementor.hooks.addAction('frontend/element_ready/' + widget, callback);
@@ -45,7 +45,7 @@
 				let formData = $scope.find('form').serialize();
 				$scope.find('.loader-body').show();
 				$.ajax({
-					url: wpCommanderLocale.rest + 'superdocs/search',
+					url: SuperDocsSettings.root + 'superdocs/search',
 					method: 'POST',
 					data: formData,
 					complete(data) {

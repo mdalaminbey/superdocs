@@ -638,12 +638,7 @@ class NavCategories extends Widget_Base
 		}
 
 		$productId  = get_post_meta( $docId, 'productId', true );
-		$categories = get_post_meta( $productId, 'categories', true );
-		if ( $categories ) {
-			$categories = unserialize( $categories );
-		} else {
-			$categories = [];
-		}
+		$categories = superdocs_get_post_meta_unserialize( $productId, 'categories' );
 		?>
         <div class="superdocs">
             <div class="superdocs-doc-categories">

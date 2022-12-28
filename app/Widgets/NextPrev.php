@@ -776,17 +776,10 @@ class NextPrev extends Widget_Base
 
     protected function render()
     {
-        global $post;
-
-        $docId          = $post->ID;
-        $productId      = get_post_meta( $docId, 'productId', true );
-        $categoryId     = get_post_meta( $docId, 'categoryId', true );
-        $getNextPrevDoc = new GetNextPrevDoc;
-        $links          = $getNextPrevDoc->get( $docId, $productId, $categoryId );
         $settings       = $this->get_settings_for_display();
 		$elementor      = \Elementor\Plugin::$instance;
 
-         $orderCss = '<style>';
+        $orderCss = '<style>';
 
         foreach($settings['superdocs_previous_link_order'] as $key => $item) {
            $orderCss .='.superdocs-next-prev .prev .'.$item['list_key'] . '{order:' . ($key + 1) . ';}';
@@ -837,8 +830,17 @@ class NextPrev extends Widget_Base
                             </div>
                         <?php endif; ?>
                     </a>
-            <?php } else { ?>
-                <?php if(is_object($links['prev'])): ?>
+            <?php } else { 
+                
+                global $post;
+
+                $docId          = $post->ID;
+                $productId      = get_post_meta( $docId, 'productId', true );
+                $categoryId     = get_post_meta( $docId, 'categoryId', true );
+                $getNextPrevDoc = new GetNextPrevDoc;
+                $links          = $getNextPrevDoc->get( $docId, $productId, $categoryId );
+                
+                if(is_object($links['prev'])): ?>
                     <a class="link prev" href="<?php wp_commander_render(get_the_permalink($links['prev']))?>">
                         <?php if( array_intersect($settings['superdocs_link_show_element'], ['direction_title', 'doc_title']) ): ?>
                             <div class="title">

@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "./../ui",
-                "reference": "af06eda597b5fc6fe74838ca3ae4eda4dd4b9b92"
+                "reference": "7e491d0a482c53f20ee5ed54b5d8db7ee11ebdb3"
             },
             "type": "library",
             "autoload": {

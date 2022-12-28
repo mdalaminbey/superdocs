@@ -2,10 +2,10 @@
 Contributors: mdalaminbey, doatkolom
 Donate link: https://doatkolom.com/
 Tags: docs, documentation, knowledge, wiki, documentation builder, knowledge builder, wiki builder
-Requires at least: 5.2
-Tested up to: 6.1.1
-Requires PHP: 7.4
 Stable tag: 1.0.0
+Requires at least: 5.2
+Requires PHP: 7.4
+Tested up to: 6.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

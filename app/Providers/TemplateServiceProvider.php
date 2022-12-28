@@ -13,6 +13,7 @@ class TemplateServiceProvider extends ServiceProvider
     {
         add_filter( 'template_include', [$this, 'filter_template_include'], 99999 );
         add_action( 'wp_head', [$this, 'action_wp_head'] );
+        add_action( 'admin_head', [$this, 'action_wp_head'] );
         add_action( 'admin_footer-edit.php', [$this, 'action_admin_footer'] );
     }
 
@@ -41,11 +42,12 @@ class TemplateServiceProvider extends ServiceProvider
     public function action_wp_head(): void
     {
         $args = [
-            'rest' => get_rest_url()
+            'root' => esc_url_raw( rest_url() ),
+            'nonce' => wp_create_nonce( 'wp_rest' )
         ];
     ?>
     <script>
-        var wpCommanderLocale = <?php wp_commander_render( json_encode( $args ) )?>
+        var SuperDocsSettings = <?php wp_commander_render( json_encode( $args ) )?>
     </script>
     <?php
     }

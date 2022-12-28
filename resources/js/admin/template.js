@@ -3,10 +3,10 @@
 		e.preventDefault();
 		var drawer = Alpine.store('DoatKolomUiDrawer');
 		drawer.setContentByApi(
-			wpApiSettings.root + 'superdocs/template/create',
+			SuperDocsSettings.root + 'superdocs/template/create',
 			{
 				headers: {
-					'X-WP-Nonce': wpApiSettings.nonce
+					'X-WP-Nonce': SuperDocsSettings.nonce
 				}
 			},
 			'superDocsCreateTemplate'

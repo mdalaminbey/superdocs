@@ -7,13 +7,13 @@
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
+ * Tested up to:      6.1.1
  * Author:            DoatKolom
  * Author URI:        http://doatkolom.com
  * License:           GPL v3 or later
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       superdocs
  * Domain Path:       /languages
- * Tested up to:      6.1.1
  */
 
 use SuperDocs\Bootstrap\Application;
